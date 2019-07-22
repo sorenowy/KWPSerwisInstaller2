@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Installer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Interfejsy.cs" />
     <Compile Include="IPConfigLog.cs" />
     <Compile Include="Program.cs" />
