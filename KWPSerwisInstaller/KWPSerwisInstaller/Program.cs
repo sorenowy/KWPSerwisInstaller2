@@ -28,7 +28,29 @@ namespace KWPSerwisInstaller
                 if (klawisz1.Key == ConsoleKey.Enter)
                 {
                     Installer p = new Installer();
-                    p.InstalacjaBazy();
+                    Console.WriteLine("Naciśnij klawisz 1 aby dokonać instalacji oprogramowania na komputerze do Internetu.");
+                    Console.WriteLine("Lub naciśnij klawisz 2, by zainstalować oprogramowanie dla komputera PSTD.");
+                    klawisz1 = Console.ReadKey();
+                    if (klawisz1.Key == ConsoleKey.D1)
+                    {
+                        p.InstalacjaInternet();
+                        Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
+                        Console.WriteLine("Do zobaczenia next time ;).");
+                        Console.ReadKey();
+                    }
+                    else if (klawisz1.Key == ConsoleKey.D2)
+                    {
+                        p.instalacjaPSTD();
+                        Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
+                        Console.WriteLine("Do zobaczenia next time ;).");
+                        Console.ReadKey();
+                    }
+                    else if (klawisz1.Key == ConsoleKey.Escape)
+                    {
+                        Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
+                        Console.WriteLine("Do zobaczenia next time ;).");
+                        Console.ReadKey();
+                    }
                 }
                 else if (klawisz1.Key == ConsoleKey.Escape)
                 {
