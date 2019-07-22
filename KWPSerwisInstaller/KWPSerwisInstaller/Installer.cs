@@ -41,5 +41,30 @@ namespace KWPSerwisInstaller
             this.Start();
             this.WaitForExit();
         }
+        public void InstalacjaInternet()
+        {
+            this.InstalacjaBazy();
+            this.StartInfo.FileName = "Spotify.exe";
+            this.Start();
+            Console.WriteLine("Trwa instalowanie Spotify...");
+            this.WaitForExit();
+        }
+        public void InstalacjaPSTD()
+        {
+            this.InstalacjaBazy();
+            this.StartInfo.FileName = "msiexec.exe";
+            this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}\encardx64.msi");
+            this.Start();
+            Console.WriteLine("Trwa instalacja ENCARD 64-Bit...");
+            this.WaitForExit();
+            this.StartInfo.FileName = "Java765.exe";
+            this.Start();
+            Console.WriteLine("Trwa instalacja Java Runtime Enviroment 7u65 dla UKSP...");
+            this.WaitForExit();
+            this.StartInfo.FileName = "setup.exe";
+            this.Start();
+            Console.WriteLine("Trwa instalacja SWOP, bądź czujny i klikaj odpowiednio, to długa instalacja...");
+            this.WaitForExit();
+        }
     }
 }
