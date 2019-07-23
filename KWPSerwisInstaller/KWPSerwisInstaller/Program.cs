@@ -8,6 +8,7 @@ namespace KWPSerwisInstaller
 {
     class Program
     {
+        public delegate void DelegatInformacyjny();
         static void Prezentacja()
         {
             Console.WriteLine("----------------------------------------------------");

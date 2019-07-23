@@ -10,8 +10,9 @@ using System.Windows;
 
 namespace KWPSerwisInstaller
 {
-    class Installer : Process, IInstalacjaBazy, IInstalacjaInternet,IInstalacjaPSTD,IInstalacjaOffice
+    class Installer : Process, IInstalacjaBazy, IInstalacjaInternet,IInstalacjaPSTD, IInstalacjaOffice
     {
+        public delegate void DelegatInstalatora();
         public Installer()
         {
             this.StartInfo.UseShellExecute = true;
