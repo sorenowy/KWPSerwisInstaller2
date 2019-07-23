@@ -41,7 +41,6 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
             Console.WriteLine("Do zobaczenia next time ;). Naciśnij dowolny klawisz, by zamknąć okno.");
             Console.ReadKey();
-            return;
         }
         static void Main(string[] args)
         {
@@ -57,6 +56,7 @@ namespace KWPSerwisInstaller
                     if (klawisz1.Key == ConsoleKey.Enter)
                     {
                         Installer p = new Installer();
+                        IPConfigLog log = new IPConfigLog();
                         Naglowek();
                         klawisz1 = Console.ReadKey();
                         Console.Clear();
@@ -67,7 +67,9 @@ namespace KWPSerwisInstaller
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
                                 p.InstalacjaInternet();
                                 p.InstalacjaOffice();
+                                log.GenerujIPConfigLog();
                                 Thanks();
+                                return;
 
                             }
                             else if (klawisz1.Key == ConsoleKey.D2)
@@ -75,7 +77,9 @@ namespace KWPSerwisInstaller
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                                 p.InstalacjaPSTD();
                                 p.InstalacjaOffice();
+                                log.GenerujIPConfigLog();
                                 Thanks();
+                                return;
                             }
                             else
                             {

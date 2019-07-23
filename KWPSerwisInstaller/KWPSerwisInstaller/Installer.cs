@@ -78,7 +78,6 @@ namespace KWPSerwisInstaller
         }
         public void InstalacjaPSTD()
         {
-            int klawiszEncard;
             this.InstalacjaBazy();
             this.StartInfo.FileName = "java765.exe";
             this.Start();
@@ -93,64 +92,68 @@ namespace KWPSerwisInstaller
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("Wybierz jaką wersję oprogramowania do kart EKD chcesz zainstalować.Wybór potwierdź Enterem.\n1) Encard 2.1.0 (uniwersalny)\n2) Encard 64bit\n3) CryptoTech 2.1.4");
-            klawiszEncard = int.Parse(Console.ReadLine()); 
-            switch (klawiszEncard)
+            ConsoleKeyInfo klawiszEncard = Console.ReadKey(); 
+            if (klawiszEncard.Key == ConsoleKey.D1)
             {
-                case 1:
-                    this.StartInfo.FileName = "msiexec.exe";
-                    this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}Encard\setup.msi");
-                    this.Start();
-                    Console.WriteLine("Instaluję Encard 2.1.0...");
-                    this.WaitForExit();
-                    break;
-                case 2:
-                    this.StartInfo.FileName = "msiexec.exe";
-                    this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}encard64bit\encard.msi");
-                    this.Start();
-                    Console.WriteLine("Instaluję Encard 4.1.5...");
-                    this.WaitForExit();
-                    break;
-                case 3:
-                    this.StartInfo.FileName = "CCSuite.exe";
-                    this.Start();
-                    Console.WriteLine("Instaluję CCSuite...");
-                    this.WaitForExit();
-                    break;
-                default:
-                    Console.WriteLine("Nie wybrano żadnego klienta EKD..Aplikacja przejdzie dalej.");
-                    break;
+                this.StartInfo.FileName = "msiexec.exe";
+                this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}Encard\setup.msi");
+                this.Start();
+                Console.WriteLine("Instaluję Encard 2.1.0...");
+                this.WaitForExit();
+            }
+            else if (klawiszEncard.Key == ConsoleKey.D2)
+            {
+                this.StartInfo.FileName = "msiexec.exe";
+                this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}encard64bit\encard.msi");
+                this.Start();
+                Console.WriteLine("Instaluję Encard 4.1.5...");
+                this.WaitForExit();
+            }
+            else if (klawiszEncard.Key == ConsoleKey.D3)
+            {
+                this.StartInfo.FileName = "CCSuite.exe";
+                this.Start();
+                Console.WriteLine("Instaluję CCSuite...");
+                this.WaitForExit();
+            }
+            else
+            {
+                Console.WriteLine("Nie wybrano żadnego klienta EKD..Aplikacja przejdzie dalej.");
             }
         }
         public void InstalacjaOffice()
         {
-            Console.WriteLine("Czy chcesz zainstalować Oprogramowanie biurowe? Wybierz jedną z opcji.\n1) OpenOffice 4.1.6\n2) Office 2007 Enterprise\n3) Office 2016 MOLP\n Dowolny inny klawisz aby zakończyć!");
-            int klawiszOffice = int.Parse(Console.ReadLine());
-            switch (klawiszOffice)
+            Console.WriteLine("Czy chcesz zainstalować Oprogramowanie biurowe? Wybierz jedną z opcji.\n1) OpenOffice 4.1.6\n2) Office  2007 Enterprise\n3) Office 2016 MOLP\n Dowolny inny klawisz aby zakończyć!");
+            ConsoleKeyInfo klawiszOffice = Console.ReadKey();
+            if (klawiszOffice.Key == ConsoleKey.D1)
             {
-                case 1:
-                    this.StartInfo.FileName = "OpenOffice.exe";
-                    this.Start();
-                    Console.WriteLine("Instaluję OpenOffice 4.1.6...");
-                    this.WaitForExit();
-                    break;
-                case 2:
-                    this.StartInfo.FileName = @"office2007\setup.exe";
-                    this.StartInfo.Arguments = string.Format("/adminfile {0}",$@"{this.StartInfo.WorkingDirectory}office2007\config.msp");
-                    this.Start();
-                    Console.WriteLine("Instaluję Office 2007 Enterprise...");
-                    this.WaitForExit();
-                    break;
-                case 3:
-                    this.StartInfo.FileName = @"office2016\setup.exe";
-                    this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2016\config.msp");
-                    this.Start();
-                    Console.WriteLine("Instaluję Office 2016 MOLP...");
-                    this.WaitForExit();
-                    break;
-                default:
-                    Console.WriteLine("Nie wybrano żadnego oprogramowania biurowego..Aplikacja przejdzie dalej.");
-                    break;
+                this.StartInfo.FileName = "OpenOffice.exe";
+                this.Start();
+                Console.WriteLine("Instaluję OpenOffice 4.1.6...");
+                this.WaitForExit();
             }
+            else if (klawiszOffice.Key == ConsoleKey.D2)
+            {
+                this.StartInfo.FileName = @"office2007\setup.exe";
+                this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2007\config.msp");
+                this.Start();
+                Console.WriteLine("Instaluję Office 2007 Enterprise...");
+                this.WaitForExit();
+            }
+            else if (klawiszOffice.Key == ConsoleKey.D3)
+            {
+                this.StartInfo.FileName = @"office2016\setup.exe";
+                this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2016\config.msp");
+                this.Start();
+                Console.WriteLine("Instaluję Office 2016 MOLP...");
+                this.WaitForExit();
+            }
+            else
+            {
+                Console.WriteLine("Nie wybrano żadnego oprogramowania biurowego..Aplikacja przejdzie dalej.");
+                Console.ReadKey();
+            }
+            
         }
     }
 }
