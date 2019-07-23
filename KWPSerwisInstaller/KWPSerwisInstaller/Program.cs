@@ -8,9 +8,8 @@ namespace KWPSerwisInstaller
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Prezentacja()
         {
-            ConsoleKeyInfo klawisz1;
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("#######  ######  ##       ##  ######  ######  #######");
             Console.WriteLine("#    ##  ##  ##  ##       ##  ##          ##  ##   ##");
@@ -23,6 +22,11 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Upewnij się że komputer jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie.");
             Console.WriteLine("Wciśnij klawisz ENTER aby kontynuować!");
             Console.WriteLine("Lub Escape, aby zakończyć działanie programu.");
+        }
+        static void Main(string[] args)
+        {
+            ConsoleKeyInfo klawisz1;
+            Prezentacja();
             klawisz1 = Console.ReadKey();
             try
             {
@@ -44,27 +48,42 @@ namespace KWPSerwisInstaller
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
                                 p.InstalacjaInternet();
+                                p.InstalacjaOffice();
                                 Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
                                 Console.WriteLine("Do zobaczenia next time ;). Naciśnij dowolny klawisz, by zamknąć okno.");
                                 Console.ReadKey();
+                                return;
                             }
                             else if (klawisz1.Key == ConsoleKey.D2)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                                 p.InstalacjaPSTD();
+                                p.InstalacjaOffice();
                                 Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
                                 Console.WriteLine("Do zobaczenia next time ;). Naciśnij dowolny klawisz, by zamknąć okno.");
                                 Console.ReadKey();
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
+                                klawisz1 = Console.ReadKey();
                             }
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
+                        klawisz1 = Console.ReadKey();
                     }
                 }
                 Console.WriteLine("Przykro mi że już kończysz...:(, naciśnij dowolny klawisz, aby zamknąć okno.");
                 Console.ReadKey();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("Oops, cos poszło nie tak :)");
+                Console.WriteLine(e.ToString());
                 Console.WriteLine("Uruchom program raz jeszcze!, naciśnij dowolny klawisz, by zamknąć okno.");
                 Console.ReadKey();
             }

@@ -18,6 +18,10 @@ namespace KWPSerwisInstaller
     {
         void InstalacjaPSTD();
     }
+    interface IInstalacjaOffice
+    {
+        void InstalacjaOffice();
+    }
     interface IIPConfigLog
     {
         void GenerujIPConfigLog();
