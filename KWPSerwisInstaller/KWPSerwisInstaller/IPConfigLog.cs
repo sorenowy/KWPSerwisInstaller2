@@ -18,13 +18,14 @@ namespace KWPSerwisInstaller
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
+
         }
         public void GenerujIPConfigLog()
         {
             ConsoleKeyInfo generujLog;
-            generujLog = Console.ReadKey();
             Console.WriteLine(@"Program wygeneruje teraz Log IPCONFIG -ALL, który zostanie zapisany w folderze instalacyjnym komputera C:\KWPSerwisInstaller");
             Console.WriteLine("Nacisnij Enter, aby dokonać generowania Loga, lub dowolny klawisz, by zakończyć.");
+            generujLog = Console.ReadKey();
             if (generujLog.Key == ConsoleKey.Enter)
             {
                 Console.WriteLine("Podaj numer inwentarzowy komputera w celu nazwania pliku jego numerem.");

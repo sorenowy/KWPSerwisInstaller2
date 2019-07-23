@@ -151,7 +151,6 @@ namespace KWPSerwisInstaller
             else
             {
                 Console.WriteLine("Nie wybrano żadnego oprogramowania biurowego..Aplikacja przejdzie dalej.");
-                Console.ReadKey();
             }
             
         }
