@@ -16,7 +16,7 @@ namespace KWPSerwisInstaller
 
         public ZmienNetBIOS()
         {
-
+            this.StartInfo.Verb = "runas";
         }
         public void ChangeNetBIOS()
         {
