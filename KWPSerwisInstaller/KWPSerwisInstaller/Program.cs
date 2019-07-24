@@ -87,6 +87,7 @@ namespace KWPSerwisInstaller
                                 install.InstalacjaOffice();
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
+                                zmiana.ChangeNetBIOS();
                                 Thanks();
                                 return;
                             }
