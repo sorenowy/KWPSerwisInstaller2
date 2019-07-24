@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassChangeNetBIOS.cs" />
     <Compile Include="CreateUser.cs" />
     <Compile Include="Installer.cs">
       <SubType>Component</SubType>
@@ -53,6 +52,9 @@
     <Compile Include="IPConfigLog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZmienNetBIOS.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
