@@ -26,4 +26,8 @@ namespace KWPSerwisInstaller
     {
         void GenerujIPConfigLog();
     }
+    interface ICreateUser
+    {
+        void CreateUser();
+    }
 }
