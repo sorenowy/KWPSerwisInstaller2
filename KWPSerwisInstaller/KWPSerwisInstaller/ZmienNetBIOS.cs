@@ -21,7 +21,6 @@ namespace KWPSerwisInstaller
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-
         }
         public void ChangeNetBIOS()
         {
