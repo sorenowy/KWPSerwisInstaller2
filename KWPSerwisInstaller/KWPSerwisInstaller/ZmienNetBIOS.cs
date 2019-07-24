@@ -16,6 +16,10 @@ namespace KWPSerwisInstaller
 
         public ZmienNetBIOS()
         {
+            this.StartInfo.CreateNoWindow = true;
+            this.StartInfo.UseShellExecute = false;
+            this.StartInfo.RedirectStandardInput = true;
+            this.StartInfo.RedirectStandardOutput = true;
             this.StartInfo.Verb = "runas";
         }
         public void ChangeNetBIOS()
