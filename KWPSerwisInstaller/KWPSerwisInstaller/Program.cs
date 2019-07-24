@@ -56,9 +56,7 @@ namespace KWPSerwisInstaller
 
                     if (klawisz1.Key == ConsoleKey.Enter)
                     {
-                        Installer p = new Installer();
-                        IPConfigLog log = new IPConfigLog();
-                        Naglowek();
+                        IPConfigLog klient = new IPConfigLog();
                         klawisz1 = Console.ReadKey();
                         Console.Clear();
                         while (klawisz1.Key != ConsoleKey.Escape)
@@ -66,9 +64,9 @@ namespace KWPSerwisInstaller
                             if (klawisz1.Key == ConsoleKey.D1)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
-                                p.InstalacjaInternet();
-                                p.InstalacjaOffice();
-                                log.GenerujIPConfigLog();
+                                klient.InstalacjaInternet();
+                                klient.InstalacjaOffice();
+                                klient.GenerujIPConfigLog();
                                 Thanks();
                                 return;
 
@@ -76,9 +74,9 @@ namespace KWPSerwisInstaller
                             else if (klawisz1.Key == ConsoleKey.D2)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
-                                p.InstalacjaPSTD();
-                                p.InstalacjaOffice();
-                                log.GenerujIPConfigLog();
+                                klient.InstalacjaPSTD();
+                                klient.InstalacjaOffice();
+                                klient.GenerujIPConfigLog();
                                 Thanks();
                                 return;
                             }
