@@ -28,6 +28,11 @@ namespace KWPSerwisInstaller
     }
     interface ICreateUser
     {
-        void CreateUser();
+        void WyswietlUser();
+        void CreateUser(string a, string b, string c);
+    }
+    interface IChangeNetBIOS
+    {
+        void ChangeNetBIOS();
     }
 }

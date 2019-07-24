@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using System.Diagnostics;
-using System.Windows;
 
 namespace KWPSerwisInstaller
 {
@@ -48,6 +45,8 @@ namespace KWPSerwisInstaller
         }
         static void Main(string[] args)
         {
+            ClassCreateUser test = new ClassCreateUser();
+            test.WyswietlUser();
             ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
@@ -56,10 +55,12 @@ namespace KWPSerwisInstaller
             {
                 while (klawisz1.Key != ConsoleKey.Escape)
                 {
-
                     if (klawisz1.Key == ConsoleKey.Enter)
                     {
-                        IPConfigLog klient = new IPConfigLog();
+                        Installer install = new Installer();
+                        IPConfigLog log = new IPConfigLog();
+                        ClassCreateUser user = new ClassCreateUser();
+                        Naglowek();
                         klawisz1 = Console.ReadKey();
                         Console.Clear();
                         while (klawisz1.Key != ConsoleKey.Escape)
@@ -67,9 +68,10 @@ namespace KWPSerwisInstaller
                             if (klawisz1.Key == ConsoleKey.D1)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
-                                klient.InstalacjaInternet();
-                                klient.InstalacjaOffice();
-                                klient.GenerujIPConfigLog();
+                                install.InstalacjaInternet();
+                                install.InstalacjaOffice();
+                                log.GenerujIPConfigLog();
+                                user.WyswietlUser();
                                 Thanks();
                                 return;
 
@@ -77,9 +79,10 @@ namespace KWPSerwisInstaller
                             else if (klawisz1.Key == ConsoleKey.D2)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
-                                klient.InstalacjaPSTD();
-                                klient.InstalacjaOffice();
-                                klient.GenerujIPConfigLog();
+                                install.InstalacjaPSTD();
+                                install.InstalacjaOffice();
+                                log.GenerujIPConfigLog();
+                                user.WyswietlUser();
                                 Thanks();
                                 return;
                             }
@@ -89,11 +92,6 @@ namespace KWPSerwisInstaller
                                 klawisz1 = Console.ReadKey();
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
-                        klawisz1 = Console.ReadKey();
                     }
                 }
                 Console.WriteLine("Przykro mi że już kończysz...:(, naciśnij dowolny klawisz, aby zamknąć okno.");
