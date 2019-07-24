@@ -17,7 +17,7 @@ namespace KWPSerwisInstaller
         public int kategoria;
         public ClassCreateUser()
         {
-            this.StartInfo.Verb = "runas /user:Administrator";
+            this.StartInfo.Verb = "runas";
         }
         public void WyswietlUser()
         {

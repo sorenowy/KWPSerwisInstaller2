@@ -7,21 +7,21 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows;
 using System.DirectoryServices;
+using System.Security;
 
 namespace KWPSerwisInstaller
 {
     class ZmienNetBIOS : Installer, IChangeNetBIOS
     {
         public string nowaNazwa;
-        public string nazwaAdmina;
-
+        SecureString securepassword = new SecureString();
         public ZmienNetBIOS()
         {
             this.StartInfo.CreateNoWindow = true;
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            this.StartInfo.Verb = $"runas /user:{nazwaAdmina}";
+
         }
         public void ChangeNetBIOS()
         {
