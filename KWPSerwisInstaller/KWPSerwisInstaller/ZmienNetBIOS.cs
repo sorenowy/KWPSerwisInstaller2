@@ -13,6 +13,7 @@ namespace KWPSerwisInstaller
     class ZmienNetBIOS : Installer, IChangeNetBIOS
     {
         public string nowaNazwa;
+        public string nazwaAdmina;
 
         public ZmienNetBIOS()
         {
@@ -20,7 +21,7 @@ namespace KWPSerwisInstaller
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            this.StartInfo.Verb = "runas";
+            this.StartInfo.Verb = $"runas /user:{nazwaAdmina}";
         }
         public void ChangeNetBIOS()
         {
