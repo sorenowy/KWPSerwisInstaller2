@@ -14,7 +14,7 @@ namespace KWPSerwisInstaller
     {
         public string name;
         public string password;
-        public string nazwaGrupy;
+        public int kategoria;
         public ClassCreateUser()
         {
            
@@ -26,24 +26,46 @@ namespace KWPSerwisInstaller
             name = Console.ReadLine();
             Console.WriteLine("Wprowadź hasło użytkownika komputera.");
             password = Console.ReadLine();
-            CreateUser(name, password, nazwaGrupy);
+            Console.WriteLine("Chcesz utworzyć konto \n1)Użytkownika czy \n2)Administratora?");
+            Console.Write(" wybierz numer i zatwierdź enterem.");
+            int.Parse(Console.ReadLine());
+            CreateUser(name, password);
         }
         public void WyborGrupy()
         {
 
         }
-        public void CreateUser(string name, string pass, string nazwagrupy)
+        public void CreateUser(string name, string pass)
         {
             try
             {
                 
-                DirectoryEntry AD = new DirectoryEntry("WinNT://" + Environment.MachineName );
+                DirectoryEntry AD = new DirectoryEntry("WinNT://" + Environment.MachineName);
                 DirectoryEntry nowyUser = AD.Children.Add(name, "user");
                 nowyUser.Invoke("SetPassword", new object[] { pass });
                 nowyUser.CommitChanges();
-                Console.WriteLine(nowyUser.Guid.ToString());
+                Console.WriteLine(nowyUser.Name.ToString());
+                DirectoryEntry grupa;
+                if (kategoria == 1)
+                {
+                    grupa = AD.Children.Find(@"\Użytkownicy", "group");
+                    if (grupa != null)
+                    {
+                        grupa.Invoke("Add", new object[] { nowyUser.Path.ToString() });
+                    }
+                }
+                else if (kategoria == 2)
+                {
+                    grupa = AD.Children.Find(@"\Administratorzy", "group");
+                    if (grupa != null)
+                    {
+                        grupa.Invoke("Add", new object[] { nowyUser.Path.ToString() });
+                    }
+                }
                 AD.Close();
                 nowyUser.Close();
+                Console.WriteLine("Konto utworzone prawidłowo.");
+                Console.WriteLine("Naciśnij Enter by kontynuować.");
             }
             catch (Exception ex)
             {

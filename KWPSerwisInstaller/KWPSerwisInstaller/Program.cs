@@ -45,8 +45,6 @@ namespace KWPSerwisInstaller
         }
         static void Main(string[] args)
         {
-            ClassCreateUser test = new ClassCreateUser();
-            test.WyswietlUser();
             ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
@@ -60,6 +58,7 @@ namespace KWPSerwisInstaller
                         Installer install = new Installer();
                         IPConfigLog log = new IPConfigLog();
                         ClassCreateUser user = new ClassCreateUser();
+                        ZmienNetBIOS zmiana = new ZmienNetBIOS();
                         Naglowek();
                         klawisz1 = Console.ReadKey();
                         Console.Clear();
@@ -72,6 +71,7 @@ namespace KWPSerwisInstaller
                                 install.InstalacjaOffice();
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
+                                zmiana.ChangeNetBIOS();
                                 Thanks();
                                 return;
 
@@ -93,7 +93,13 @@ namespace KWPSerwisInstaller
                             }
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
+                        klawisz1 = Console.ReadKey();
+                    }
                 }
+
                 Console.WriteLine("Przykro mi że już kończysz...:(, naciśnij dowolny klawisz, aby zamknąć okno.");
                 Console.ReadKey();
             }
