@@ -23,9 +23,10 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Podaj nową nazwę komputera!");
             nowaNazwa = Console.ReadLine();
             this.StartInfo.FileName = "WMIC.exe";
-            this.StartInfo.Arguments = "WinNT://" + Environment.MachineName + "rename" + nowaNazwa;
+            this.StartInfo.Arguments = "computersystem where caption='" + Environment.MachineName + "' rename" + nowaNazwa;
             this.Start();
             this.WaitForExit();
+            Console.WriteLine(ExitCode);
         }
     }
 }

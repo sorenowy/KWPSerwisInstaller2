@@ -10,17 +10,18 @@ using System.DirectoryServices;
 
 namespace KWPSerwisInstaller
 {
-    class ClassCreateUser : ICreateUser
+    class ClassCreateUser : Installer, ICreateUser
     {
         public string name;
         public string password;
         public int kategoria;
         public ClassCreateUser()
         {
-           
+            this.StartInfo.Verb = "runas";
         }
         public void WyswietlUser()
         {
+           
             Console.WriteLine("Windows Account creator");
             Console.WriteLine("Wprowadź nazwę użytkownika.");
             name = Console.ReadLine();
@@ -28,7 +29,7 @@ namespace KWPSerwisInstaller
             password = Console.ReadLine();
             Console.WriteLine("Chcesz utworzyć konto \n1)Użytkownika czy \n2)Administratora?");
             Console.Write(" wybierz numer i zatwierdź enterem.");
-            int.Parse(Console.ReadLine());
+            kategoria = int.Parse(Console.ReadLine());
             CreateUser(name, password);
         }
         public void WyborGrupy()
