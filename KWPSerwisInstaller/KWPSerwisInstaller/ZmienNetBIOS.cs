@@ -23,7 +23,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Podaj nową nazwę komputera!");
             nowaNazwa = Console.ReadLine();
             this.StartInfo.FileName = "cmd.exe";
-            this.StartInfo.Arguments = "wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
+            this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
             this.Start();
             this.WaitForExit();
         }
