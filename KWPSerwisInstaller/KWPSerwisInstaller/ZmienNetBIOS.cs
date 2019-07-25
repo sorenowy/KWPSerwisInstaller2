@@ -14,7 +14,6 @@ namespace KWPSerwisInstaller
     class ZmienNetBIOS : Installer, IChangeNetBIOS
     {
         public string nowaNazwa;
-        SecureString securepassword = new SecureString();
         public ZmienNetBIOS()
         {
             this.StartInfo.CreateNoWindow = true;

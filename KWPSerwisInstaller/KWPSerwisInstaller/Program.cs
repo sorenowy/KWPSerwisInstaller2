@@ -49,6 +49,8 @@ namespace KWPSerwisInstaller
         }
         static void Main(string[] args)
         {
+            ZmienNetBIOS test = new ZmienNetBIOS();
+            test.JoinDomain();
             ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
