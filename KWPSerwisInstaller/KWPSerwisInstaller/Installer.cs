@@ -87,10 +87,9 @@ namespace KWPSerwisInstaller
             this.WaitForExit();
             Console.WriteLine("Zainstalowano Spotify.");
         }
-        public void InstalacjaCWI(DodajCertyfikat obj)
+        public void InstalacjaCWI()
         {
             this.InstalacjaInternet();
-            obj.InstalujCWI("CWI_CERT.cer");
         }
         public void InstalacjaPSTD()
         {

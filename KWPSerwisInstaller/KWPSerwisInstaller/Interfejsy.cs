@@ -13,7 +13,7 @@ namespace KWPSerwisInstaller
     interface IInstalacjaInternet
     {
         void InstalacjaInternet();
-        void InstalacjaCWI(DodajCertyfikat obj);
+        void InstalacjaCWI();
     }
     interface IInstalacjaPSTD
     {

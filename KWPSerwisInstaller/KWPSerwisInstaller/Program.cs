@@ -94,6 +94,7 @@ namespace KWPSerwisInstaller
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                                 install.InstalacjaPSTD();
                                 install.InstalacjaOffice();
+                                cert.InstalujInfrastruktura("infrastruktura2019.der");
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
                                 zmiana.ChangeNetBIOS();
@@ -103,7 +104,8 @@ namespace KWPSerwisInstaller
                             else if (klawisz1.Key == ConsoleKey.D3)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci CWI.");
-                                install.InstalacjaCWI(cert);
+                                install.InstalacjaCWI();
+                                cert.InstalujCWI("CWI_CERT.cer");
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
                                 zmiana.ChangeNetBIOS();
