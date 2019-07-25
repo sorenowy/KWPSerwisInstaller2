@@ -49,8 +49,6 @@ namespace KWPSerwisInstaller
         }
         static void Main(string[] args)
         {
-            ZmienNetBIOS test = new ZmienNetBIOS();
-            test.JoinDomain();
             ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
@@ -65,6 +63,7 @@ namespace KWPSerwisInstaller
                         IPConfigLog log = new IPConfigLog();
                         ClassCreateUser user = new ClassCreateUser();
                         ZmienNetBIOS zmiana = new ZmienNetBIOS();
+                        DodajCertyfikat cert = new DodajCertyfikat();
                         Naglowek();
                         klawisz1 = Console.ReadKey();
                         Console.Clear();
@@ -78,15 +77,33 @@ namespace KWPSerwisInstaller
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
                                 zmiana.ChangeNetBIOS();
-                                Thanks();
-                                return;
-
+                                klawisz1 = Console.ReadKey();
+                                if(klawisz1.Key == ConsoleKey.T)
+                                {
+                                    Thanks();
+                                    Process.Start("shutdown", "/r /f /t 0");
+                                }
+                                else
+                                {
+                                    Thanks();
+                                    return;
+                                }
                             }
                             else if (klawisz1.Key == ConsoleKey.D2)
                             {
                                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                                 install.InstalacjaPSTD();
                                 install.InstalacjaOffice();
+                                log.GenerujIPConfigLog();
+                                user.WyswietlUser();
+                                zmiana.ChangeNetBIOS();
+                                Thanks();
+                                return;
+                            }
+                            else if (klawisz1.Key == ConsoleKey.D3)
+                            {
+                                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci CWI.");
+                                install.InstalacjaCWI(cert);
                                 log.GenerujIPConfigLog();
                                 user.WyswietlUser();
                                 zmiana.ChangeNetBIOS();

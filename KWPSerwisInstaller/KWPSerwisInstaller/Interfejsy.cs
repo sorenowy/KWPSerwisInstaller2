@@ -13,6 +13,7 @@ namespace KWPSerwisInstaller
     interface IInstalacjaInternet
     {
         void InstalacjaInternet();
+        void InstalacjaCWI(DodajCertyfikat obj);
     }
     interface IInstalacjaPSTD
     {
@@ -34,5 +35,11 @@ namespace KWPSerwisInstaller
     interface IChangeNetBIOS
     {
         void ChangeNetBIOS();
+        void JoinDomain();
+    }
+    interface IDodajCertyfikat
+    {
+        void InstalujCWI(string sciezkaCWI);
+        void InstalujInfrastruktura(string sciezkaPSTD);
     }
 }

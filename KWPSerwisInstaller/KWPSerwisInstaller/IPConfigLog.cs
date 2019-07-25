@@ -10,7 +10,7 @@ using System.Runtime;
 
 namespace KWPSerwisInstaller
 {
-    class IPConfigLog : Installer,IIPConfigLog
+    class IPConfigLog : Installer, IIPConfigLog
     {
         public IPConfigLog()
         {
@@ -31,16 +31,15 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Podaj numer inwentarzowy komputera w celu nazwania pliku jego numerem.");
                 string nrInwentarzowy = Console.ReadLine();
                 this.StartInfo.FileName = "Cmd.exe";
-                this.StartInfo.Arguments = ( $@"/c ipconfig -all > C:\KWPSerwisInstaller\{nrInwentarzowy}.txt");
+                this.StartInfo.Arguments = ($@"/c ipconfig -all > {sciezkapliku}{nrInwentarzowy}.txt");
                 this.Start();
                 this.WaitForExit();
             }
-           else
+            else
             {
                 Console.WriteLine("Wybrałeś opcję nie generowania logu.");
                 Console.ReadKey();
             }
-
         }
     }
 }

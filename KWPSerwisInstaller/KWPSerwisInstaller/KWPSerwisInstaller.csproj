@@ -51,6 +51,9 @@
     <Compile Include="CreateUser.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DodajCertyfikat.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Installer.cs">
       <SubType>Component</SubType>
     </Compile>

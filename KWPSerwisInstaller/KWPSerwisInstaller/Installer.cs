@@ -11,16 +11,26 @@ using System.Windows;
 namespace KWPSerwisInstaller
 {
 
-    class Installer : Process, IInstalacjaBazy, IInstalacjaInternet,IInstalacjaPSTD, IInstalacjaOffice
+    class Installer : Process, IInstalacjaBazy, IInstalacjaInternet, IInstalacjaPSTD, IInstalacjaOffice
     {
+        public string sciezkapliku;
         public Installer()
         {
             this.StartInfo.UseShellExecute = true;
             this.StartInfo.CreateNoWindow = true;
-            this.StartInfo.WorkingDirectory = @"C:\KWPSerwisInstaller\Data\";
+            sciezkapliku = Environment.CurrentDirectory;
+            sciezkapliku = sciezkapliku.Replace(@"\bin\Debug", @"\Data\");
+            this.StartInfo.WorkingDirectory = sciezkapliku;
+        }
+        public void Wyczyszczenie()
+        {
+            this.StartInfo.FileName = "PCDecrapifier.exe";
+            this.Start();
+            this.WaitForExit();
         }
         public void InstalacjaBazy()
         {
+            this.Wyczyszczenie();
             ConsoleKeyInfo klawiszLotus;
             Console.WriteLine("Wybierz którego lotusa chcesz zainstalować najpierw?");
             Console.WriteLine("1)Lotus Notes Basic 8.5.3\n2)Lotus Notes Standard 8.5.3.");
@@ -77,6 +87,11 @@ namespace KWPSerwisInstaller
             this.WaitForExit();
             Console.WriteLine("Zainstalowano Spotify.");
         }
+        public void InstalacjaCWI(DodajCertyfikat obj)
+        {
+            this.InstalacjaInternet();
+            obj.InstalujCWI("CWI_CERT.crt");
+        }
         public void InstalacjaPSTD()
         {
             this.InstalacjaBazy();
@@ -93,7 +108,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("Wybierz jaką wersję oprogramowania do kart EKD chcesz zainstalować.Wybór potwierdź Enterem.\n1) Encard 2.1.0 (uniwersalny)\n2) Encard 64bit\n3) CryptoTech 2.1.4");
-            ConsoleKeyInfo klawiszEncard = Console.ReadKey(); 
+            ConsoleKeyInfo klawiszEncard = Console.ReadKey();
             if (klawiszEncard.Key == ConsoleKey.D1)
             {
                 this.StartInfo.FileName = "msiexec.exe";
@@ -153,7 +168,7 @@ namespace KWPSerwisInstaller
             {
                 Console.WriteLine("Nie wybrano żadnego oprogramowania biurowego..Aplikacja przejdzie dalej.");
             }
-            
+
         }
     }
 }

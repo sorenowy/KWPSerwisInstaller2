@@ -21,7 +21,7 @@ namespace KWPSerwisInstaller
         }
         public void WyswietlUser()
         {
-           
+
             Console.WriteLine("Windows Account creator");
             Console.WriteLine("Wprowadź nazwę użytkownika.");
             name = Console.ReadLine();
@@ -40,7 +40,7 @@ namespace KWPSerwisInstaller
         {
             try
             {
-                
+
                 DirectoryEntry AD = new DirectoryEntry("WinNT://" + Environment.MachineName);
                 DirectoryEntry nowyUser = AD.Children.Add(name, "user");
                 nowyUser.Invoke("SetPassword", new object[] { pass });
