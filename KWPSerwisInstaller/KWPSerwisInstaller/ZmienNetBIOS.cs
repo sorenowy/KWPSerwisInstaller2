@@ -13,6 +13,8 @@ namespace KWPSerwisInstaller
 {
     class ZmienNetBIOS : Installer, IChangeNetBIOS
     {
+        public delegate void DelegacjaNetBios();
+        public event DelegacjaNetBios ZdarzenieDelegacji;
         public string nowaNazwa;
         public ZmienNetBIOS()
         {
@@ -27,6 +29,16 @@ namespace KWPSerwisInstaller
             nowaNazwa = Console.ReadLine();
             this.StartInfo.FileName = "cmd.exe";
             this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
+            this.Start();
+            this.WaitForExit();
+        }
+        public void JoinDomain()
+        {
+            this.ChangeNetBIOS();
+            this.StartInfo.FileName = "powershell.exe";
+            this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
+            this.StartInfo.UserName = "test";
+            this.StartInfo.PasswordInClearText = "12345678";
             this.Start();
             this.WaitForExit();
         }
