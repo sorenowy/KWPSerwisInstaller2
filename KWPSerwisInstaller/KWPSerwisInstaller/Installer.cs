@@ -90,7 +90,7 @@ namespace KWPSerwisInstaller
         public void InstalacjaCWI(DodajCertyfikat obj)
         {
             this.InstalacjaInternet();
-            obj.InstalujCWI("CWI_CERT.crt");
+            obj.InstalujCWI("CWI_CERT.cer");
         }
         public void InstalacjaPSTD()
         {
