@@ -13,7 +13,7 @@ namespace KWPSerwisInstaller
     class Program
     {
         public delegate void DelegatInformacyjny();
-        static void Prezentacja()
+        public static void Prezentacja()
         {
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("#######  ######  ##       ##  ######  ######  #######");
@@ -28,7 +28,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Wciśnij klawisz ENTER aby kontynuować!");
             Console.WriteLine("Lub Escape, aby zakończyć działanie programu.");
         }
-        static void Naglowek()
+        public static void Naglowek()
         {
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------");
@@ -36,12 +36,12 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Lub naciśnij klawisz 2, by zainstalować oprogramowanie dla komputera PSTD.");
             Console.WriteLine("Możesz też nacisnąć Escape, by zamknąć program.");
         }
-        static void Copyright()
+        public static void Copyright()
         {
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Made by Hubert Kuszyński, tel. 11659.");
         }
-        static void Thanks()
+        public static void Thanks()
         {
             Console.WriteLine("Dziękuję za skorzystanie z KWP Serwis Installer v0.2.");
             Console.WriteLine("Do zobaczenia next time ;). Naciśnij dowolny klawisz, by zamknąć okno.");
@@ -49,7 +49,8 @@ namespace KWPSerwisInstaller
         }
         static void Main(string[] args)
         {
-            ConsoleKeyInfo klawisz1;
+            ConsoleMenu.StartMenu();
+          /*  ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
             klawisz1 = Console.ReadKey();
@@ -135,7 +136,7 @@ namespace KWPSerwisInstaller
                 Console.WriteLine(e.ToString());
                 Console.WriteLine("Uruchom program raz jeszcze!, naciśnij dowolny klawisz, by zamknąć okno.");
                 Console.ReadKey();
-            }
+            }*/
         }
     }
 }
