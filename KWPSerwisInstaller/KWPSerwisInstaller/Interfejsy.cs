@@ -42,4 +42,5 @@ namespace KWPSerwisInstaller
         void InstalujCWI(string sciezkaCWI);
         void InstalujInfrastruktura(string sciezkaPSTD);
     }
+
 }
