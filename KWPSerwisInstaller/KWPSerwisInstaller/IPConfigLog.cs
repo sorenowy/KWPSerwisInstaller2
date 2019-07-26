@@ -47,6 +47,11 @@ namespace KWPSerwisInstaller
                 {
                     Console.WriteLine("wystąpił błąd"+e.Message);
                 }
+                finally
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("-----------------------------------------------------");
+                }
             }
             else
             {
