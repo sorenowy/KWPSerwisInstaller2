@@ -66,7 +66,7 @@ namespace KWPSerwisInstaller
                 AD.Close();
                 nowyUser.Close();
                 Console.WriteLine("Konto utworzone prawidłowo.");
-                Console.WriteLine("Naciśnij Enter by kontynuować.");
+                Console.WriteLine("-----------------------------");
             }
             catch (Exception ex)
             {

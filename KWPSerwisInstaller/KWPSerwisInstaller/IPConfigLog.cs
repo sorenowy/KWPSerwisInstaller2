@@ -23,8 +23,10 @@ namespace KWPSerwisInstaller
         public void GenerujIPConfigLog()
         {
             ConsoleKeyInfo generujLog;
-            Console.WriteLine(@"Program wygeneruje teraz Log IPCONFIG -ALL, który zostanie zapisany w folderze instalacyjnym komputera C:\KWPSerwisInstaller");
+            Console.WriteLine("Program wygeneruje teraz Log IPCONFIG -ALL");
+            Console.WriteLine(@"Który zostanie zapisany w folderze instalacyjnym komputera C:\KWPSerwisInstaller");
             Console.WriteLine("Nacisnij Enter, aby dokonać generowania Loga, lub dowolny klawisz, by zakończyć.");
+            Console.WriteLine("---------------------------------------------------------------------------------");
             generujLog = Console.ReadKey();
             if (generujLog.Key == ConsoleKey.Enter)
             {

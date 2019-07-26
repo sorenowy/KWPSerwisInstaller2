@@ -81,7 +81,7 @@ namespace KWPSerwisInstaller
                                 install.InstalacjaOffice();
                                 user.WyswietlUser();
                                 log.GenerujIPConfigLog();
-                                Console.WriteLine("Czy chcesz podłączyć komputer do domeny?\nWcisnij 1. by zmienić nazwę NetBIOS komputera i podłączyć komputer do domeny" +
+                                Console.WriteLine("Czy chcesz podłączyć komputer do domeny?\nNacisnij wybrany przycisk i zatwierdź enterem.\n1. by zmienić nazwę NetBIOS komputera i podłączyć komputer do domeny" +
                                     "\n2. Aby tylko zmienić nazwę NetBIOS.");
                                 klawisz1 = Console.ReadKey();
                                 if(klawisz1.Key == ConsoleKey.D1)
