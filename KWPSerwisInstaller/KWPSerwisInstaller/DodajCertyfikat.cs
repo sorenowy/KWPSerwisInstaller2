@@ -32,6 +32,7 @@ namespace KWPSerwisInstaller
                 magazyn.Open(OpenFlags.ReadWrite);
                 magazyn.Add(certyfikatCWI);
                 magazyn.Close();
+                Console.WriteLine("Certyfikat CWI_CERT dograny pomyślnie!");
             }
             catch (Exception)
             {
@@ -39,7 +40,7 @@ namespace KWPSerwisInstaller
             }
             finally
             {
-                Console.WriteLine("Dzieki!");
+                Console.WriteLine("-------------------------------");
             }
         }
         public void InstalujInfrastruktura(string nazwapliku)
@@ -60,7 +61,7 @@ namespace KWPSerwisInstaller
             }
             finally
             {
-                Console.WriteLine("Dzieki!");
+                Console.WriteLine("---------------------------------");
             }
         }
     }

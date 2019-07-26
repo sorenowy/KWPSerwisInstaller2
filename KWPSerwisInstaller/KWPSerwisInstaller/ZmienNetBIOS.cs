@@ -23,20 +23,44 @@ namespace KWPSerwisInstaller
         }
         public void ChangeNetBIOS()
         {
-            Console.WriteLine("Podaj nową nazwę komputera! Nazwę potwierdź enterem.");
-            nowaNazwa = Console.ReadLine();
-            this.StartInfo.FileName = "cmd.exe";
-            this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
-            this.Start();
-            this.WaitForExit();
+            try
+            {
+                Console.WriteLine("Podaj nową nazwę komputera! Nazwę potwierdź enterem.");
+                nowaNazwa = Console.ReadLine();
+                this.StartInfo.FileName = "cmd.exe";
+                this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
+                this.Start();
+                this.WaitForExit();
+                Console.WriteLine("Zmiana nazwy NetBIOS wykonana pomyślnie!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("------------------------------");
+            }
         }
         public void JoinDomain()
         {
-            this.ChangeNetBIOS();
-            this.StartInfo.FileName = "powershell.exe";
-            this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
-            this.Start();
-            this.WaitForExit();
+            try
+            {
+                this.ChangeNetBIOS();
+                this.StartInfo.FileName = "powershell.exe";
+                this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
+                this.Start();
+                this.WaitForExit();
+                Console.WriteLine("Udało się podłączyć do domeny.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("------------------------------");
+            }
         }
     }
 }
