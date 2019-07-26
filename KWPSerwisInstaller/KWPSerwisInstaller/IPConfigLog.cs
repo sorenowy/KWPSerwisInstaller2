@@ -40,7 +40,7 @@ namespace KWPSerwisInstaller
                     this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{nrInwentarzowy}.txt");
                     this.Start();
                     this.WaitForExit();
-                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0} na dysku C:\", nrInwentarzowy);
+                    Console.WriteLine(@"Utworzono ipconfig Log o nazwie {0} na dysku C:\",nrInwentarzowy);
                 }
                 catch (Exception e)
                 {
