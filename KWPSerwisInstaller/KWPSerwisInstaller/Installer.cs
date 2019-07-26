@@ -116,7 +116,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Instalacja SWOP ukończona.");
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("Wybierz jaką wersję oprogramowania do kart EKD chcesz zainstalować.Wybór potwierdź Enterem.\n1) Encard 2.1.0 (uniwersalny)\n2) Encard 64bit\n3) CryptoTech 2.1.4");
+            Console.WriteLine("Wybierz jaką wersję oprogramowania do kart EKD chcesz zainstalować.Wybór potwierdź Enterem.\n1. Encard 2.1.0 (uniwersalny)\n2. Encard 64bit\n3. CryptoTech 2.1.4");
             ConsoleKeyInfo klawiszEncard = Console.ReadKey();
             if (klawiszEncard.Key == ConsoleKey.D1)
             {
