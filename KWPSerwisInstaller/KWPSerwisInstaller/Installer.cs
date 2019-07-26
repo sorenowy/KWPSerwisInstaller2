@@ -14,12 +14,14 @@ namespace KWPSerwisInstaller
     class Installer : Process, IInstalacjaBazy, IInstalacjaInternet, IInstalacjaPSTD, IInstalacjaOffice
     {
         public string sciezkapliku;
+        private string sciezkaDanych;
         public Installer()
         {
             this.StartInfo.UseShellExecute = true;
             this.StartInfo.CreateNoWindow = true;
             sciezkapliku = Environment.CurrentDirectory;
-            sciezkapliku = sciezkapliku.Replace(@"\bin\Debug", @"\Data\");
+            sciezkaDanych = @"\Data\";
+            sciezkapliku = string.Concat(sciezkapliku, sciezkaDanych);
             this.StartInfo.WorkingDirectory = sciezkapliku;
         }
         public void Wyczyszczenie()
