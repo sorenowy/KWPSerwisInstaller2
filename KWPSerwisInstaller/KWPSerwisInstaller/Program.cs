@@ -54,6 +54,8 @@ namespace KWPSerwisInstaller
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
+            IPConfigLog test = new IPConfigLog();
+            test.GenerujIPConfigLog();
             ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();

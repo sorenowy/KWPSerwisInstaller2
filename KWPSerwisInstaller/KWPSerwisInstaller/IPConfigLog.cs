@@ -12,17 +12,15 @@ namespace KWPSerwisInstaller
 {
     class IPConfigLog : Installer, IIPConfigLog
     {
-        public string sciezkaLog;
+        private string sciezka;
         public IPConfigLog()
         {
             this.StartInfo.Verb = "runas";
-            sciezkaLog = @"\Logi\";
-            sciezkaLog = string.Concat(Environment.CurrentDirectory, sciezkaLog);
             this.StartInfo.CreateNoWindow = true;
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            this.StartInfo.WorkingDirectory = sciezkaLog;
+            
         }
         public void GenerujIPConfigLog()
         {
@@ -42,7 +40,7 @@ namespace KWPSerwisInstaller
                     this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{nrInwentarzowy}.txt");
                     this.Start();
                     this.WaitForExit();
-                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0}", nrInwentarzowy);
+                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0} na dysku C:\", nrInwentarzowy);
                 }
                 catch (Exception e)
                 {
