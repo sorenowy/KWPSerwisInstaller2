@@ -12,7 +12,7 @@ namespace KWPSerwisInstaller
 {
     class IPConfigLog : Installer, IIPConfigLog
     {
-        private string sciezka;
+        private string sciezkaLog;
         public IPConfigLog()
         {
             this.StartInfo.Verb = "runas";
@@ -20,13 +20,13 @@ namespace KWPSerwisInstaller
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            
+            sciezkaLog = Environment.CurrentDirectory + @"\Logi\";
         }
         public void GenerujIPConfigLog()
         {
             ConsoleKeyInfo generujLog;
             Console.WriteLine("Program wygeneruje teraz Log IPCONFIG -ALL");
-            Console.WriteLine(@"Który zostanie zapisany w dysku C:\ instalacyjnym komputera");
+            Console.WriteLine(@"Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu");
             Console.WriteLine("Nacisnij Enter, aby dokonać generowania Loga, lub dowolny klawisz, by zakończyć.");
             Console.WriteLine("---------------------------------------------------------------------------------");
             generujLog = Console.ReadKey();
@@ -40,7 +40,8 @@ namespace KWPSerwisInstaller
                     this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{nrInwentarzowy}.txt");
                     this.Start();
                     this.WaitForExit();
-                    Console.WriteLine(@"Utworzono ipconfig Log o nazwie {0} na dysku C:\",nrInwentarzowy);
+                    File.Move($@"C:\{nrInwentarzowy}.txt", $@"{sciezkaLog}{nrInwentarzowy}.txt");
+                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0} w lokacji \n{1}",nrInwentarzowy,sciezkaLog);
                 }
                 catch (Exception e)
                 {

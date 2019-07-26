@@ -1,0 +1,25 @@
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : TEST06L
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   Physical Address. . . . . . . . . : 00-D8-61-34-CC-BA
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::bd8b:6d47:f32d:cf26%4(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.3.169(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.252.0
+   Default Gateway . . . . . . . . . : 192.168.0.1
+   DHCPv6 IAID . . . . . . . . . . . : 50387041
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-24-0F-E1-36-00-D8-61-34-CC-BA
+   DNS Servers . . . . . . . . . . . : 192.168.1.21
+                                       192.168.2.115
+   NetBIOS over Tcpip. . . . . . . . : Enabled
