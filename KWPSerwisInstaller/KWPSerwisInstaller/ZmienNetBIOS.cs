@@ -23,7 +23,7 @@ namespace KWPSerwisInstaller
         }
         public void ChangeNetBIOS()
         {
-            Console.WriteLine("Podaj nową nazwę komputera!");
+            Console.WriteLine("Podaj nową nazwę komputera! Nazwę potwierdź enterem.");
             nowaNazwa = Console.ReadLine();
             this.StartInfo.FileName = "cmd.exe";
             this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;

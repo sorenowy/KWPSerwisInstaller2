@@ -26,6 +26,7 @@ namespace KWPSerwisInstaller
         {
             this.StartInfo.FileName = "PCDecrapifier.exe";
             this.Start();
+            Console.WriteLine("Użyj programu PC Decrapifier aby usunąć niepotrzebne oprogramowanie z komputera.\nŚmieci i inne rzeczy.");
             this.WaitForExit();
         }
         public void InstalacjaBazy()
@@ -33,8 +34,9 @@ namespace KWPSerwisInstaller
             this.Wyczyszczenie();
             ConsoleKeyInfo klawiszLotus;
             Console.WriteLine("Wybierz którego lotusa chcesz zainstalować najpierw?");
-            Console.WriteLine("1)Lotus Notes Basic 8.5.3\n2)Lotus Notes Standard 8.5.3.");
+            Console.WriteLine("1. Lotus Notes Basic 8.5.3\n2. Lotus Notes Standard 8.5.3.\n3. Mozilla Thunderbird.");
             Console.WriteLine("Lub wcisnij inny dowolny klawisz, aby pominąć.");
+            Console.WriteLine("-----------------------------------------------");
             klawiszLotus = Console.ReadKey();
             if (klawiszLotus.Key == ConsoleKey.D1)
             {
@@ -51,6 +53,14 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Trwa instalacja Klienta Lotus Notes 8.5.3 Standard...");
                 this.WaitForExit();
                 Console.WriteLine("Zainstalowano klienta Lotus Notes 8.5.3 Standard.");
+            }
+            else if (klawiszLotus.Key == ConsoleKey.D3)
+            {
+                this.StartInfo.FileName = "thunderbird.exe";
+                this.Start();
+                Console.WriteLine("Trwa instalacja Klienta Mozilla Thunderbird...");
+                this.WaitForExit();
+                Console.WriteLine("Zainstalowano klienta Mozilla Thunderbird.");
             }
             else
             {
@@ -138,7 +148,8 @@ namespace KWPSerwisInstaller
         }
         public void InstalacjaOffice()
         {
-            Console.WriteLine("Czy chcesz zainstalować Oprogramowanie biurowe? Wybierz jedną z opcji.\n1) OpenOffice 4.1.6\n2) Office  2007 Enterprise\n3) Office 2016 MOLP\n Dowolny inny klawisz aby zakończyć!");
+            Console.WriteLine("Czy chcesz zainstalować Oprogramowanie biurowe? Wybierz jedną z opcji.\n1. OpenOffice 4.1.6\n2. Office 2007 Enterprise\n3. Office 2016 MOLP\n4. Office 2019 MOLP\n Dowolny inny klawisz aby zakończyć!");
+            Console.WriteLine("--------------------------------------------------");
             ConsoleKeyInfo klawiszOffice = Console.ReadKey();
             if (klawiszOffice.Key == ConsoleKey.D1)
             {

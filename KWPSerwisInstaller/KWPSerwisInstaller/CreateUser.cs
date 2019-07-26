@@ -21,7 +21,7 @@ namespace KWPSerwisInstaller
         }
         public void WyswietlUser()
         {
-
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Windows Account creator");
             Console.WriteLine("Wprowadź nazwę użytkownika.");
             name = Console.ReadLine();

@@ -19,13 +19,15 @@ namespace KWPSerwisInstaller
 
         public static void StartMenu()
         {
+            IPConfigLog log = new IPConfigLog();
+            ClassCreateUser user = new ClassCreateUser();
+            ZmienNetBIOS zmiana = new ZmienNetBIOS();
+            DodajCertyfikat cert = new DodajCertyfikat();
             ConsoleMenu menu = new ConsoleMenu();
             Console.Title= "Instalator KWP Serwis v0.7";
             Console.CursorVisible = false;
             while (true)
             {
-
-                Program.Prezentacja();
                 menu.PokazMenu();
                 menu.WybieranieOpcjiMenuGlownego();
                 menu.MenuGlowne();
@@ -62,7 +64,8 @@ namespace KWPSerwisInstaller
         {
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Program.Prezentacja();
             Console.WriteLine();
             for (int i = 0; i < tablicaMenuG.Length; i++)
             {
@@ -86,34 +89,19 @@ namespace KWPSerwisInstaller
         {
             switch (aktywnaPozycjaMenu)
             {
-                case 0: Console.Clear(); InstalacjaInternet(); break;
-                case 1: Console.Clear(); InstalacjaPSTD(); break;
-                case 2: Console.Clear(); InstalacjaCWI(); break;
+                case 0:
+                    {
+                        Console.Clear(); InstalacjaInternet();InstalacjaOffice(); break;
+                    }
+                case 1:
+                    {
+                        Console.Clear(); InstalacjaPSTD(); InstalacjaOffice(); break;
+                    }
+                case 2:
+                    {
+                        Console.Clear(); InstalacjaCWI(); InstalacjaOffice(); break;
+                    }
             }
-        }
-        public void MenuPoczty()
-        {
-
-        }
-        public void MenuEKD()
-        {
-
-        }
-        public void MenuOffice()
-        {
-
-        }
-        public void MenuCreateUser()
-        {
-
-        }
-        public void MenuNetbios()
-        {
-
-        }
-        public void MenuIpconfig()
-        {
-
         }
     }
 }
