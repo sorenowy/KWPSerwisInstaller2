@@ -21,7 +21,7 @@ namespace KWPSerwisInstaller
     }
     interface IInstalacjaOffice
     {
-        void InstalacjaOffice();
+        void InstalacjaOffice(int opcja);
     }
     interface IIPConfigLog
     {

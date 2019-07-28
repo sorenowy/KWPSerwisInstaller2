@@ -32,41 +32,61 @@ namespace KWPSerwisInstaller
         private Button przyciskOKLotus = new Button();
         private Button przyciskOKEKD = new Button();
         private Button przyciskOKOffice = new Button();
+
+
         public MenuGlowne()
         {
+            Installer install = new Installer();
+            IPConfigLog log = new IPConfigLog();
+            ClassCreateUser user = new ClassCreateUser();
+            ZmienNetBIOS zmiana = new ZmienNetBIOS();
+            DodajCertyfikat cert = new DodajCertyfikat();
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             // Nazwa tytułu aplikacji
             Text = "KWP Serwis Installer v0.7";
+            Size = new Size(760, 560);
             // Załadowanie i wyskalowanie obrazka na stronę tytułową
-            Image obrazekTytułowy = Image.FromFile(Environment.CurrentDirectory);
-            stronaGlowna.Size = new Size(stronaGlowna.Height, stronaGlowna.Width);
+            Image obrazekTytułowy = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
+            stronaGlowna.Left = 120;
+            stronaGlowna.Size = new Size(600, 400);
             stronaGlowna.Image = obrazekTytułowy;
             // Opis przycisku zakończ, ustawienie jego pozycji
             przyciskZakoncz.Text = "Zakończ";
-            przyciskZakoncz.Top = 600;
-            przyciskZakoncz.Left = 800;
+            przyciskZakoncz.Top = 450;
+            przyciskZakoncz.Left = 600;
             // Opis pozostałych przycisków, ustawienie ich pozycji
-            przyciskInternet.Text = "Instaluj Internet";
+            przyciskInternet.Text = "Ins. Internet";
             przyciskInternet.BackColor = Color.LightBlue;
             przyciskInternet.Top = 400;
             przyciskInternet.Left = 200;
-            przyciskPSTD.Text = "Instaluj PSTD";
+            przyciskPSTD.Text = "Ins. PSTD";
             przyciskPSTD.BackColor = Color.Red;
             przyciskPSTD.Top = 400;
-            przyciskPSTD.Left = 500;
-            przyciskCWI.Text = "Instaluj CWI.";
+            przyciskPSTD.Left = 400;
+            przyciskCWI.Text = "Ins. CWI";
             przyciskCWI.BackColor = Color.LightGreen;
             przyciskCWI.Top = 400;
-            przyciskCWI.Left = 700;
+            przyciskCWI.Left = 600;
             przyciskAnuluj.Text = "Anuluj";
             przyciskAnuluj.ForeColor = Color.Red;
             przyciskAnuluj.Top = 600;
-            przyciskAnuluj.Left = 500;
+            przyciskAnuluj.Left = 300;
+            //Ustawienia przycisków zatwierdzeń Lotusa,Office i EKD.
+            przyciskOKLotus.Text = "OK";
+            przyciskOKLotus.Top = 600;
+            przyciskOKLotus.Left = 150;
+            //Przypisanie do innych..
+            przyciskOKEKD.Text = przyciskOKLotus.Text;
+            przyciskOKEKD.Top = przyciskOKLotus.Top;
+            przyciskOKEKD.Left = przyciskOKEKD.Left;
+            przyciskOKOffice.Text = przyciskOKLotus.Text;
+            przyciskOKOffice.Top = przyciskOKLotus.Top;
+            przyciskOKOffice.Left = przyciskOKLotus.Left;
             //Ustawienia okien wyboru z listy
             instalatorLotus.Text = "Wybierz klienta poczty w celu instalacji.";
-            instalatorLotus.Size = new Size(1200, 700);
+            instalatorLotus.Size = new Size(760, 800);
             instalatorEKD.Text = "Wybierz klienta EKD w celu instalacji";
             instalatorEKD.Size = instalatorLotus.Size;
             instalatorOffice.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
@@ -108,14 +128,21 @@ namespace KWPSerwisInstaller
             //Metody wywołujące..
             void PrzyciskLotusOKClick(object sender, EventArgs ea)
             {
-               
+                install.InstalacjaLotus(listaLotus.SelectedIndex);
+                Close();
+            }
+            void PrzyciskEKDOKClick(object sender, EventArgs ea)
+            {
+                install.InstalacjaEKD(listaEKD.SelectedIndex);
+                Close();
+            }
+            void PrzyciskOfficeOKClick(object sender,EventArgs ea)
+            {
+                install.InstalacjaOffice(listaOffice.SelectedIndex);
+                Close();
             }
             void PrzyciskInternetClick(object sender, EventArgs ea)
             {
-                Installer install = new Installer();
-                IPConfigLog log = new IPConfigLog();
-                ClassCreateUser user = new ClassCreateUser();
-                ZmienNetBIOS zmiana = new ZmienNetBIOS();
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
                 install.InstalacjaInternet();
@@ -134,11 +161,6 @@ namespace KWPSerwisInstaller
             }
             void przyciskPSTDClick(object sender,EventArgs ea)
             {
-                Installer install = new Installer();
-                IPConfigLog log = new IPConfigLog();
-                ClassCreateUser user = new ClassCreateUser();
-                ZmienNetBIOS zmiana = new ZmienNetBIOS();
-                DodajCertyfikat cert = new DodajCertyfikat();
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
@@ -160,11 +182,6 @@ namespace KWPSerwisInstaller
             }
             void przyciskCWIClick(object sender,EventArgs ea)
             {
-                Installer install = new Installer();
-                IPConfigLog log = new IPConfigLog();
-                ClassCreateUser user = new ClassCreateUser();
-                ZmienNetBIOS zmiana = new ZmienNetBIOS();
-                DodajCertyfikat cert = new DodajCertyfikat();
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
                 install.InstalacjaCWI();
@@ -190,11 +207,30 @@ namespace KWPSerwisInstaller
             {
                 Close();
             }
+            //Delegowanie metod do eventu przycisku myszy
             przyciskZakoncz.Click += new EventHandler(PrzyciskZakonczClick);
             przyciskInternet.Click += new EventHandler(PrzyciskInternetClick);
             przyciskPSTD.Click += new EventHandler(przyciskPSTDClick);
             przyciskCWI.Click += new EventHandler(przyciskCWIClick);
             przyciskAnuluj.Click += new EventHandler(PrzyciskAnulujClick);
+            przyciskOKLotus.Click += new EventHandler(PrzyciskLotusOKClick);
+            przyciskOKEKD.Click += new EventHandler(PrzyciskEKDOKClick);
+            przyciskOKOffice.Click += new EventHandler(PrzyciskOfficeOKClick);
+            //Dopisywanie opcji do głównego menu i list.
+            instalatorLotus.Controls.Add(listaLotus);
+            instalatorLotus.Controls.Add(przyciskOKLotus);
+            instalatorLotus.Controls.Add(przyciskAnuluj);
+            instalatorEKD.Controls.Add(listaEKD);
+            instalatorEKD.Controls.Add(przyciskOKEKD);
+            instalatorEKD.Controls.Add(przyciskAnuluj);
+            instalatorOffice.Controls.Add(listaOffice);
+            instalatorOffice.Controls.Add(przyciskOKEKD);
+            instalatorOffice.Controls.Add(przyciskAnuluj);
+            Controls.Add(stronaGlowna);
+            Controls.Add(przyciskInternet);
+            Controls.Add(przyciskPSTD);
+            Controls.Add(przyciskCWI);
+            Controls.Add(przyciskZakoncz);
         }
     }
 }

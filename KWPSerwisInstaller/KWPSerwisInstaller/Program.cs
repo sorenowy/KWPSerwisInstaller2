@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows;
 using System.DirectoryServices;
+using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
@@ -54,90 +55,11 @@ namespace KWPSerwisInstaller
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
-            ConsoleKeyInfo klawisz1;
             Prezentacja();
             Copyright();
-            klawisz1 = Console.ReadKey();
             try
             {
-                while (klawisz1.Key != ConsoleKey.Escape)
-                {
-                    if (klawisz1.Key == ConsoleKey.Enter)
-                    {
-                        Installer install = new Installer();
-                        IPConfigLog log = new IPConfigLog();
-                        ClassCreateUser user = new ClassCreateUser();
-                        ZmienNetBIOS zmiana = new ZmienNetBIOS();
-                        DodajCertyfikat cert = new DodajCertyfikat();
-                        Naglowek();
-                        klawisz1 = Console.ReadKey();
-                        while (klawisz1.Key != ConsoleKey.Escape)
-                        {
-                            if (klawisz1.Key == ConsoleKey.D1)
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.\nPo zakończeniu instalacji, komputer uruchomi się ponownie!");
-                                install.InstalacjaInternet();
-                                install.InstalacjaOffice();
-                                user.WyswietlUser();
-                                log.GenerujIPConfigLog();
-                                Console.WriteLine("Czy chcesz podłączyć komputer do domeny?\nNacisnij wybrany przycisk i zatwierdź enterem.\n1. by zmienić nazwę NetBIOS komputera i podłączyć komputer do domeny" +
-                                    "\n2. Aby tylko zmienić nazwę NetBIOS.");
-                                klawisz1 = Console.ReadKey();
-                                if(klawisz1.Key == ConsoleKey.D1)
-                                {
-                                    zmiana.JoinDomain();
-                                    Thanks();
-                                    Process.Start("shutdown", "/r /f /t 0");
-                                }
-                                else
-                                {
-                                    zmiana.ChangeNetBIOS();
-                                    Thanks();
-                                    Process.Start("shutdown", "/r /f /t 0");
-                                }
-                            }
-                            else if (klawisz1.Key == ConsoleKey.D2)
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.\nPo zakończeniu instalacji, komputer uruchomi się ponownie!");
-                                install.InstalacjaPSTD();
-                                install.InstalacjaOffice();
-                                cert.InstalujInfrastruktura("infrastruktura2019.der");
-                                user.WyswietlUser();
-                                log.GenerujIPConfigLog();
-                                zmiana.ChangeNetBIOS();
-                                Thanks();
-                                Process.Start("shutdown", "/r /f /t 0");
-                            }
-                            else if (klawisz1.Key == ConsoleKey.D3)
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci CWI.\nPo zakończeniu instalacji, komputer uruchomi się ponownie!");
-                                install.InstalacjaCWI();
-                                cert.InstalujCWI("CWI_CERT.cer");
-                                log.GenerujIPConfigLog();
-                                user.WyswietlUser();
-                                zmiana.ChangeNetBIOS();
-                                Thanks();
-                                Process.Start("shutdown", "/r /f /t 0");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
-                                klawisz1 = Console.ReadKey();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Wcisnąłęś zły klawisz, spróbój ponownie!");
-                        klawisz1 = Console.ReadKey();
-                    }
-                }
-
-                Console.WriteLine("Przykro mi że już kończysz...:(, naciśnij dowolny klawisz, aby zamknąć okno.");
-                Console.ReadKey();
+                Application.Run(new MenuGlowne());
             }
             catch (Exception e)
             {
