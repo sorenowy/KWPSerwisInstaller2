@@ -70,10 +70,6 @@ namespace KWPSerwisInstaller
         public void InstalacjaBazy()
         {
             this.Wyczyszczenie();
-            Console.WriteLine("Wybierz którego lotusa chcesz zainstalować najpierw?");
-            Console.WriteLine("1. Lotus Notes Basic 8.5.3\n2. Lotus Notes Standard 8.5.3.\n3. Mozilla Thunderbird.");
-            Console.WriteLine("Lub wcisnij klawisz Anuluj, aby pominąć.");
-            Console.WriteLine("-----------------------------------------------");
             this.StartInfo.FileName = "Firefox.exe";
             this.Start();
             Console.WriteLine("Instaluję Firefox 66.0...");

@@ -29,11 +29,11 @@ namespace KWPSerwisInstaller
         private Button przyciskPSTD = new Button();
         private Button przyciskCWI = new Button();
         private Button przyciskAnuluj = new Button();
+        private Button przyciskAnulujLotus = new Button();
+        private Button przyciskAnulujEKD = new Button();
         private Button przyciskOKLotus = new Button();
         private Button przyciskOKEKD = new Button();
         private Button przyciskOKOffice = new Button();
-
-
         public MenuGlowne()
         {
             Installer install = new Installer();
@@ -73,6 +73,9 @@ namespace KWPSerwisInstaller
             przyciskAnuluj.ForeColor = Color.Red;
             przyciskAnuluj.Top = 600;
             przyciskAnuluj.Left = 300;
+            przyciskAnulujLotus.Text = "Anuluj";
+            przyciskAnulujLotus.Top = 600;
+            przyciskAnulujLotus.Left = 300;
             //Ustawienia przycisków zatwierdzeń Lotusa,Office i EKD.
             przyciskOKLotus.Text = "OK";
             przyciskOKLotus.Top = 600;
@@ -146,18 +149,36 @@ namespace KWPSerwisInstaller
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
                 install.InstalacjaInternet();
-                MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika");
-                MessageBoxButtons przyciskiUsera = MessageBoxButtons.YesNo;
-                user.WyswietlUser();
-                MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator");
-                MessageBoxButtons przyciskiLoga = MessageBoxButtons.YesNo;
-                log.GenerujIPConfigLog();
-                MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.", 
-                    "Domain&NetBIOS connector");
-                MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
-                MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
-                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                if (dialogUser == DialogResult.Yes)
+                {
+                    user.WyswietlUser();
+                }
+                DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                if (dIpconfig == DialogResult.Yes)
+                {
+                    log.GenerujIPConfigLog();
+                }
+                DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.", 
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                if (dNetbios == DialogResult.Yes)
+                {
+                    zmiana.JoinDomain();
+                }
+                else if (dNetbios == DialogResult.No)
+                {
+                    zmiana.ChangeNetBIOS();
+                }
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                if(dRestart == DialogResult.Yes)
+                {
+                    Process.Start("shutdown", "/r /f /t 0");
+                }
+                else if (dRestart == DialogResult.No)
+                {
+                    return;
+                }
             }
             void przyciskPSTDClick(object sender,EventArgs ea)
             {
@@ -167,18 +188,36 @@ namespace KWPSerwisInstaller
                 install.InstalacjaPSTD();
                 cert.InstalujInfrastruktura("infrastruktura2019.der");
                 instalatorEKD.ShowDialog();
-                MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika");
-                MessageBoxButtons przyciskiUsera = MessageBoxButtons.YesNo;
-                user.WyswietlUser();
-                MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator");
-                MessageBoxButtons przyciskiLoga = MessageBoxButtons.YesNo;
-                log.GenerujIPConfigLog();
-                MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
-                    "Domain&NetBIOS connector");
-                MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
-                MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
-                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                if (dialogUser == DialogResult.Yes)
+                {
+                    user.WyswietlUser();
+                }
+                DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                if (dIpconfig == DialogResult.Yes)
+                {
+                    log.GenerujIPConfigLog();
+                }
+                DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                if (dNetbios == DialogResult.Yes)
+                {
+                    zmiana.JoinDomain();
+                }
+                else if (dNetbios == DialogResult.No)
+                {
+                    zmiana.ChangeNetBIOS();
+                }
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                if (dRestart == DialogResult.Yes)
+                {
+                    Process.Start("shutdown", "/r /f /t 0");
+                }
+                else if (dRestart == DialogResult.No)
+                {
+                    return;
+                }
             }
             void przyciskCWIClick(object sender,EventArgs ea)
             {
@@ -186,18 +225,36 @@ namespace KWPSerwisInstaller
                 instalatorOffice.ShowDialog();
                 install.InstalacjaCWI();
                 cert.InstalujCWI("CWI_CERT.cer");
-                MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika");
-                MessageBoxButtons przyciskiUsera = MessageBoxButtons.YesNo;
-                user.WyswietlUser();
-                MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator");
-                MessageBoxButtons przyciskiLoga = MessageBoxButtons.YesNo;
-                log.GenerujIPConfigLog();
-                MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
-                    "Domain&NetBIOS connector");
-                MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
-                MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
-                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                if (dialogUser == DialogResult.Yes)
+                {
+                    user.WyswietlUser();
+                }
+                DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                if (dIpconfig == DialogResult.Yes)
+                {
+                    log.GenerujIPConfigLog();
+                }
+                DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                if (dNetbios == DialogResult.Yes)
+                {
+                    zmiana.JoinDomain();
+                }
+                else if (dNetbios == DialogResult.No)
+                {
+                    zmiana.ChangeNetBIOS();
+                }
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                if (dRestart == DialogResult.Yes)
+                {
+                    Process.Start("shutdown", "/r /f /t 0");
+                }
+                else if (dRestart == DialogResult.No)
+                {
+                    return;
+                }
             }
             void PrzyciskZakonczClick(object sender,EventArgs ea)
             {
@@ -213,16 +270,18 @@ namespace KWPSerwisInstaller
             przyciskPSTD.Click += new EventHandler(przyciskPSTDClick);
             przyciskCWI.Click += new EventHandler(przyciskCWIClick);
             przyciskAnuluj.Click += new EventHandler(PrzyciskAnulujClick);
+            przyciskAnulujLotus.Click += new EventHandler(PrzyciskAnulujClick);
+            przyciskAnulujEKD.Click += new EventHandler(PrzyciskAnulujClick);
             przyciskOKLotus.Click += new EventHandler(PrzyciskLotusOKClick);
             przyciskOKEKD.Click += new EventHandler(PrzyciskEKDOKClick);
             przyciskOKOffice.Click += new EventHandler(PrzyciskOfficeOKClick);
             //Dopisywanie opcji do głównego menu i list.
             instalatorLotus.Controls.Add(listaLotus);
             instalatorLotus.Controls.Add(przyciskOKLotus);
-            instalatorLotus.Controls.Add(przyciskAnuluj);
+            instalatorLotus.Controls.Add(przyciskAnulujLotus);
             instalatorEKD.Controls.Add(listaEKD);
             instalatorEKD.Controls.Add(przyciskOKEKD);
-            instalatorEKD.Controls.Add(przyciskAnuluj);
+            instalatorEKD.Controls.Add(przyciskAnulujEKD);
             instalatorOffice.Controls.Add(listaOffice);
             instalatorOffice.Controls.Add(przyciskOKEKD);
             instalatorOffice.Controls.Add(przyciskAnuluj);
