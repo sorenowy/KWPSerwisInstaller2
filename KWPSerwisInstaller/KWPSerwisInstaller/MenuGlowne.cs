@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    public partial class MenuGlowne : Form
+    public class MenuGlowne : Form
     {
         //Deklarowanie i inicjalizacja wszystkich elementów menu graficznego.
         private Form instalatorLotus = new Form();
@@ -29,6 +29,9 @@ namespace KWPSerwisInstaller
         private Button przyciskPSTD = new Button();
         private Button przyciskCWI = new Button();
         private Button przyciskAnuluj = new Button();
+        private Button przyciskOKLotus = new Button();
+        private Button przyciskOKEKD = new Button();
+        private Button przyciskOKOffice = new Button();
         public MenuGlowne()
         {
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
@@ -68,7 +71,7 @@ namespace KWPSerwisInstaller
             instalatorEKD.Size = instalatorLotus.Size;
             instalatorOffice.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
             instalatorOffice.Size = instalatorLotus.Size;
-            //Inicjalizacja tablic wyboru instalacji
+            //Inicjalizacja tablic wyboru instalacji oraz ustawienia rozmiaru i czcionki.
             listaLotus.Items.AddRange
                 (new object[]
                 {
@@ -77,6 +80,9 @@ namespace KWPSerwisInstaller
                 "3. Mozilla Thunderbird"
                 }
                 );
+            listaLotus.Size = new Size(560, 340);
+            listaLotus.Top = 120;
+            listaLotus.Font = new Font("TimesNewRoman", 20f);
             listaEKD.Items.AddRange
                 (new object[]
                 {
@@ -85,6 +91,9 @@ namespace KWPSerwisInstaller
                 "3. CryptoCard Suite 2.1.1"
                 }
                 );
+            listaEKD.Size = listaLotus.Size;
+            listaEKD.Top = listaLotus.Top;
+            listaEKD.Font = listaLotus.Font;
             listaOffice.Items.AddRange
                 (new object[]
                 {
@@ -93,6 +102,14 @@ namespace KWPSerwisInstaller
                     "3. Microsoft Office 2016 MOLP",
                     "4. Microsoft Office 2019 MOLP (KGP)"
                 });
+            listaOffice.Size = listaEKD.Size;
+            listaOffice.Top = listaEKD.Top;
+            listaOffice.Font = listaEKD.Font;
+            //Metody wywołujące..
+            void PrzyciskLotusOKClick(object sender, EventArgs ea)
+            {
+               
+            }
             void PrzyciskInternetClick(object sender, EventArgs ea)
             {
                 Installer install = new Installer();
@@ -113,12 +130,71 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector");
                 MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
                 MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
-                messageboxbuttons przyciskiRestartu = MessageBoxButtons.YesNo;
+                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
+            }
+            void przyciskPSTDClick(object sender,EventArgs ea)
+            {
+                Installer install = new Installer();
+                IPConfigLog log = new IPConfigLog();
+                ClassCreateUser user = new ClassCreateUser();
+                ZmienNetBIOS zmiana = new ZmienNetBIOS();
+                DodajCertyfikat cert = new DodajCertyfikat();
+                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
+                instalatorLotus.ShowDialog();
+                instalatorOffice.ShowDialog();
+                install.InstalacjaPSTD();
+                cert.InstalujInfrastruktura("infrastruktura2019.der");
+                instalatorEKD.ShowDialog();
+                MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika");
+                MessageBoxButtons przyciskiUsera = MessageBoxButtons.YesNo;
+                user.WyswietlUser();
+                MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
+                    "Ipconfig Log Generator");
+                MessageBoxButtons przyciskiLoga = MessageBoxButtons.YesNo;
+                log.GenerujIPConfigLog();
+                MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
+                    "Domain&NetBIOS connector");
+                MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
+                MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
+                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
+            }
+            void przyciskCWIClick(object sender,EventArgs ea)
+            {
+                Installer install = new Installer();
+                IPConfigLog log = new IPConfigLog();
+                ClassCreateUser user = new ClassCreateUser();
+                ZmienNetBIOS zmiana = new ZmienNetBIOS();
+                DodajCertyfikat cert = new DodajCertyfikat();
+                instalatorLotus.ShowDialog();
+                instalatorOffice.ShowDialog();
+                install.InstalacjaCWI();
+                cert.InstalujCWI("CWI_CERT.cer");
+                MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika");
+                MessageBoxButtons przyciskiUsera = MessageBoxButtons.YesNo;
+                user.WyswietlUser();
+                MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
+                    "Ipconfig Log Generator");
+                MessageBoxButtons przyciskiLoga = MessageBoxButtons.YesNo;
+                log.GenerujIPConfigLog();
+                MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
+                    "Domain&NetBIOS connector");
+                MessageBoxButtons przyciskiDomeny = MessageBoxButtons.YesNoCancel;
+                MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart");
+                MessageBoxButtons przyciskiRestartu = MessageBoxButtons.YesNo;
             }
             void PrzyciskZakonczClick(object sender,EventArgs ea)
             {
                 Application.Exit();
             }
+            void PrzyciskAnulujClick(object sender, EventArgs ea)
+            {
+                Close();
+            }
+            przyciskZakoncz.Click += new EventHandler(PrzyciskZakonczClick);
+            przyciskInternet.Click += new EventHandler(PrzyciskInternetClick);
+            przyciskPSTD.Click += new EventHandler(przyciskPSTDClick);
+            przyciskCWI.Click += new EventHandler(przyciskCWIClick);
+            przyciskAnuluj.Click += new EventHandler(PrzyciskAnulujClick);
         }
     }
 }
