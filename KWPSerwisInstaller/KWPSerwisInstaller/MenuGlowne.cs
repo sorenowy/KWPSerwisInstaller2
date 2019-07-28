@@ -188,10 +188,12 @@ namespace KWPSerwisInstaller
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if(dRestart == DialogResult.Yes)
                 {
+                    Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                 }
                 else if (dRestart == DialogResult.No)
                 {
+                    Program.Thanks();
                     return;
                 }
             }
@@ -227,10 +229,12 @@ namespace KWPSerwisInstaller
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if (dRestart == DialogResult.Yes)
                 {
+                    Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                 }
                 else if (dRestart == DialogResult.No)
                 {
+                    Program.Thanks();
                     return;
                 }
             }
@@ -264,10 +268,12 @@ namespace KWPSerwisInstaller
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if (dRestart == DialogResult.Yes)
                 {
+                    Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                 }
                 else if (dRestart == DialogResult.No)
                 {
+                    Program.Thanks();
                     return;
                 }
             }
