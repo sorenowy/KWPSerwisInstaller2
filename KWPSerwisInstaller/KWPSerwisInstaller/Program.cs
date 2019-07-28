@@ -24,11 +24,9 @@ namespace KWPSerwisInstaller
             Console.WriteLine("##       ##  ##  ##       ##  ##          ##  ##   ##");
             Console.WriteLine("##       ######  ######   ##  ######  ######  ##   ##");
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("Witaj w programie Instalacyjnym KWP Serwis Installer v0.6");
+            Console.WriteLine("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7");
             Console.WriteLine("Upewnij się że komputer jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie.");
             Console.WriteLine("W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP.");
-            Console.WriteLine("Wciśnij klawisz ENTER aby kontynuować!");
-            Console.WriteLine("Lub Escape, aby zakończyć działanie programu.");
         }
         public static void Naglowek()
         {
@@ -38,11 +36,11 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Naciśnij klawisz 3, by zainstalowac oprogramowanie dla komputera w sieci CWI.");
             Console.WriteLine("Możesz też nacisnąć Escape, by zamknąć program.");
         }
-        public static void Copyright()
+        public static string Copyright()
         {
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine("Made by Hubert Kuszyński, Komenda Wojewódzka Policji w Gorzowie Wielkopolskim, tel. 11659.");
-            Console.WriteLine("----------------------------------------------");
+
+            return "Made by Hubert Kuszyński, Komenda Wojewódzka Policji w Gorzowie Wielkopolskim, tel. 11659.";
+
         }
         public static void Thanks()
         {

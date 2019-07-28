@@ -21,6 +21,9 @@ namespace KWPSerwisInstaller
         private Form instalatorEKD = new Form();
         private Form instalatorOffice = new Form();
         private Label stronaGlowna = new Label();
+        private Label informacjaLotusa = new Label();
+        private Label informacjaEKD = new Label();
+        private Label informacjaOffice = new Label();
         private ListBox listaLotus = new ListBox();
         private ListBox listaEKD = new ListBox();
         private ListBox listaOffice = new ListBox();
@@ -41,9 +44,11 @@ namespace KWPSerwisInstaller
             ClassCreateUser user = new ClassCreateUser();
             ZmienNetBIOS zmiana = new ZmienNetBIOS();
             DodajCertyfikat cert = new DodajCertyfikat();
+            Console.Title = "Log KWP Serwis Installer";
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
+            MessageBox.Show(Program.Copyright(), "Copyright");
             // Nazwa tytułu aplikacji
             Text = "KWP Serwis Installer v0.7";
             Size = new Size(760, 560);
@@ -52,6 +57,16 @@ namespace KWPSerwisInstaller
             stronaGlowna.Left = 120;
             stronaGlowna.Size = new Size(600, 400);
             stronaGlowna.Image = obrazekTytułowy;
+            //Ustawianie opisu listy
+            informacjaLotusa.Text = "Wybierz oprogramowanie z listy i zatwierdź OK w celu instalacji.";
+            informacjaLotusa.Size = new Size(400, 50);
+            informacjaLotusa.Font = new Font("TimesNewRoman", 14f);
+            informacjaEKD.Text = informacjaLotusa.Text;
+            informacjaEKD.Size = informacjaLotusa.Size;
+            informacjaEKD.Font = informacjaLotusa.Font;
+            informacjaOffice.Text = informacjaLotusa.Text;
+            informacjaOffice.Size = informacjaLotusa.Size;
+            informacjaOffice.Font = informacjaLotusa.Font;
             // Opis przycisku zakończ, ustawienie jego pozycji
             przyciskZakoncz.Text = "Zakończ";
             przyciskZakoncz.Top = 450;
@@ -89,7 +104,7 @@ namespace KWPSerwisInstaller
             przyciskOKOffice.Left = przyciskOKLotus.Left;
             //Ustawienia okien wyboru z listy
             instalatorLotus.Text = "Wybierz klienta poczty w celu instalacji.";
-            instalatorLotus.Size = new Size(760, 800);
+            instalatorLotus.Size = new Size(580, 700);
             instalatorEKD.Text = "Wybierz klienta EKD w celu instalacji";
             instalatorEKD.Size = instalatorLotus.Size;
             instalatorOffice.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
@@ -276,12 +291,15 @@ namespace KWPSerwisInstaller
             przyciskOKEKD.Click += new EventHandler(PrzyciskEKDOKClick);
             przyciskOKOffice.Click += new EventHandler(PrzyciskOfficeOKClick);
             //Dopisywanie opcji do głównego menu i list.
+            instalatorLotus.Controls.Add(informacjaLotusa);
             instalatorLotus.Controls.Add(listaLotus);
             instalatorLotus.Controls.Add(przyciskOKLotus);
             instalatorLotus.Controls.Add(przyciskAnulujLotus);
+            instalatorEKD.Controls.Add(informacjaEKD);
             instalatorEKD.Controls.Add(listaEKD);
             instalatorEKD.Controls.Add(przyciskOKEKD);
             instalatorEKD.Controls.Add(przyciskAnulujEKD);
+            instalatorOffice.Controls.Add(informacjaOffice);
             instalatorOffice.Controls.Add(listaOffice);
             instalatorOffice.Controls.Add(przyciskOKEKD);
             instalatorOffice.Controls.Add(przyciskAnuluj);

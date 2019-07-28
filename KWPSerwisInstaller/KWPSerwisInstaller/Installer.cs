@@ -27,6 +27,7 @@ namespace KWPSerwisInstaller
         }
         public void Wyczyszczenie()
         {
+            Console.Clear();
             this.StartInfo.FileName = "PCDecrapifier.exe";
             this.Start();
             Console.WriteLine("Użyj programu PC Decrapifier aby usunąć niepotrzebne oprogramowanie z komputera.\nŚmieci i inne rzeczy.");
