@@ -32,10 +32,6 @@ namespace KWPSerwisInstaller
             kategoria = int.Parse(Console.ReadLine());
             CreateUser(name, password);
         }
-        public void WyborGrupy()
-        {
-
-        }
         public void CreateUser(string name, string pass)
         {
             try
