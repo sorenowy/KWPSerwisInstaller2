@@ -27,7 +27,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Wprowadź nazwę użytkownika.");
             password = Console.ReadLine();
             Console.WriteLine("Wprowadź hasło użytkownika komputera.");
-            password = Console.ReadLine();
+            name = Console.ReadLine();
             Console.WriteLine("Chcesz utworzyć konto \n1)Użytkownika czy \n2)Administratora?");
             Console.Write(" wybierz numer i zatwierdź enterem.");
             kategoria = int.Parse(Console.ReadLine());

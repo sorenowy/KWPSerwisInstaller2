@@ -50,8 +50,8 @@ namespace KWPSerwisInstaller
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             MessageBox.Show(Program.Copyright(), "Copyright");
             // Nazwa tytułu aplikacji
-            Text = "KWP Serwis Installer v0.7";
-            Size = new Size(760, 560);
+            this.Text = "KWP Serwis Installer v0.7";
+            this.Size = new Size(760, 560);
             // Załadowanie i wyskalowanie obrazka na stronę tytułową
             Image obrazekTytułowy = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
             stronaGlowna.Left = 120;

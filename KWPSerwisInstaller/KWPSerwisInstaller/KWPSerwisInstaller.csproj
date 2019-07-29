@@ -56,6 +56,9 @@
     <Compile Include="DodajCertyfikat.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DriverInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MenuGlowne.cs">
       <SubType>Form</SubType>
     </Compile>
