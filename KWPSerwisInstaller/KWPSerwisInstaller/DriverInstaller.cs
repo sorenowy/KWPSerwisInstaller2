@@ -24,10 +24,11 @@ namespace KWPSerwisInstaller
         }
         public void ZainstalujSterownik()
         {
-            this.StartInfo.FileName = "cmd.exe";
-            this.StartInfo.Arguments = @"C/ pnputil.exe -i -a C:\64\ezusb.inf";
-            Console.WriteLine("Instaluje sterownik czytnika kart EZPU100...");
+            this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";
+            this.StartInfo.Arguments = @"/c C:\Windows\sysnative\pnputil.exe /i /a C:\x64\ezusb.inf";
             this.Start();
+            Console.WriteLine(this.StandardOutput.ReadToEnd());
+            this.StandardOutput.Close();
             this.WaitForExit();
             Console.WriteLine("Sterownik EZPU100 do czytnika kart został zainstalowany.");
             this.Dispose();
