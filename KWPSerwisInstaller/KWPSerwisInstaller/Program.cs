@@ -34,7 +34,7 @@ namespace KWPSerwisInstaller
         }
         public static void Thanks()
         {
-            MessageBox.Show("Dziękuję za skorzystanie z KWP Serwis Installer v0.6. Do zobaczenia next time ;). Naciśnij OK, by zamknąć okno.");
+            MessageBox.Show("Dziękuję za skorzystanie z KWP Serwis Installer v0.7. Do zobaczenia next time ;). Naciśnij OK, by zamknąć okno.","Thank You");
         }
         static void Main(string[] args)
         {
@@ -42,6 +42,8 @@ namespace KWPSerwisInstaller
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
             Prezentacja();
+            DriverInstaller dr = new DriverInstaller();
+            dr.ZainstalujSterownik();
             try
             {
                 Application.Run(new MenuGlowne());
@@ -49,9 +51,13 @@ namespace KWPSerwisInstaller
             catch (Exception e)
             {
                 Console.WriteLine("Oops, cos poszło nie tak :)");
-                MessageBox.Show(e.Message);
-                Console.WriteLine("Uruchom program raz jeszcze!, lub jeżeli to nie pomogło, skontaktuj się z programistą - tel. 11659." +
-                "\nNaciśnij dowolny klawisz, by zamknąć okno.");
+                MessageBox.Show(e.Message,"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult dError = MessageBox.Show("Uruchom program raz jeszcze!, lub jeżeli to nie pomogło, skontaktuj się z programistą - tel. 11659." +
+                "\nNaciśnij dowolny klawisz, by zamknąć okno.","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if (dError == DialogResult.OK)
+                {
+                    return;
+                }
                 Console.ReadKey();
             }
         }

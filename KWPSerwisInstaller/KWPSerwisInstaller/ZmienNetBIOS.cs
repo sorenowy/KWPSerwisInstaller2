@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.DirectoryServices;
 using System.Security;
+using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {

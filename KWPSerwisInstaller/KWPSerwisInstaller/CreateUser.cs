@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows;
 using System.DirectoryServices;
+using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
@@ -24,9 +25,9 @@ namespace KWPSerwisInstaller
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Windows Account creator");
             Console.WriteLine("Wprowadź nazwę użytkownika.");
-            name = Console.ReadLine();
-            Console.WriteLine("Wprowadź hasło użytkownika komputera.");
             password = Console.ReadLine();
+            Console.WriteLine("Wprowadź hasło użytkownika komputera.");
+            name = Console.ReadLine();
             Console.WriteLine("Chcesz utworzyć konto \n1)Użytkownika czy \n2)Administratora?");
             Console.Write(" wybierz numer i zatwierdź enterem.");
             kategoria = int.Parse(Console.ReadLine());

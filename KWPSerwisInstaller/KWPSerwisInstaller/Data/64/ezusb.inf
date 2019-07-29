@@ -1,0 +1,81 @@
+;	EZUSB.INF - INF file for USB EZ100PU/EZMini Smart Card Reader
+;	Copyright (C) 2003, Castles Technology CO,. LTD.
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=SmartCardReader
+ClassGUID={50DD5230-BA8A-11D1-BF5D-0000F805F530}
+Provider=%Castles%
+DriverVer=09/23/2004,3.1.6.0
+Catalogfile=ezusb98.cat
+Catalogfile.NT=ezusbNT.cat
+LayoutFile=layout.inf
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+    
+[ClassInstall32]
+Addreg=SmartCardReaderClassReg     
+
+
+[SmartCardReaderClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-25
+HKLM,"\Software\Microsoft\Cryptography\Calais\Readers",,,
+
+
+
+[Manufacturer]
+%Castles%=Castles
+
+[Castles]
+%USB\VID_0CA6&PID_0010.DeviceDesc%=EZUSB,USB\VID_0CA6&PID_0010
+
+
+[DestinationDirs]
+EZUSB.CopyList.NT = 12    
+EZUSB.CopyList.98 = 10,System32\Drivers
+DefaultDestDir = 12
+
+[EZUSB]
+AddReg=EZUSB.AddReg
+CopyFiles=EZUSB.CopyList.98
+
+[EZUSB.NT]
+AddReg=EZUSB.AddReg
+CopyFiles=EZUSB.CopyList.NT
+
+[EZUSB.NT.Services]
+Addservice = EZUSB, 0x00000002, EZUSB.AddService
+
+[EZUSB.AddService]
+DisplayName    = %USB\VID_0CA6&PID_0010.DeviceDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ezusb.sys
+
+
+[EZUSB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,ezusb.sys
+
+[EZUSB.CopyList.NT]
+ezusb.sys,,,2
+
+[EZUSB.CopyList.98]
+ezusb.sys,,,2
+
+[SourceDisksNames] 
+1 = %DiskName%,,,
+
+[SourceDisksFiles]
+ezusb.sys=1
+
+[Strings]
+DiskName		= "EZUSB Install Disk"
+Castles="Castles Technology"
+USB\VID_0CA6&PID_0010.DeviceDesc="EZUSB PC/SC Smart Card Reader"
+ClassName="Smart Card Readers"

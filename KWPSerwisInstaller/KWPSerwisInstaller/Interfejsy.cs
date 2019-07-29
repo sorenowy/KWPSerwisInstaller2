@@ -42,5 +42,8 @@ namespace KWPSerwisInstaller
         void InstalujCWI(string sciezkaCWI);
         void InstalujInfrastruktura(string sciezkaPSTD);
     }
-
+    interface IDriverInstall
+    {
+        void ZainstalujSterownik();
+    }
 }
