@@ -147,20 +147,21 @@ namespace KWPSerwisInstaller
             void PrzyciskLotusOKClick(object sender, EventArgs ea)
             {
                 install.InstalacjaLotus(listaLotus.SelectedIndex);
-                Close();
+                instalatorLotus.Close();
             }
             void PrzyciskEKDOKClick(object sender, EventArgs ea)
             {
                 install.InstalacjaEKD(listaEKD.SelectedIndex);
-                Close();
+                instalatorEKD.Close();
             }
             void PrzyciskOfficeOKClick(object sender,EventArgs ea)
             {
                 install.InstalacjaOffice(listaOffice.SelectedIndex);
-                Close();
+                instalatorOffice.Close();
             }
             void PrzyciskInternetClick(object sender, EventArgs ea)
             {
+                Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
                 install.InstalacjaInternet();
@@ -169,11 +170,19 @@ namespace KWPSerwisInstaller
                 {
                     user.WyswietlUser();
                 }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.", "Uwaga");
+                }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     log.GenerujIPConfigLog();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia loga.", "Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.", 
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
@@ -184,6 +193,10 @@ namespace KWPSerwisInstaller
                 else if (dNetbios == DialogResult.No)
                 {
                     zmiana.ChangeNetBIOS();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.","Uwaga");
                 }
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if(dRestart == DialogResult.Yes)
@@ -210,11 +223,19 @@ namespace KWPSerwisInstaller
                 {
                     user.WyswietlUser();
                 }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.", "Uwaga");
+                }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     log.GenerujIPConfigLog();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia loga.", "Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
@@ -225,6 +246,10 @@ namespace KWPSerwisInstaller
                 else if (dNetbios == DialogResult.No)
                 {
                     zmiana.ChangeNetBIOS();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.", "Uwaga");
                 }
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if (dRestart == DialogResult.Yes)
@@ -249,11 +274,19 @@ namespace KWPSerwisInstaller
                 {
                     user.WyswietlUser();
                 }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.");
+                }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     log.GenerujIPConfigLog();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
@@ -264,6 +297,10 @@ namespace KWPSerwisInstaller
                 else if (dNetbios == DialogResult.No)
                 {
                     zmiana.ChangeNetBIOS();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.");
                 }
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if (dRestart == DialogResult.Yes)
@@ -283,7 +320,7 @@ namespace KWPSerwisInstaller
             }
             void PrzyciskAnulujClick(object sender, EventArgs ea)
             {
-                Close();
+                instalatorLotus.Close();
             }
             //Delegowanie metod do eventu przycisku myszy
             przyciskZakoncz.Click += new EventHandler(PrzyciskZakonczClick);
@@ -307,13 +344,25 @@ namespace KWPSerwisInstaller
             instalatorEKD.Controls.Add(przyciskAnulujEKD);
             instalatorOffice.Controls.Add(informacjaOffice);
             instalatorOffice.Controls.Add(listaOffice);
-            instalatorOffice.Controls.Add(przyciskOKEKD);
+            instalatorOffice.Controls.Add(przyciskOKOffice);
             instalatorOffice.Controls.Add(przyciskAnuluj);
             Controls.Add(stronaGlowna);
             Controls.Add(przyciskInternet);
             Controls.Add(przyciskPSTD);
             Controls.Add(przyciskCWI);
             Controls.Add(przyciskZakoncz);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // MenuGlowne
+            // 
+            this.ClientSize = new System.Drawing.Size(295, 247);
+            this.Name = "MenuGlowne";
+            this.ResumeLayout(false);
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace KWPSerwisInstaller
         public Installer()
         {
             this.StartInfo.UseShellExecute = true;
-            this.StartInfo.CreateNoWindow = true;
+            this.StartInfo.CreateNoWindow = false;
             sciezkapliku = Environment.CurrentDirectory;
             sciezkaDanych = @"\Data\";
             sciezkapliku = string.Concat(sciezkapliku, sciezkaDanych);
