@@ -44,6 +44,7 @@ namespace KWPSerwisInstaller
             ClassCreateUser user = new ClassCreateUser();
             ZmienNetBIOS zmiana = new ZmienNetBIOS();
             DodajCertyfikat cert = new DodajCertyfikat();
+            DriverInstaller driver = new DriverInstaller();
             Console.Title = "Log KWP Serwis Installer";
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
@@ -215,6 +216,7 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
+                driver.ZainstalujSterownik();
                 install.InstalacjaPSTD();
                 cert.InstalujInfrastruktura("infrastruktura2019.der");
                 instalatorEKD.ShowDialog();

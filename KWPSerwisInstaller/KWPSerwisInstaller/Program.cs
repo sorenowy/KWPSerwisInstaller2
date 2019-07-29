@@ -30,9 +30,7 @@ namespace KWPSerwisInstaller
         }
         public static string Copyright()
         {
-
             return "Made by Hubert Kuszyński, Komenda Wojewódzka Policji w Gorzowie Wielkopolskim, tel. 11659.";
-
         }
         public static void Thanks()
         {
