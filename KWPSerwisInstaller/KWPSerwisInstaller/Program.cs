@@ -42,6 +42,8 @@ namespace KWPSerwisInstaller
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
             Prezentacja();
+            DriverInstaller dr = new DriverInstaller();
+            dr.ZainstalujSterownik();
             try
             {
                 Application.Run(new MenuGlowne());

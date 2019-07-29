@@ -25,7 +25,7 @@ namespace KWPSerwisInstaller
         public void ZainstalujSterownik()
         {
             this.StartInfo.FileName = "powershell.exe";
-            this.StartInfo.Arguments = @"pnputil /add-driver "+ sciezkaSterownika;
+            this.StartInfo.Arguments = @"C:\Windows\SysNative\pnputil.exe -i -a "+ sciezkaSterownika;
             Console.WriteLine("Instaluje sterownik czytnika kart EZPU100...");
             this.Start();
             this.WaitForExit();

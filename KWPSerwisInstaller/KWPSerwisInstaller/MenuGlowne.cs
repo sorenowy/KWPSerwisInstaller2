@@ -16,7 +16,14 @@ namespace KWPSerwisInstaller
 {
     public class MenuGlowne : Form
     {
+        public TextBox Username = new TextBox();
+        public TextBox Password = new TextBox();
+        public TextBox NrInwentarzowy = new TextBox();
+        public TextBox Domena = new TextBox();
         //Deklarowanie i inicjalizacja wszystkich elementów menu graficznego.
+        private Form menuTworzeniaUsera = new Form();
+        private Form menuIpconfig = new Form();
+        private Form menuDomeny = new Form();
         private Form instalatorLotus = new Form();
         private Form instalatorEKD = new Form();
         private Form instalatorOffice = new Form();
@@ -315,6 +322,12 @@ namespace KWPSerwisInstaller
                     Program.Thanks();
                     return;
                 }
+            }
+            void TekstDomenyClick(object sender, EventArgs ea)
+            {
+                string nazwaDomeny;
+                nazwaDomeny = Domena.Text;
+                zmiana.nowaNazwa = Domena.Text;
             }
             void PrzyciskZakonczClick(object sender,EventArgs ea)
             {
