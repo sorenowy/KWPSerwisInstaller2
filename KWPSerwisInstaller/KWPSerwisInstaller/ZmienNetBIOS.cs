@@ -47,10 +47,8 @@ namespace KWPSerwisInstaller
             try
             {
                 this.ChangeNetBIOS();
-                this.StartInfo.FileName = @"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe";
+                this.StartInfo.FileName = "powershell.exe";
                 this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
-                this.StartInfo.UserName = "Test";
-                this.StartInfo.PasswordInClearText = "12345678";
                 this.Start();
                 this.WaitForExit();
                 Console.WriteLine("Udało się podłączyć do domeny.");

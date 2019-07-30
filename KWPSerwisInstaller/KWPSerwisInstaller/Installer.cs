@@ -172,7 +172,7 @@ namespace KWPSerwisInstaller
                     Console.WriteLine("Instaluję Office 2007 Enterprise...");
                     this.WaitForExit();
                 }
-                else if (opcja == 3)
+                else if (opcja == 2)
                 {
                     this.StartInfo.FileName = @"office2016\setup.exe";
                     this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2016\config.msp");
