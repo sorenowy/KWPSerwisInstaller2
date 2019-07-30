@@ -16,10 +16,6 @@ namespace KWPSerwisInstaller
 {
     public class MenuGlowne : Form
     {
-        public TextBox Username = new TextBox();
-        public TextBox Password = new TextBox();
-        public TextBox NrInwentarzowy = new TextBox();
-        public TextBox Domena = new TextBox();
         //Deklarowanie i inicjalizacja wszystkich elementów menu graficznego.
         private Form menuTworzeniaUsera = new Form();
         private Form menuIpconfig = new Form();
@@ -31,9 +27,17 @@ namespace KWPSerwisInstaller
         private Label informacjaLotusa = new Label();
         private Label informacjaEKD = new Label();
         private Label informacjaOffice = new Label();
+        private Label podajUsername = new Label();
+        private Label podajPassword = new Label();
+        private Label podajNrInw = new Label();
+        private Label podajNazweDomeny = new Label();
         private ListBox listaLotus = new ListBox();
         private ListBox listaEKD = new ListBox();
         private ListBox listaOffice = new ListBox();
+        private TextBox tekstUser = new TextBox();
+        private TextBox tekstPassword = new TextBox();
+        private TextBox tekstInwentarzowy = new TextBox();
+        private TextBox nazwaKomputera = new TextBox();
         private Button przyciskZakoncz = new Button();
         private Button przyciskInternet = new Button();
         private Button przyciskPSTD = new Button();
@@ -44,6 +48,10 @@ namespace KWPSerwisInstaller
         private Button przyciskOKLotus = new Button();
         private Button przyciskOKEKD = new Button();
         private Button przyciskOKOffice = new Button();
+        private Button przyciskAdmin = new Button();
+        private Button przyciskUser = new Button();
+        private Button przyciskIpLog = new Button();
+        private Button przyciskZmienDomene = new Button();
         public MenuGlowne()
         {
             Installer install = new Installer();
@@ -65,7 +73,7 @@ namespace KWPSerwisInstaller
             stronaGlowna.Left = 120;
             stronaGlowna.Size = new Size(600, 400);
             stronaGlowna.Image = obrazekTytułowy;
-            //Ustawianie opisu listy
+            //Ustawianie opisu etykiet listy
             informacjaLotusa.Text = "Wybierz oprogramowanie z listy i zatwierdź OK w celu instalacji.";
             informacjaLotusa.Size = new Size(400, 50);
             informacjaLotusa.Font = new Font("TimesNewRoman", 14f);
@@ -75,6 +83,19 @@ namespace KWPSerwisInstaller
             informacjaOffice.Text = informacjaLotusa.Text;
             informacjaOffice.Size = informacjaLotusa.Size;
             informacjaOffice.Font = informacjaLotusa.Font;
+            // Ustawianie opisu etykiet menu tworzenia konta, nazwyPC, loga Ipconfig
+            podajUsername.Text = "Nazwa użytkownika";
+            podajUsername.Size = new Size(200, 50);
+            podajUsername.Font = new Font("TimesNewRoman", 12f, FontStyle.Bold);
+            podajPassword.Text = "Hasło użytkownika";
+            podajPassword.Size = podajUsername.Size;
+            podajPassword.Font = podajUsername.Font;
+            podajNrInw.Text = "Nr inw komputera";
+            podajNrInw.Size = podajUsername.Size;
+            podajNrInw.Font = podajUsername.Font;
+            podajNazweDomeny.Text = "Nazwa NetBIOS kompuera";
+            podajNazweDomeny.Size = podajUsername.Size;
+            podajNazweDomeny.Font = podajUsername.Font;
             // Opis przycisku zakończ, ustawienie jego pozycji
             przyciskZakoncz.Text = "Zakończ";
             przyciskZakoncz.Top = 450;
@@ -110,6 +131,20 @@ namespace KWPSerwisInstaller
             przyciskOKOffice.Text = przyciskOKLotus.Text;
             przyciskOKOffice.Top = przyciskOKLotus.Top;
             przyciskOKOffice.Left = przyciskOKLotus.Left;
+            //Ustawienia przycisków zatwierdzeń kont użyt.,domeny,iploga
+            przyciskAdmin.Text = "Admin";
+            przyciskAdmin.Top = 100;
+            przyciskAdmin.Left = 10;
+            przyciskUser.Text = "User";
+            przyciskUser.Top = 100;
+            przyciskUser.Left = 30;
+            przyciskIpLog.Text = "Utwórz";
+            przyciskIpLog.Top = 100;
+            przyciskIpLog.Left = 10;
+            przyciskZmienDomene.Text = "Zmień Netbios";
+            przyciskZmienDomene.Size = new Size(30, 10);
+            przyciskZmienDomene.Top = 100;
+            przyciskZmienDomene.Left = 10;
             //Ustawienia okien wyboru z listy
             instalatorLotus.Text = "Wybierz klienta poczty w celu instalacji.";
             instalatorLotus.Size = new Size(580, 700);
@@ -117,6 +152,13 @@ namespace KWPSerwisInstaller
             instalatorEKD.Size = instalatorLotus.Size;
             instalatorOffice.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
             instalatorOffice.Size = instalatorLotus.Size;
+            menuTworzeniaUsera.Text = "Wprowadź dane użytkownika i hasło.";
+            menuTworzeniaUsera.Size = new Size(200, 300);
+            //Ustawienia okien funkcji generujących
+            menuIpconfig.Text = "Wprowadź numer inwentarzowy komputera";
+            menuIpconfig.Size = menuTworzeniaUsera.Size;
+            menuDomeny.Text = "Wprowadź nową nazwę komputera";
+            menuDomeny.Size = menuTworzeniaUsera.Size;
             //Inicjalizacja tablic wyboru instalacji oraz ustawienia rozmiaru i czcionki.
             listaLotus.Items.AddRange
                 (new object[]
@@ -151,6 +193,15 @@ namespace KWPSerwisInstaller
             listaOffice.Size = listaEKD.Size;
             listaOffice.Top = listaEKD.Top;
             listaOffice.Font = listaEKD.Font;
+            //Ustawianie wl. pól tekstowych
+            tekstUser.Size = new Size(50, 50);
+            tekstUser.Font = new Font("TimesNewRoman", 12f);
+            tekstPassword.Size = tekstUser.Size;
+            tekstPassword.Font = tekstUser.Font;
+            nazwaKomputera.Size = tekstUser.Size;
+            nazwaKomputera.Font = tekstUser.Font;
+            tekstInwentarzowy.Size = tekstUser.Size;
+            tekstInwentarzowy.Size = tekstUser.Size;
             //Metody wywołujące..
             void PrzyciskLotusOKClick(object sender, EventArgs ea)
             {
@@ -167,6 +218,34 @@ namespace KWPSerwisInstaller
                 install.InstalacjaOffice(listaOffice.SelectedIndex);
                 instalatorOffice.Close();
             }
+            void PrzyciskAdminClick(object sender,EventArgs ea)
+            {
+                user.kategoria = 1;
+                user.name = tekstUser.Text;
+                user.password = tekstPassword.Text;
+                user.WyswietlUser();
+                menuTworzeniaUsera.Close();
+            }
+            void PrzyciskUserClick(object sender,EventArgs ea)
+            {
+                user.kategoria = 2;
+                user.name = tekstUser.Text;
+                user.password = tekstPassword.Text;
+                user.WyswietlUser();
+                menuTworzeniaUsera.Close();
+            }
+            void PrzyciskIpLogClick(object sender,EventArgs ea)
+            {
+                log.opcja = 1;
+                log.nrInwentarzowy = tekstInwentarzowy.Text;
+                log.GenerujIPConfigLog();
+                menuIpconfig.Close();
+            }
+            void PrzyciskZmienDomeneClick(object sender,EventArgs ea)
+            {
+                zmiana.nowaNazwa = nazwaKomputera.Text;
+                menuDomeny.Close();
+            }
             void PrzyciskInternetClick(object sender, EventArgs ea)
             {
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
@@ -176,7 +255,7 @@ namespace KWPSerwisInstaller
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    user.WyswietlUser();
+                    menuTworzeniaUsera.ShowDialog();
                 }
                 else
                 {
@@ -186,7 +265,7 @@ namespace KWPSerwisInstaller
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    log.GenerujIPConfigLog();
+                    menuIpconfig.ShowDialog();
                 }
                 else
                 {
@@ -196,10 +275,12 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
                 if (dNetbios == DialogResult.Yes)
                 {
+                    menuDomeny.ShowDialog();
                     zmiana.JoinDomain();
                 }
                 else if (dNetbios == DialogResult.No)
                 {
+                    menuDomeny.ShowDialog();
                     zmiana.ChangeNetBIOS();
                 }
                 else
@@ -230,7 +311,7 @@ namespace KWPSerwisInstaller
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    user.WyswietlUser();
+                    menuTworzeniaUsera.ShowDialog();
                 }
                 else
                 {
@@ -240,20 +321,17 @@ namespace KWPSerwisInstaller
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    log.GenerujIPConfigLog();
+                    menuIpconfig.ShowDialog();
                 }
                 else
                 {
                     MessageBox.Show("Wybrałeś opcje nie tworzenia loga.", "Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
-                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    zmiana.JoinDomain();
-                }
-                else if (dNetbios == DialogResult.No)
-                {
+                    menuDomeny.ShowDialog();
                     zmiana.ChangeNetBIOS();
                 }
                 else
@@ -281,35 +359,32 @@ namespace KWPSerwisInstaller
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    user.WyswietlUser();
+                    menuTworzeniaUsera.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.");
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.","Uwaga");
                 }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    log.GenerujIPConfigLog();
+                    menuIpconfig.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.");
+                    MessageBox.Show("Wybrałeś opcje nie tworzenia konta.","Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.",
-                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    zmiana.JoinDomain();
-                }
-                else if (dNetbios == DialogResult.No)
-                {
+                    menuDomeny.ShowDialog();
                     zmiana.ChangeNetBIOS();
                 }
                 else
                 {
-                    MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.");
+                    MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.","Uwaga");
                 }
                 DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
                 if (dRestart == DialogResult.Yes)
@@ -322,12 +397,6 @@ namespace KWPSerwisInstaller
                     Program.Thanks();
                     return;
                 }
-            }
-            void TekstDomenyClick(object sender, EventArgs ea)
-            {
-                string nazwaDomeny;
-                nazwaDomeny = Domena.Text;
-                zmiana.nowaNazwa = Domena.Text;
             }
             void PrzyciskZakonczClick(object sender,EventArgs ea)
             {
@@ -348,6 +417,10 @@ namespace KWPSerwisInstaller
             przyciskOKLotus.Click += new EventHandler(PrzyciskLotusOKClick);
             przyciskOKEKD.Click += new EventHandler(PrzyciskEKDOKClick);
             przyciskOKOffice.Click += new EventHandler(PrzyciskOfficeOKClick);
+            przyciskAdmin.Click += new EventHandler(PrzyciskAdminClick);
+            przyciskUser.Click += new EventHandler(PrzyciskUserClick);
+            przyciskIpLog.Click += new EventHandler(PrzyciskIpLogClick);
+            przyciskZmienDomene.Click += new EventHandler(PrzyciskZmienDomeneClick);
             //Dopisywanie opcji do głównego menu i list.
             instalatorLotus.Controls.Add(informacjaLotusa);
             instalatorLotus.Controls.Add(listaLotus);
@@ -361,23 +434,23 @@ namespace KWPSerwisInstaller
             instalatorOffice.Controls.Add(listaOffice);
             instalatorOffice.Controls.Add(przyciskOKOffice);
             instalatorOffice.Controls.Add(przyciskAnuluj);
+            menuTworzeniaUsera.Controls.Add(podajUsername);
+            menuTworzeniaUsera.Controls.Add(podajPassword);
+            menuTworzeniaUsera.Controls.Add(tekstUser);
+            menuTworzeniaUsera.Controls.Add(tekstPassword);
+            menuTworzeniaUsera.Controls.Add(przyciskAdmin);
+            menuTworzeniaUsera.Controls.Add(przyciskUser);
+            menuIpconfig.Controls.Add(podajNrInw);
+            menuIpconfig.Controls.Add(tekstInwentarzowy);
+            menuIpconfig.Controls.Add(przyciskIpLog);
+            menuDomeny.Controls.Add(podajNazweDomeny);
+            menuDomeny.Controls.Add(nazwaKomputera);
+            menuDomeny.Controls.Add(przyciskZmienDomene);
             Controls.Add(stronaGlowna);
             Controls.Add(przyciskInternet);
             Controls.Add(przyciskPSTD);
             Controls.Add(przyciskCWI);
             Controls.Add(przyciskZakoncz);
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // MenuGlowne
-            // 
-            this.ClientSize = new System.Drawing.Size(295, 247);
-            this.Name = "MenuGlowne";
-            this.ResumeLayout(false);
-
         }
     }
 }

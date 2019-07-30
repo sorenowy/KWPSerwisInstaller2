@@ -12,7 +12,9 @@ namespace KWPSerwisInstaller
 {
     class IPConfigLog : Installer, IIPConfigLog
     {
-        private string sciezkaLog;
+        public string sciezkaLog;
+        public int opcja;
+        public string nrInwentarzowy;
         public IPConfigLog()
         {
             this.StartInfo.Verb = "runas";
@@ -24,18 +26,13 @@ namespace KWPSerwisInstaller
         }
         public void GenerujIPConfigLog()
         {
-            ConsoleKeyInfo generujLog;
             Console.WriteLine("Program wygeneruje teraz Log IPCONFIG -ALL");
             Console.WriteLine(@"Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu");
-            Console.WriteLine("Nacisnij Enter, aby dokonać generowania Loga, lub dowolny klawisz, by zakończyć.");
             Console.WriteLine("---------------------------------------------------------------------------------");
-            generujLog = Console.ReadKey();
-            if (generujLog.Key == ConsoleKey.Enter)
+            if (opcja == 1)
             {
                 try
                 {
-                    Console.WriteLine("Podaj numer inwentarzowy komputera w celu nazwania pliku jego numerem.");
-                    string nrInwentarzowy = Console.ReadLine();
                     this.StartInfo.FileName = "Cmd.exe";
                     this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{nrInwentarzowy}.txt");
                     this.Start();

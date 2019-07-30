@@ -121,7 +121,6 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Instalacja SWOP ukończona.");
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("Wybierz jaką wersję oprogramowania do kart EKD chcesz zainstalować.Wybór potwierdź Enterem.\n1. Encard 2.1.0 (uniwersalny)\n2. Encard 64bit\n3. CryptoTech 2.1.4");
         }
         public void InstalacjaEKD(int opcja)
         {
@@ -155,7 +154,6 @@ namespace KWPSerwisInstaller
         }
         public void InstalacjaOffice(int opcja)
         {
-            Console.WriteLine("Czy chcesz zainstalować Oprogramowanie biurowe? Wybierz jedną z opcji.\n1. OpenOffice 4.1.6\n2. Office 2007 Enterprise\n3. Office 2016 MOLP\n4. Office 2019 MOLP\n Lub klawisz Anuluj aby zakończyć!");
             Console.WriteLine("--------------------------------------------------");
             try
             {

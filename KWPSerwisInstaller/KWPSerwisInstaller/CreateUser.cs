@@ -24,13 +24,7 @@ namespace KWPSerwisInstaller
         {
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Windows Account creator");
-            Console.WriteLine("Wprowadź nazwę użytkownika.");
-            password = Console.ReadLine();
-            Console.WriteLine("Wprowadź hasło użytkownika komputera.");
-            name = Console.ReadLine();
-            Console.WriteLine("Chcesz utworzyć konto \n1)Użytkownika czy \n2)Administratora?");
-            Console.Write(" wybierz numer i zatwierdź enterem.");
-            kategoria = int.Parse(Console.ReadLine());
+            Console.WriteLine("---------------------------------");
             CreateUser(name, password);
         }
         public void CreateUser(string name, string pass)
