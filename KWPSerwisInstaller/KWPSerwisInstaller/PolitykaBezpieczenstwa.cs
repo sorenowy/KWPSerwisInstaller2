@@ -42,6 +42,8 @@ namespace KWPSerwisInstaller
                 Console.WriteLine(this.StandardOutput.ReadToEnd());
                 this.StandardOutput.Close();
                 this.WaitForExit();
+                /* this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";
+                this.StartInfo.Arguments = @"/c Secedit /refreshpolicy machine_policy /enforce /quiet"; */
                 Console.WriteLine("Polityka bezpieczeństwa została dodana.");
             }
             catch (Exception e)
