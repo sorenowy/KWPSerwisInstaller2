@@ -36,7 +36,7 @@ namespace KWPSerwisInstaller
                 DirectoryEntry nowyUser = AD.Children.Add(name, "user");
                 nowyUser.Invoke("SetPassword", new object[] { pass });
                 nowyUser.CommitChanges();
-                Console.WriteLine(nowyUser.Name.ToString());
+                Console.WriteLine("Nazwa utworzonego konta:{0}",nowyUser.Name.ToString());
                 DirectoryEntry grupa;
                 if (kategoria == 1)
                 {

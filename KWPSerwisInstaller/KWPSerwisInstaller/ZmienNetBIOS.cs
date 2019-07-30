@@ -17,10 +17,11 @@ namespace KWPSerwisInstaller
         public string nowaNazwa;
         public ZmienNetBIOS()
         {
-            this.StartInfo.CreateNoWindow = true;
+            this.StartInfo.CreateNoWindow = false;
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
+            this.StartInfo.Verb = "runas";
         }
         public void ChangeNetBIOS()
         {
@@ -46,8 +47,10 @@ namespace KWPSerwisInstaller
             try
             {
                 this.ChangeNetBIOS();
-                this.StartInfo.FileName = "powershell.exe";
+                this.StartInfo.FileName = @"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe";
                 this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
+                this.StartInfo.UserName = "Test";
+                this.StartInfo.PasswordInClearText = "12345678";
                 this.Start();
                 this.WaitForExit();
                 Console.WriteLine("Udało się podłączyć do domeny.");
