@@ -260,6 +260,7 @@ namespace KWPSerwisInstaller
             }
             void PrzyciskInternetClick(object sender, EventArgs ea)
             {
+                install.Wyczyszczenie();
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
@@ -316,6 +317,7 @@ namespace KWPSerwisInstaller
             }
             void przyciskPSTDClick(object sender,EventArgs ea)
             {
+                install.Wyczyszczenie();
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
@@ -370,6 +372,7 @@ namespace KWPSerwisInstaller
             }
             void przyciskCWIClick(object sender,EventArgs ea)
             {
+                install.Wyczyszczenie();
                 instalatorLotus.ShowDialog();
                 instalatorOffice.ShowDialog();
                 install.InstalacjaCWI();
