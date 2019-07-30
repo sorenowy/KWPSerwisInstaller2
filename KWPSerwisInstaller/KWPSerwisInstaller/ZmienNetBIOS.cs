@@ -22,6 +22,9 @@ namespace KWPSerwisInstaller
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
             this.StartInfo.Verb = "runas";
+            this.StartInfo.Domain = "kwp-gorzow.intranet";
+            this.StartInfo.UserName = "test";
+            this.StartInfo.PasswordInClearText = "12345678";
         }
         public void ChangeNetBIOS()
         {

@@ -43,7 +43,6 @@ namespace KWPSerwisInstaller
                 this.StandardOutput.Close();
                 this.WaitForExit();
                 Console.WriteLine("Sterownik EZPU100 do czytnika kart został zainstalowany.");
-                this.Dispose();
             }
             catch (Exception e)
             {
