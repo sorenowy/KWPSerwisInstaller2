@@ -46,4 +46,8 @@ namespace KWPSerwisInstaller
     {
         void ZainstalujSterownik();
     }
+    interface IPolitykaBezp
+    {
+        void ZainstalujPolitykeBezpieczenstwa();
+    }
 }
