@@ -42,8 +42,6 @@ namespace KWPSerwisInstaller
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
             Prezentacja();
-            ZmienNetBIOS z = new ZmienNetBIOS();
-            z.JoinDomain();
             try
             {
                 Application.Run(new MenuGlowne());

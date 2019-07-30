@@ -22,9 +22,6 @@ namespace KWPSerwisInstaller
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
             this.StartInfo.Verb = "runas";
-            this.StartInfo.Domain = "kwp-gorzow.intranet";
-            this.StartInfo.UserName = "test";
-            this.StartInfo.PasswordInClearText = "12345678";
         }
         public void ChangeNetBIOS()
         {
@@ -49,7 +46,7 @@ namespace KWPSerwisInstaller
         {
             try
             {
-                this.ChangeNetBIOS();
+                //this.ChangeNetBIOS();
                 this.StartInfo.FileName = "powershell.exe";
                 this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
                 this.Start();
@@ -58,7 +55,7 @@ namespace KWPSerwisInstaller
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
             }
             finally
             {

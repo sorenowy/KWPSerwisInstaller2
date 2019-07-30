@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime;
+using System.DirectoryServices;
+using System.Security;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -256,6 +258,7 @@ namespace KWPSerwisInstaller
             void PrzyciskZmienDomeneClick(object sender,EventArgs ea)
             {
                 zmiana.nowaNazwa = nazwaKomputera.Text;
+                zmiana.ChangeNetBIOS();
                 menuDomeny.Close();
             }
             void PrzyciskInternetClick(object sender, EventArgs ea)
@@ -288,8 +291,8 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    menuDomeny.ShowDialog();
-                    zmiana.JoinDomain();  
+                    zmiana.JoinDomain();
+                    menuDomeny.ShowDialog();               
                 }
                 else if (dNetbios == DialogResult.No)
                 {
