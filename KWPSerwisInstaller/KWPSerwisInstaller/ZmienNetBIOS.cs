@@ -16,17 +16,17 @@ namespace KWPSerwisInstaller
     {
         public string nowaNazwa;
         public ZmienNetBIOS()
-        {
-            this.StartInfo.CreateNoWindow = false;
-            this.StartInfo.UseShellExecute = false;
-            this.StartInfo.RedirectStandardInput = true;
-            this.StartInfo.RedirectStandardOutput = true;
+        { 
             this.StartInfo.Verb = "runas";
         }
         public void ChangeNetBIOS()
         {
             try
             {
+                this.StartInfo.CreateNoWindow = true;
+                this.StartInfo.UseShellExecute = false;
+                this.StartInfo.RedirectStandardInput = true;
+                this.StartInfo.RedirectStandardOutput = true;
                 this.StartInfo.FileName = "cmd.exe";
                 this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
                 this.Start();
@@ -46,7 +46,6 @@ namespace KWPSerwisInstaller
         {
             try
             {
-                //this.ChangeNetBIOS();
                 this.StartInfo.FileName = "powershell.exe";
                 this.StartInfo.Arguments = "add-computer -domainname kwp-gorzow.intranet";
                 this.Start();

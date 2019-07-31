@@ -60,8 +60,10 @@ namespace KWPSerwisInstaller
             IPConfigLog log = new IPConfigLog();
             ClassCreateUser user = new ClassCreateUser();
             ZmienNetBIOS zmiana = new ZmienNetBIOS();
+            ZmienNetBIOS domena = new ZmienNetBIOS();
             DodajCertyfikat cert = new DodajCertyfikat();
             DriverInstaller driver = new DriverInstaller();
+            PolitykaBezpieczenstwa policy = new PolitykaBezpieczenstwa();
             Console.Title = "Log KWP Serwis Installer";
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
@@ -277,6 +279,16 @@ namespace KWPSerwisInstaller
                 {
                     MessageBox.Show("Wybrałeś opcje nie tworzenia konta.", "Uwaga");
                 }
+                DialogResult dialogPolicy = MessageBox.Show("Czy chcesz wgrać poliykę bezpieczeństwa na komputerze?", "Polityka Bezpieczeństwa KWP", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Exclamation);
+                if(dialogPolicy == DialogResult.Yes)
+                {
+                    policy.ZainstalujPolitykeBezpieczenstwa();
+                }
+                else
+                {
+                    MessageBox.Show("Wybrałeś opcję nie instalowania polityki KWP.", "Uwaga");
+                }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
@@ -291,13 +303,12 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    zmiana.JoinDomain();
-                    menuDomeny.ShowDialog();               
+                    menuDomeny.ShowDialog();
+                    domena.JoinDomain();
                 }
                 else if (dNetbios == DialogResult.No)
                 {
                     menuDomeny.ShowDialog();
-                    zmiana.ChangeNetBIOS();
                 }
                 else
                 {
@@ -352,7 +363,6 @@ namespace KWPSerwisInstaller
                 if (dNetbios == DialogResult.Yes)
                 {
                     menuDomeny.ShowDialog();
-                    zmiana.ChangeNetBIOS();
                 }
                 else
                 {
@@ -404,7 +414,6 @@ namespace KWPSerwisInstaller
                 if (dNetbios == DialogResult.Yes)
                 {
                     menuDomeny.ShowDialog();
-                    zmiana.ChangeNetBIOS();
                 }
                 else
                 {
@@ -416,13 +425,11 @@ namespace KWPSerwisInstaller
                     Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                     Close();
-                    return;
                 }
                 else if (dRestart == DialogResult.No)
                 {
                     Program.Thanks();
                     Close();
-                    return;
                 }
             }
             void PrzyciskZakonczClick(object sender,EventArgs ea)

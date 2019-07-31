@@ -92,11 +92,11 @@ namespace KWPSerwisInstaller
         public void InstalacjaInternet()
         {
             this.InstalacjaBazy();
-            this.StartInfo.FileName = "Spotify.exe";
+            this.StartInfo.FileName = "EsetKWP64.exe";
             this.Start();
-            Console.WriteLine("Trwa instalowanie Spotify...");
+            Console.WriteLine("Trwa instalowanie Oprogramowania ESET AV version 8 64bit...");
             this.WaitForExit();
-            Console.WriteLine("Zainstalowano Spotify.");
+            Console.WriteLine("Zainstalowano Oprogramowanie antywirusowe ESET.");
         }
         public void InstalacjaCWI()
         {

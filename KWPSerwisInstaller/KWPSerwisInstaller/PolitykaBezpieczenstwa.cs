@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
-using System.Windows;
 using System.Runtime;
+using System.DirectoryServices;
+using System.Security;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
@@ -22,7 +28,7 @@ namespace KWPSerwisInstaller
             this.StartInfo.CreateNoWindow = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            sciezkaSterownika = Environment.CurrentDirectory + @"\Data\polityka";
+            sciezkaPolityki = Environment.CurrentDirectory + @"\Data\polityka";
         }
         public void ZainstalujPolitykeBezpieczenstwa()
         {
