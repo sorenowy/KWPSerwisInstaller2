@@ -16,31 +16,31 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    class PolitykaBezpieczenstwa : DriverInstaller, IPolitykaBezp
+    class PolitykaBezpieczenstwa : DriverInstaller, ISecurityPolicy
     {
-        private string sciezkaDocelowa;
-        private string sciezkaPolityki;
+        private string finalPath;
+        private string policyPath;
         public PolitykaBezpieczenstwa()
         {
-            sciezkaDocelowa = @"C:\Data\polityka";
+            finalPath = @"C:\Data\polityka";
             this.StartInfo.Verb = "runas";
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.CreateNoWindow = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            sciezkaPolityki = Environment.CurrentDirectory + @"\Data\polityka";
+            policyPath = Environment.CurrentDirectory + @"\Data\polityka";
         }
-        public void ZainstalujPolitykeBezpieczenstwa()
+        public void ApplySecurityPolicy()
         {
             try
             {
-                DirectoryInfo sciezkaDoc = new DirectoryInfo(sciezkaPolityki);
-                Directory.CreateDirectory(sciezkaDocelowa);
-                FileInfo[] pliki = sciezkaDoc.GetFiles();
-                foreach (FileInfo plik in pliki)
+                DirectoryInfo dirPath = new DirectoryInfo(policyPath);
+                Directory.CreateDirectory(finalPath);
+                FileInfo[] files = dirPath.GetFiles();
+                foreach (FileInfo file in files)
                 {
-                    string temppath = Path.Combine(sciezkaDocelowa, plik.Name);
-                    plik.CopyTo(temppath, true);
+                    string temppath = Path.Combine(finalPath, file.Name);
+                    file.CopyTo(temppath, true);
                 }
                 this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";
                 this.StartInfo.Arguments = @"/c Secedit /configure /db secedit.sdb /cfg C:\Data\polityka\politykabezp.inf";

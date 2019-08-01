@@ -19,41 +19,41 @@ namespace KWPSerwisInstaller
     public class MenuGlowne : Form
     {
         //Deklarowanie i inicjalizacja wszystkich elementów menu graficznego.
-        private Form menuTworzeniaUsera = new Form();
-        private Form menuIpconfig = new Form();
-        private Form menuDomeny = new Form();
-        private Form instalatorLotus = new Form();
-        private Form instalatorEKD = new Form();
-        private Form instalatorOffice = new Form();
-        private Label stronaGlowna = new Label();
-        private Label informacjaLotusa = new Label();
-        private Label informacjaEKD = new Label();
-        private Label informacjaOffice = new Label();
-        private Label podajUsername = new Label();
-        private Label podajPassword = new Label();
-        private Label podajNrInw = new Label();
-        private Label podajNazweDomeny = new Label();
-        private ListBox listaLotus = new ListBox();
-        private ListBox listaEKD = new ListBox();
-        private ListBox listaOffice = new ListBox();
-        private TextBox tekstUser = new TextBox();
-        private TextBox tekstPassword = new TextBox();
-        private TextBox tekstInwentarzowy = new TextBox();
-        private TextBox nazwaKomputera = new TextBox();
-        private Button przyciskZakoncz = new Button();
-        private Button przyciskInternet = new Button();
-        private Button przyciskPSTD = new Button();
-        private Button przyciskCWI = new Button();
-        private Button przyciskAnuluj = new Button();
-        private Button przyciskAnulujOffice = new Button();
-        private Button przyciskAnulujEKD = new Button();
-        private Button przyciskOKLotus = new Button();
-        private Button przyciskOKEKD = new Button();
-        private Button przyciskOKOffice = new Button();
-        private Button przyciskAdmin = new Button();
-        private Button przyciskUser = new Button();
-        private Button przyciskIpLog = new Button();
-        private Button przyciskZmienDomene = new Button();
+        private Form userCreationMenu = new Form();
+        private Form ipConfigMenu = new Form();
+        private Form domainMenu = new Form();
+        private Form lotusInstallerMenu = new Form();
+        private Form ekdInstallerMenu = new Form();
+        private Form officeInstallerMenu = new Form();
+        private Label mainLabel = new Label();
+        private Label lotusLabel = new Label();
+        private Label ekdLabel = new Label();
+        private Label officeLabel = new Label();
+        private Label inputUsernameLabel = new Label();
+        private Label inputPasswordLabel = new Label();
+        private Label inputInvNumLabel = new Label();
+        private Label inputNetBiosName = new Label();
+        private ListBox lotusList = new ListBox();
+        private ListBox ekdList = new ListBox();
+        private ListBox officeList = new ListBox();
+        private TextBox usernameTextbox = new TextBox();
+        private TextBox passwordTextbox = new TextBox();
+        private TextBox inventoryTextbox = new TextBox();
+        private TextBox netbiosNameTextbox = new TextBox();
+        private Button buttonClose = new Button();
+        private Button buttonInternet = new Button();
+        private Button buttonPSTD = new Button();
+        private Button buttonCWI = new Button();
+        private Button buttonCancel = new Button();
+        private Button buttonCancelOffice = new Button();
+        private Button buttonCancelEKD = new Button();
+        private Button buttonOKLotus = new Button();
+        private Button buttonOKEKD = new Button();
+        private Button buttonOKOffice = new Button();
+        private Button buttonAdmin = new Button();
+        private Button buttonUser = new Button();
+        private Button buttonIpLog = new Button();
+        private Button buttonChangeNetbios = new Button();
         public MenuGlowne()
         {
             Installer install = new Installer();
@@ -73,102 +73,102 @@ namespace KWPSerwisInstaller
             this.Text = "KWP Serwis Installer v0.7";
             this.Size = new Size(760, 560);
             // Załadowanie i wyskalowanie obrazka na stronę tytułową
-            Image obrazekTytułowy = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
-            stronaGlowna.Left = 120;
-            stronaGlowna.Size = new Size(600, 400);
-            stronaGlowna.Image = obrazekTytułowy;
+            Image titleImage = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
+            mainLabel.Left = 120;
+            mainLabel.Size = new Size(600, 400);
+            mainLabel.Image = titleImage;
             //Ustawianie opisu etykiet listy
-            informacjaLotusa.Text = "Wybierz oprogramowanie z listy i zatwierdź OK w celu instalacji.";
-            informacjaLotusa.Size = new Size(400, 50);
-            informacjaLotusa.Font = new Font("TimesNewRoman", 14f);
-            informacjaEKD.Text = informacjaLotusa.Text;
-            informacjaEKD.Size = informacjaLotusa.Size;
-            informacjaEKD.Font = informacjaLotusa.Font;
-            informacjaOffice.Text = informacjaLotusa.Text;
-            informacjaOffice.Size = informacjaLotusa.Size;
-            informacjaOffice.Font = informacjaLotusa.Font;
+            lotusLabel.Text = "Wybierz oprogramowanie z listy i zatwierdź OK w celu instalacji.";
+            lotusLabel.Size = new Size(400, 50);
+            lotusLabel.Font = new Font("TimesNewRoman", 14f);
+            ekdLabel.Text = lotusLabel.Text;
+            ekdLabel.Size = lotusLabel.Size;
+            ekdLabel.Font = lotusLabel.Font;
+            officeLabel.Text = lotusLabel.Text;
+            officeLabel.Size = lotusLabel.Size;
+            officeLabel.Font = lotusLabel.Font;
             // Ustawianie opisu etykiet menu tworzenia konta, nazwyPC, loga Ipconfig
-            podajUsername.Text = "Nazwa użytkownika";
-            podajUsername.Size = new Size(200, 50);
-            podajUsername.Font = new Font("TimesNewRoman", 10f, FontStyle.Bold);
-            podajPassword.Text = "Hasło użytkownika";
-            podajPassword.Size = podajUsername.Size;
-            podajPassword.Font = podajUsername.Font;
-            podajPassword.Top = 50;
-            podajNrInw.Text = "Nr inw. komputera";
-            podajNrInw.Size = podajUsername.Size;
-            podajNrInw.Font = podajUsername.Font;
-            podajNazweDomeny.Text = "Nazwa NetBIOS kompuera";
-            podajNazweDomeny.Size = podajUsername.Size;
-            podajNazweDomeny.Font = podajUsername.Font;
+            inputUsernameLabel.Text = "Nazwa użytkownika";
+            inputUsernameLabel.Size = new Size(200, 50);
+            inputUsernameLabel.Font = new Font("TimesNewRoman", 10f, FontStyle.Bold);
+            inputPasswordLabel.Text = "Hasło użytkownika";
+            inputPasswordLabel.Size = inputUsernameLabel.Size;
+            inputPasswordLabel.Font = inputUsernameLabel.Font;
+            inputPasswordLabel.Top = 50;
+            inputInvNumLabel.Text = "Nr inw. komputera";
+            inputInvNumLabel.Size = inputUsernameLabel.Size;
+            inputInvNumLabel.Font = inputUsernameLabel.Font;
+            inputNetBiosName.Text = "Nazwa NetBIOS kompuera";
+            inputNetBiosName.Size = inputUsernameLabel.Size;
+            inputNetBiosName.Font = inputUsernameLabel.Font;
             // Opis przycisku zakończ, ustawienie jego pozycji
-            przyciskZakoncz.Text = "Zakończ";
-            przyciskZakoncz.Top = 450;
-            przyciskZakoncz.Left = 600;
+            buttonClose.Text = "Zakończ";
+            buttonClose.Top = 450;
+            buttonClose.Left = 600;
             // Opis pozostałych przycisków, ustawienie ich pozycji
-            przyciskInternet.Text = "Ins. Internet";
-            przyciskInternet.BackColor = Color.LightBlue;
-            przyciskInternet.Top = 400;
-            przyciskInternet.Left = 200;
-            przyciskPSTD.Text = "Ins. PSTD";
-            przyciskPSTD.BackColor = Color.Red;
-            przyciskPSTD.Top = 400;
-            przyciskPSTD.Left = 400;
-            przyciskCWI.Text = "Ins. CWI";
-            przyciskCWI.BackColor = Color.LightGreen;
-            przyciskCWI.Top = 400;
-            przyciskCWI.Left = 600;
-            przyciskAnuluj.Text = "Anuluj";
-            przyciskAnuluj.ForeColor = Color.Red;
-            przyciskAnuluj.Top = 600;
-            przyciskAnuluj.Left = 300;
-            przyciskAnulujOffice.Text = "Anuluj";
-            przyciskAnulujOffice.Top = 600;
-            przyciskAnulujOffice.Left = 300;
-            przyciskAnulujEKD.Text = przyciskAnuluj.Text;
-            przyciskAnulujEKD.Top = przyciskAnuluj.Top;
-            przyciskAnulujEKD.Left = przyciskAnuluj.Left;
+            buttonInternet.Text = "Ins. Internet";
+            buttonInternet.BackColor = Color.LightBlue;
+            buttonInternet.Top = 400;
+            buttonInternet.Left = 200;
+            buttonPSTD.Text = "Ins. PSTD";
+            buttonPSTD.BackColor = Color.Red;
+            buttonPSTD.Top = 400;
+            buttonPSTD.Left = 400;
+            buttonCWI.Text = "Ins. CWI";
+            buttonCWI.BackColor = Color.LightGreen;
+            buttonCWI.Top = 400;
+            buttonCWI.Left = 600;
+            buttonCancel.Text = "Anuluj";
+            buttonCancel.ForeColor = Color.Red;
+            buttonCancel.Top = 600;
+            buttonCancel.Left = 300;
+            buttonCancelOffice.Text = "Anuluj";
+            buttonCancelOffice.Top = 600;
+            buttonCancelOffice.Left = 300;
+            buttonCancelEKD.Text = buttonCancel.Text;
+            buttonCancelEKD.Top = buttonCancel.Top;
+            buttonCancelEKD.Left = buttonCancel.Left;
             //Ustawienia przycisków zatwierdzeń Lotusa,Office i EKD.
-            przyciskOKLotus.Text = "OK";
-            przyciskOKLotus.Top = 600;
-            przyciskOKLotus.Left = 150;
+            buttonOKLotus.Text = "OK";
+            buttonOKLotus.Top = 600;
+            buttonOKLotus.Left = 150;
             //Przypisanie do innych..
-            przyciskOKEKD.Text = przyciskOKLotus.Text;
-            przyciskOKEKD.Top = przyciskOKLotus.Top;
-            przyciskOKEKD.Left = 200;
-            przyciskOKOffice.Text = przyciskOKLotus.Text;
-            przyciskOKOffice.Top = przyciskOKLotus.Top;
-            przyciskOKOffice.Left = przyciskOKLotus.Left;
+            buttonOKEKD.Text = buttonOKLotus.Text;
+            buttonOKEKD.Top = buttonOKLotus.Top;
+            buttonOKEKD.Left = 200;
+            buttonOKOffice.Text = buttonOKLotus.Text;
+            buttonOKOffice.Top = buttonOKLotus.Top;
+            buttonOKOffice.Left = buttonOKLotus.Left;
             //Ustawienia przycisków zatwierdzeń kont użyt.,domeny,iploga
-            przyciskAdmin.Text = "Admin";
-            przyciskAdmin.Top = 100;
-            przyciskAdmin.Left = 10;
-            przyciskUser.Text = "User";
-            przyciskUser.Top = 100;
-            przyciskUser.Left = 90;
-            przyciskIpLog.Text = "Utwórz";
-            przyciskIpLog.Top = 130;
-            przyciskIpLog.Left = 10;
-            przyciskZmienDomene.Text = "Zmień Netbios";
-            przyciskZmienDomene.Size = new Size(100, 50);
-            przyciskZmienDomene.Top = 100;
-            przyciskZmienDomene.Left = 10;
+            buttonAdmin.Text = "Admin";
+            buttonAdmin.Top = 100;
+            buttonAdmin.Left = 10;
+            buttonUser.Text = "User";
+            buttonUser.Top = 100;
+            buttonUser.Left = 90;
+            buttonIpLog.Text = "Utwórz";
+            buttonIpLog.Top = 130;
+            buttonIpLog.Left = 10;
+            buttonChangeNetbios.Text = "Zmień Netbios";
+            buttonChangeNetbios.Size = new Size(100, 50);
+            buttonChangeNetbios.Top = 100;
+            buttonChangeNetbios.Left = 10;
             //Ustawienia okien wyboru z listy
-            instalatorLotus.Text = "Wybierz klienta poczty w celu instalacji.";
-            instalatorLotus.Size = new Size(580, 700);
-            instalatorEKD.Text = "Wybierz klienta EKD w celu instalacji";
-            instalatorEKD.Size = instalatorLotus.Size;
-            instalatorOffice.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
-            instalatorOffice.Size = instalatorLotus.Size;
+            lotusInstallerMenu.Text = "Wybierz klienta poczty w celu instalacji.";
+            lotusInstallerMenu.Size = new Size(580, 700);
+            ekdInstallerMenu.Text = "Wybierz klienta EKD w celu instalacji";
+            ekdInstallerMenu.Size = lotusInstallerMenu.Size;
+            officeInstallerMenu.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
+            officeInstallerMenu.Size = lotusInstallerMenu.Size;
             //Ustawienia okien funkcji generujących
-            menuTworzeniaUsera.Text = "Wprowadź dane użytkownika i hasło.";
-            menuTworzeniaUsera.Size = new Size(500, 200);
-            menuIpconfig.Text = "Podaj nazwę loga";
-            menuIpconfig.Size = menuTworzeniaUsera.Size;
-            menuDomeny.Text = "Wprowadź nową nazwę komputera";
-            menuDomeny.Size = menuTworzeniaUsera.Size;
+            userCreationMenu.Text = "Wprowadź dane użytkownika i hasło.";
+            userCreationMenu.Size = new Size(500, 200);
+            ipConfigMenu.Text = "Podaj nazwę loga";
+            ipConfigMenu.Size = userCreationMenu.Size;
+            domainMenu.Text = "Wprowadź nową nazwę komputera";
+            domainMenu.Size = userCreationMenu.Size;
             //Inicjalizacja tablic wyboru instalacji oraz ustawienia rozmiaru i czcionki.
-            listaLotus.Items.AddRange
+            lotusList.Items.AddRange
                 (new object[]
                 {
                 "1. Lotus Notes Basic 8.5.3",
@@ -176,10 +176,10 @@ namespace KWPSerwisInstaller
                 "3. Mozilla Thunderbird"
                 }
                 );
-            listaLotus.Size = new Size(560, 340);
-            listaLotus.Top = 120;
-            listaLotus.Font = new Font("TimesNewRoman", 20f);
-            listaEKD.Items.AddRange
+            lotusList.Size = new Size(560, 340);
+            lotusList.Top = 120;
+            lotusList.Font = new Font("TimesNewRoman", 20f);
+            ekdList.Items.AddRange
                 (new object[]
                 {
                 "1. Encard 32bit 2.1.0",
@@ -187,10 +187,10 @@ namespace KWPSerwisInstaller
                 "3. CryptoCard Suite 2.1.1"
                 }
                 );
-            listaEKD.Size = listaLotus.Size;
-            listaEKD.Top = listaLotus.Top;
-            listaEKD.Font = listaLotus.Font;
-            listaOffice.Items.AddRange
+            ekdList.Size = lotusList.Size;
+            ekdList.Top = lotusList.Top;
+            ekdList.Font = lotusList.Font;
+            officeList.Items.AddRange
                 (new object[]
                 {
                     "1. OpenOffice 4.1.6",
@@ -198,82 +198,82 @@ namespace KWPSerwisInstaller
                     "3. Microsoft Office 2016 MOLP",
                     "4. Microsoft Office 2019 MOLP (KGP)"
                 });
-            listaOffice.Size = listaEKD.Size;
-            listaOffice.Top = listaEKD.Top;
-            listaOffice.Font = listaEKD.Font;
+            officeList.Size = ekdList.Size;
+            officeList.Top = ekdList.Top;
+            officeList.Font = ekdList.Font;
             //Ustawianie wl. pól tekstowych
-            tekstUser.Size = new Size(90, 40);
-            tekstUser.Font = new Font("TimesNewRoman", 10f);
-            tekstUser.Top = 20;
-            tekstUser.Left = 300;
-            tekstPassword.Top = 50;
-            tekstPassword.Size = tekstUser.Size;
-            tekstPassword.Font = tekstUser.Font;
-            tekstPassword.Left = tekstUser.Left;
-            nazwaKomputera.Size = tekstUser.Size;
-            nazwaKomputera.Font = tekstUser.Font;
-            nazwaKomputera.Left = tekstUser.Left;
-            nazwaKomputera.Top = 20;
-            tekstInwentarzowy.Size = tekstUser.Size;
-            tekstInwentarzowy.Font = tekstInwentarzowy.Font;
-            tekstInwentarzowy.Top = 50;
-            tekstInwentarzowy.Left = tekstInwentarzowy.Left;
+            usernameTextbox.Size = new Size(90, 40);
+            usernameTextbox.Font = new Font("TimesNewRoman", 10f);
+            usernameTextbox.Top = 20;
+            usernameTextbox.Left = 300;
+            passwordTextbox.Top = 50;
+            passwordTextbox.Size = usernameTextbox.Size;
+            passwordTextbox.Font = usernameTextbox.Font;
+            passwordTextbox.Left = usernameTextbox.Left;
+            netbiosNameTextbox.Size = usernameTextbox.Size;
+            netbiosNameTextbox.Font = usernameTextbox.Font;
+            netbiosNameTextbox.Left = usernameTextbox.Left;
+            netbiosNameTextbox.Top = 20;
+            inventoryTextbox.Size = usernameTextbox.Size;
+            inventoryTextbox.Font = inventoryTextbox.Font;
+            inventoryTextbox.Top = 50;
+            inventoryTextbox.Left = inventoryTextbox.Left;
             //Metody wywołujące..
-            void PrzyciskLotusOKClick(object sender, EventArgs ea)
+            void ButtonLotusOKClick(object sender, EventArgs ea)
             {
-                install.InstalacjaLotus(listaLotus.SelectedIndex);
-                instalatorLotus.Close();
+                install.LotusInstaller(lotusList.SelectedIndex);
+                lotusInstallerMenu.Close();
             }
-            void PrzyciskEKDOKClick(object sender, EventArgs ea)
+            void ButtonEKDOKClick(object sender, EventArgs ea)
             {
-                install.InstalacjaEKD(listaEKD.SelectedIndex);
-                instalatorEKD.Close();
+                install.EKDAuthInstaller(ekdList.SelectedIndex);
+                ekdInstallerMenu.Close();
             }
-            void PrzyciskOfficeOKClick(object sender,EventArgs ea)
+            void ButtonOfficeOKClick(object sender,EventArgs ea)
             {
-                install.InstalacjaOffice(listaOffice.SelectedIndex);
-                instalatorOffice.Close();
+                install.OfficeInstaller(officeList.SelectedIndex);
+                officeInstallerMenu.Close();
             }
-            void PrzyciskAdminClick(object sender,EventArgs ea)
+            void ButtonAdminClick(object sender,EventArgs ea)
             {
-                user.kategoria = 1;
-                user.name = tekstUser.Text;
-                user.password = tekstPassword.Text;
-                user.WyswietlUser();
-                menuTworzeniaUsera.Close();
+                user.option = 1;
+                user.name = usernameTextbox.Text;
+                user.password = passwordTextbox.Text;
+                user.ShowUser();
+                userCreationMenu.Close();
             }
-            void PrzyciskUserClick(object sender,EventArgs ea)
+            void ButtonUserClick(object sender,EventArgs ea)
             {
-                user.kategoria = 2;
-                user.name = tekstUser.Text;
-                user.password = tekstPassword.Text;
-                user.WyswietlUser();
-                menuTworzeniaUsera.Close();
+                user.option = 2;
+                user.name = usernameTextbox.Text;
+                user.password = passwordTextbox.Text;
+                user.ShowUser();
+                userCreationMenu.Close();
             }
-            void PrzyciskIpLogClick(object sender,EventArgs ea)
+            void ButtonIpLogClick(object sender,EventArgs ea)
             {
-                log.opcja = 1;
-                log.nrInwentarzowy = tekstInwentarzowy.Text;
-                log.GenerujIPConfigLog();
-                menuIpconfig.Close();
+                log.option = 1;
+                log.inventoryNumber = inventoryTextbox.Text;
+                log.GenerateIPConfigLog();
+                ipConfigMenu.Close();
             }
-            void PrzyciskZmienDomeneClick(object sender,EventArgs ea)
+            void ButtonChangeDomainClick(object sender,EventArgs ea)
             {
-                zmiana.nowaNazwa = nazwaKomputera.Text;
+                zmiana.newNETBiosName = netbiosNameTextbox.Text;
                 zmiana.ChangeNetBIOS();
-                menuDomeny.Close();
+                domainMenu.Close();
             }
-            void PrzyciskInternetClick(object sender, EventArgs ea)
+            void ButtonInternetClick(object sender, EventArgs ea)
             {
-                install.Wyczyszczenie();
+                install.ShitRemover();
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci Internet.");
-                instalatorLotus.ShowDialog();
-                instalatorOffice.ShowDialog();
-                install.InstalacjaInternet();
+                lotusInstallerMenu.ShowDialog();
+                officeInstallerMenu.ShowDialog();
+                install.InternetInstaller();
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    menuTworzeniaUsera.ShowDialog();
+                    userCreationMenu.ShowDialog();
                 }
                 else
                 {
@@ -283,7 +283,7 @@ namespace KWPSerwisInstaller
                     MessageBoxIcon.Exclamation);
                 if(dialogPolicy == DialogResult.Yes)
                 {
-                    policy.ZainstalujPolitykeBezpieczenstwa();
+                    policy.ApplySecurityPolicy();
                 }
                 else
                 {
@@ -293,7 +293,7 @@ namespace KWPSerwisInstaller
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    menuIpconfig.ShowDialog();
+                    ipConfigMenu.ShowDialog();
                 }
                 else
                 {
@@ -303,12 +303,12 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    menuDomeny.ShowDialog();
+                    domainMenu.ShowDialog();
                     domena.JoinDomain();
                 }
                 else if (dNetbios == DialogResult.No)
                 {
-                    menuDomeny.ShowDialog();
+                    domainMenu.ShowDialog();
                 }
                 else
                 {
@@ -329,20 +329,20 @@ namespace KWPSerwisInstaller
                     return;
                 }
             }
-            void przyciskPSTDClick(object sender,EventArgs ea)
+            void ButtonPSTDClick(object sender,EventArgs ea)
             {
-                install.Wyczyszczenie();
+                install.ShitRemover();
                 Console.WriteLine("Trwa instalacja oprogramowania dla komputera w sieci PSTD.");
-                instalatorLotus.ShowDialog();
-                instalatorOffice.ShowDialog();
-                install.InstalacjaPSTD();
-                cert.InstalujInfrastruktura("infrastruktura2019.der");
-                driver.ZainstalujSterownik();
-                instalatorEKD.ShowDialog();
+                lotusInstallerMenu.ShowDialog();
+                officeInstallerMenu.ShowDialog();
+                install.PSTDInstaller();
+                cert.InstallInfrastrukturaCert("infrastruktura2019.der");
+                driver.InstallDriver();
+                ekdInstallerMenu.ShowDialog();
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    menuTworzeniaUsera.ShowDialog();
+                    userCreationMenu.ShowDialog();
                 }
                 else
                 {
@@ -352,7 +352,7 @@ namespace KWPSerwisInstaller
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    menuIpconfig.ShowDialog();
+                    ipConfigMenu.ShowDialog();
                 }
                 else
                 {
@@ -362,7 +362,7 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    menuDomeny.ShowDialog();
+                    domainMenu.ShowDialog();
                 }
                 else
                 {
@@ -383,17 +383,17 @@ namespace KWPSerwisInstaller
                     return;
                 }
             }
-            void przyciskCWIClick(object sender,EventArgs ea)
+            void ButtonCWIClick(object sender,EventArgs ea)
             {
-                install.Wyczyszczenie();
-                instalatorLotus.ShowDialog();
-                instalatorOffice.ShowDialog();
-                install.InstalacjaCWI();
-                cert.InstalujCWI("CWI_CERT.cer");
+                install.ShitRemover();
+                lotusInstallerMenu.ShowDialog();
+                officeInstallerMenu.ShowDialog();
+                install.CWIInstaller();
+                cert.InstallCWICert("CWI_CERT.cer");
                 DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
                 if (dialogUser == DialogResult.Yes)
                 {
-                    menuTworzeniaUsera.ShowDialog();
+                    userCreationMenu.ShowDialog();
                 }
                 else
                 {
@@ -403,7 +403,7 @@ namespace KWPSerwisInstaller
                     "Ipconfig Log Generator", MessageBoxButtons.YesNo);
                 if (dIpconfig == DialogResult.Yes)
                 {
-                    menuIpconfig.ShowDialog();
+                    ipConfigMenu.ShowDialog();
                 }
                 else
                 {
@@ -413,7 +413,7 @@ namespace KWPSerwisInstaller
                     "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
                 if (dNetbios == DialogResult.Yes)
                 {
-                    menuDomeny.ShowDialog();
+                    domainMenu.ShowDialog();
                 }
                 else
                 {
@@ -432,67 +432,67 @@ namespace KWPSerwisInstaller
                     Close();
                 }
             }
-            void PrzyciskZakonczClick(object sender,EventArgs ea)
+            void ButtonCloseClick(object sender,EventArgs ea)
             {
                 Application.Exit();
             }
-            void PrzyciskAnulujClick(object sender, EventArgs ea)
+            void ButtonCancelClick(object sender, EventArgs ea)
             {
-                instalatorLotus.Close();
+                lotusInstallerMenu.Close();
             }
-            void PrzyciskAnulujEKDClick(object sender, EventArgs ea)
+            void ButtonCancelEKDClick(object sender, EventArgs ea)
             {
-                instalatorEKD.Close();
+                ekdInstallerMenu.Close();
             }
-            void PrzyciskAnulujOfficeClick(object sender, EventArgs ea)
+            void ButtonCancelOfficeClick(object sender, EventArgs ea)
             {
-                instalatorOffice.Close();
+                officeInstallerMenu.Close();
             }
             //Delegowanie metod do eventu przycisku myszy
-            przyciskZakoncz.Click += new EventHandler(PrzyciskZakonczClick);
-            przyciskInternet.Click += new EventHandler(PrzyciskInternetClick);
-            przyciskPSTD.Click += new EventHandler(przyciskPSTDClick);
-            przyciskCWI.Click += new EventHandler(przyciskCWIClick);
-            przyciskAnuluj.Click += new EventHandler(PrzyciskAnulujClick);
-            przyciskAnulujEKD.Click += new EventHandler(PrzyciskAnulujEKDClick);
-            przyciskAnulujOffice.Click += new EventHandler(PrzyciskAnulujOfficeClick);
-            przyciskOKLotus.Click += new EventHandler(PrzyciskLotusOKClick);
-            przyciskOKEKD.Click += new EventHandler(PrzyciskEKDOKClick);
-            przyciskOKOffice.Click += new EventHandler(PrzyciskOfficeOKClick);
-            przyciskAdmin.Click += new EventHandler(PrzyciskAdminClick);
-            przyciskUser.Click += new EventHandler(PrzyciskUserClick);
-            przyciskIpLog.Click += new EventHandler(PrzyciskIpLogClick);
-            przyciskZmienDomene.Click += new EventHandler(PrzyciskZmienDomeneClick);
+            buttonClose.Click += new EventHandler(ButtonCloseClick);
+            buttonInternet.Click += new EventHandler(ButtonInternetClick);
+            buttonPSTD.Click += new EventHandler(ButtonPSTDClick);
+            buttonCWI.Click += new EventHandler(ButtonCWIClick);
+            buttonCancel.Click += new EventHandler(ButtonCancelClick);
+            buttonCancelEKD.Click += new EventHandler(ButtonCancelEKDClick);
+            buttonCancelOffice.Click += new EventHandler(ButtonCancelOfficeClick);
+            buttonOKLotus.Click += new EventHandler(ButtonLotusOKClick);
+            buttonOKEKD.Click += new EventHandler(ButtonEKDOKClick);
+            buttonOKOffice.Click += new EventHandler(ButtonOfficeOKClick);
+            buttonAdmin.Click += new EventHandler(ButtonAdminClick);
+            buttonUser.Click += new EventHandler(ButtonUserClick);
+            buttonIpLog.Click += new EventHandler(ButtonIpLogClick);
+            buttonChangeNetbios.Click += new EventHandler(ButtonChangeDomainClick);
             //Dopisywanie opcji do głównego menu i list.
-            instalatorLotus.Controls.Add(informacjaLotusa);
-            instalatorLotus.Controls.Add(listaLotus);
-            instalatorLotus.Controls.Add(przyciskOKLotus);
-            instalatorLotus.Controls.Add(przyciskAnuluj);
-            instalatorEKD.Controls.Add(informacjaEKD);
-            instalatorEKD.Controls.Add(listaEKD);
-            instalatorEKD.Controls.Add(przyciskOKEKD);
-            instalatorEKD.Controls.Add(przyciskAnulujEKD);
-            instalatorOffice.Controls.Add(informacjaOffice);
-            instalatorOffice.Controls.Add(listaOffice);
-            instalatorOffice.Controls.Add(przyciskOKOffice);
-            instalatorOffice.Controls.Add(przyciskAnulujOffice);
-            menuTworzeniaUsera.Controls.Add(podajUsername);
-            menuTworzeniaUsera.Controls.Add(podajPassword);
-            menuTworzeniaUsera.Controls.Add(tekstUser);
-            menuTworzeniaUsera.Controls.Add(tekstPassword);
-            menuTworzeniaUsera.Controls.Add(przyciskAdmin);
-            menuTworzeniaUsera.Controls.Add(przyciskUser);
-            menuIpconfig.Controls.Add(podajNrInw);
-            menuIpconfig.Controls.Add(tekstInwentarzowy);
-            menuIpconfig.Controls.Add(przyciskIpLog);
-            menuDomeny.Controls.Add(podajNazweDomeny);
-            menuDomeny.Controls.Add(nazwaKomputera);
-            menuDomeny.Controls.Add(przyciskZmienDomene);
-            Controls.Add(stronaGlowna);
-            Controls.Add(przyciskInternet);
-            Controls.Add(przyciskPSTD);
-            Controls.Add(przyciskCWI);
-            Controls.Add(przyciskZakoncz);
+            lotusInstallerMenu.Controls.Add(lotusLabel);
+            lotusInstallerMenu.Controls.Add(lotusList);
+            lotusInstallerMenu.Controls.Add(buttonOKLotus);
+            lotusInstallerMenu.Controls.Add(buttonCancel);
+            ekdInstallerMenu.Controls.Add(ekdLabel);
+            ekdInstallerMenu.Controls.Add(ekdList);
+            ekdInstallerMenu.Controls.Add(buttonOKEKD);
+            ekdInstallerMenu.Controls.Add(buttonCancelEKD);
+            officeInstallerMenu.Controls.Add(officeLabel);
+            officeInstallerMenu.Controls.Add(officeList);
+            officeInstallerMenu.Controls.Add(buttonOKOffice);
+            officeInstallerMenu.Controls.Add(buttonCancelOffice);
+            userCreationMenu.Controls.Add(inputUsernameLabel);
+            userCreationMenu.Controls.Add(inputPasswordLabel);
+            userCreationMenu.Controls.Add(usernameTextbox);
+            userCreationMenu.Controls.Add(passwordTextbox);
+            userCreationMenu.Controls.Add(buttonAdmin);
+            userCreationMenu.Controls.Add(buttonUser);
+            ipConfigMenu.Controls.Add(inputInvNumLabel);
+            ipConfigMenu.Controls.Add(inventoryTextbox);
+            ipConfigMenu.Controls.Add(buttonIpLog);
+            domainMenu.Controls.Add(inputNetBiosName);
+            domainMenu.Controls.Add(netbiosNameTextbox);
+            domainMenu.Controls.Add(buttonChangeNetbios);
+            Controls.Add(mainLabel);
+            Controls.Add(buttonInternet);
+            Controls.Add(buttonPSTD);
+            Controls.Add(buttonCWI);
+            Controls.Add(buttonClose);
         }
     }
 }

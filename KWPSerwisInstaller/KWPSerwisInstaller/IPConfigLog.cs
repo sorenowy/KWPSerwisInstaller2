@@ -12,9 +12,9 @@ namespace KWPSerwisInstaller
 {
     class IPConfigLog : Installer, IIPConfigLog
     {
-        public string sciezkaLog;
-        public int opcja;
-        public string nrInwentarzowy;
+        public string logPath;
+        public int option;
+        public string inventoryNumber;
         public IPConfigLog()
         {
             this.StartInfo.Verb = "runas";
@@ -22,23 +22,23 @@ namespace KWPSerwisInstaller
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            sciezkaLog = Environment.CurrentDirectory + @"\Logi\";
+            logPath = Environment.CurrentDirectory + @"\Logi\";
         }
-        public void GenerujIPConfigLog()
+        public void GenerateIPConfigLog()
         {
             Console.WriteLine("Program wygeneruje teraz Log IPCONFIG -ALL");
             Console.WriteLine(@"Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu");
             Console.WriteLine("---------------------------------------------------------------------------------");
-            if (opcja == 1)
+            if (option == 1)
             {
                 try
                 {
                     this.StartInfo.FileName = "Cmd.exe";
-                    this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{nrInwentarzowy}.txt");
+                    this.StartInfo.Arguments = ($@"/c ipconfig -all > C:\{inventoryNumber}.txt");
                     this.Start();
                     this.WaitForExit();
-                    File.Move($@"C:\{nrInwentarzowy}.txt", $@"{sciezkaLog}{nrInwentarzowy}.txt");
-                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0} w lokacji \n{1}",nrInwentarzowy,sciezkaLog);
+                    File.Move($@"C:\{inventoryNumber}.txt", $@"{logPath}{inventoryNumber}.txt");
+                    Console.WriteLine("Utworzono ipconfig Log o nazwie {0} w lokacji \n{1}",inventoryNumber,logPath);
                 }
                 catch (Exception e)
                 {

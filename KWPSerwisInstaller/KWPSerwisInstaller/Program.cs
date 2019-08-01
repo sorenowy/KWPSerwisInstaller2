@@ -14,7 +14,7 @@ namespace KWPSerwisInstaller
     class Program
     {
         public delegate void DelegatInformacyjny();
-        public static void Prezentacja()
+        public static void Welcome()
         {
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("#######  ######  ##       ##  ######  ######  #######");
@@ -41,7 +41,7 @@ namespace KWPSerwisInstaller
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Clear();
-            Prezentacja();
+            Welcome();
             try
             {
                 Application.Run(new MenuGlowne());

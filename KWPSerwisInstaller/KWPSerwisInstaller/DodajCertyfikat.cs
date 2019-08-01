@@ -13,25 +13,25 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace KWPSerwisInstaller
 {
-    class DodajCertyfikat : Installer, IDodajCertyfikat
+    class DodajCertyfikat : Installer, IAddCertificate
     {
-        private string sciezkaCWI;
-        private string sciezkaPSTD;
+        private string certCWIPath;
+        private string certPSTDPath;
         public DodajCertyfikat()
         {
-            this.sciezkaCWI = sciezkapliku;
-            this.sciezkaPSTD = sciezkapliku;
+            this.certCWIPath = filePath;
+            this.certPSTDPath = filePath;
         }
-        public void InstalujCWI(string nazwapliku)
+        public void InstallCWICert(string filename)
         {
             try
             {
-                X509Certificate2 certyfikatCWI = new X509Certificate2(sciezkaCWI + nazwapliku);
-                X509Store magazyn = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
+                X509Certificate2 certificateCWI = new X509Certificate2(certCWIPath + filename);
+                X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
 
-                magazyn.Open(OpenFlags.ReadWrite);
-                magazyn.Add(certyfikatCWI);
-                magazyn.Close();
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(certificateCWI);
+                store.Close();
                 Console.WriteLine("Certyfikat CWI_CERT dograny pomyślnie!");
             }
             catch (Exception)
@@ -43,16 +43,16 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("-------------------------------");
             }
         }
-        public void InstalujInfrastruktura(string nazwapliku)
+        public void InstallInfrastrukturaCert(string filename)
         {
             try
             {
-                X509Certificate2 certyfikatPSTD = new X509Certificate2(sciezkaPSTD + nazwapliku);
-                X509Store magazyn = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
+                X509Certificate2 certificatePSTD = new X509Certificate2(certPSTDPath + filename);
+                X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
 
-                magazyn.Open(OpenFlags.ReadWrite);
-                magazyn.Add(certyfikatPSTD);
-                magazyn.Close();
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(certificatePSTD);
+                store.Close();
                 Console.WriteLine("Certyfikat infrastruktura dodano pomyślnie!");
             }
             catch (Exception)

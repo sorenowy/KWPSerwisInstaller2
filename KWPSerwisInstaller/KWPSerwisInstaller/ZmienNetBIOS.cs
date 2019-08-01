@@ -14,7 +14,7 @@ namespace KWPSerwisInstaller
 {
     class ZmienNetBIOS : Installer, IChangeNetBIOS
     {
-        public string nowaNazwa;
+        public string newNETBiosName;
         public ZmienNetBIOS()
         { 
             this.StartInfo.Verb = "runas";
@@ -28,7 +28,7 @@ namespace KWPSerwisInstaller
                 this.StartInfo.RedirectStandardInput = true;
                 this.StartInfo.RedirectStandardOutput = true;
                 this.StartInfo.FileName = "cmd.exe";
-                this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + nowaNazwa;
+                this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + newNETBiosName;
                 this.Start();
                 this.WaitForExit();
                 Console.WriteLine("Zmiana nazwy NetBIOS wykonana pomyślnie!");

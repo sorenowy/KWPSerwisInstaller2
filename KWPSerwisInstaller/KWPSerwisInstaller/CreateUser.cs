@@ -15,12 +15,12 @@ namespace KWPSerwisInstaller
     {
         public string name;
         public string password;
-        public int kategoria;
+        public int option;
         public ClassCreateUser()
         {
             this.StartInfo.Verb = "runas";
         }
-        public void WyswietlUser()
+        public void ShowUser()
         {
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Windows Account creator");
@@ -33,29 +33,29 @@ namespace KWPSerwisInstaller
             {
 
                 DirectoryEntry AD = new DirectoryEntry("WinNT://" + Environment.MachineName);
-                DirectoryEntry nowyUser = AD.Children.Add(name, "user");
-                nowyUser.Invoke("SetPassword", new object[] { pass });
-                nowyUser.CommitChanges();
-                Console.WriteLine("Nazwa utworzonego konta:{0}",nowyUser.Name.ToString());
-                DirectoryEntry grupa;
-                if (kategoria == 1)
+                DirectoryEntry newUser = AD.Children.Add(name, "user");
+                newUser.Invoke("SetPassword", new object[] { pass });
+                newUser.CommitChanges();
+                Console.WriteLine("Nazwa utworzonego konta:{0}",newUser.Name.ToString());
+                DirectoryEntry group;
+                if (option == 1)
                 {
-                    grupa = AD.Children.Find(@"\Użytkownicy", "group");
-                    if (grupa != null)
+                    group = AD.Children.Find(@"\Użytkownicy", "group");
+                    if (group != null)
                     {
-                        grupa.Invoke("Add", new object[] { nowyUser.Path.ToString() });
+                        group.Invoke("Add", new object[] { newUser.Path.ToString() });
                     }
                 }
-                else if (kategoria == 2)
+                else if (option == 2)
                 {
-                    grupa = AD.Children.Find(@"\Administratorzy", "group");
-                    if (grupa != null)
+                    group = AD.Children.Find(@"\Administratorzy", "group");
+                    if (group != null)
                     {
-                        grupa.Invoke("Add", new object[] { nowyUser.Path.ToString() });
+                        group.Invoke("Add", new object[] { newUser.Path.ToString() });
                     }
                 }
                 AD.Close();
-                nowyUser.Close();
+                newUser.Close();
                 Console.WriteLine("Konto utworzone prawidłowo.");
                 Console.WriteLine("-----------------------------");
             }

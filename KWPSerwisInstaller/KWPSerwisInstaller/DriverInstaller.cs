@@ -12,29 +12,29 @@ namespace KWPSerwisInstaller
 {
     class DriverInstaller : Installer, IDriverInstall
     {
-        public string sciezkaSterownika;
-        private string sciezkaDocelowa;
+        public string driverPath;
+        private string finalPath;
         public DriverInstaller()
         {
-            sciezkaDocelowa = @"C:\Data\64";
+            finalPath = @"C:\Data\64";
             this.StartInfo.Verb = "runas";
             this.StartInfo.UseShellExecute = false;
             this.StartInfo.CreateNoWindow = false;
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
-            sciezkaSterownika = Environment.CurrentDirectory +@"\Data\64";
+            driverPath = Environment.CurrentDirectory +@"\Data\64";
         }
-        public void ZainstalujSterownik()
+        public void InstallDriver()
         {
             try
             {
-                DirectoryInfo sciezkaDoc = new DirectoryInfo(sciezkaSterownika);
-                Directory.CreateDirectory(sciezkaDocelowa);
-                FileInfo[] pliki = sciezkaDoc.GetFiles();
-                foreach (FileInfo plik in pliki)
+                DirectoryInfo filePath = new DirectoryInfo(driverPath);
+                Directory.CreateDirectory(finalPath);
+                FileInfo[] files = filePath.GetFiles();
+                foreach (FileInfo file in files)
                 {
-                    string temppath = Path.Combine(sciezkaDocelowa, plik.Name);
-                    plik.CopyTo(temppath, true);
+                    string temppath = Path.Combine(finalPath, file.Name);
+                    file.CopyTo(temppath, true);
                 }
                 this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";
                 this.StartInfo.Arguments = @"/c C:\Windows\sysnative\pnputil.exe /i /a C:\Data\64\ezusb.inf";

@@ -12,20 +12,20 @@ using System.Windows.Forms;
 namespace KWPSerwisInstaller
 {
 
-    class Installer : Process, IInstalacjaBazy, IInstalacjaInternet, IInstalacjaPSTD, IInstalacjaOffice
+    class Installer : Process, IBaseInstaller, IInternetInstaller, IPSTDInstaller, IOfficeInstaller
     {
-        public string sciezkapliku;
-        private string sciezkaDanych;
+        public string filePath;
+        private string dataPath;
         public Installer()
         {
             this.StartInfo.UseShellExecute = true;
             this.StartInfo.CreateNoWindow = false;
-            sciezkapliku = Environment.CurrentDirectory;
-            sciezkaDanych = @"\Data\";
-            sciezkapliku = string.Concat(sciezkapliku, sciezkaDanych);
-            this.StartInfo.WorkingDirectory = sciezkapliku;
+            filePath = Environment.CurrentDirectory;
+            dataPath = @"\Data\";
+            filePath = string.Concat(filePath, dataPath);
+            this.StartInfo.WorkingDirectory = filePath;
         }
-        public void Wyczyszczenie()
+        public void ShitRemover()
         {
             Console.Clear();
             this.StartInfo.FileName = "PCDecrapifier.exe";
@@ -33,10 +33,10 @@ namespace KWPSerwisInstaller
             Console.WriteLine("Użyj programu PC Decrapifier aby usunąć niepotrzebne oprogramowanie z komputera.\nŚmieci i inne rzeczy.");
             this.WaitForExit();
         }
-        public void InstalacjaLotus(int opcja)
+        public void LotusInstaller(int option)
         {
             Console.WriteLine("-----------------------------------------------");
-            if (opcja == 0)
+            if (option == 0)
             {
                 this.StartInfo.FileName = "LotusNotesBasic853.exe";
                 this.Start();
@@ -44,7 +44,7 @@ namespace KWPSerwisInstaller
                 this.WaitForExit();
                 Console.WriteLine("Zainstalowano klienta Lotus Notes 8.5.3 Basic.");
             }
-            else if (opcja == 1)
+            else if (option == 1)
             {
                 this.StartInfo.FileName = "LotusNotesStd853.exe";
                 this.Start();
@@ -52,7 +52,7 @@ namespace KWPSerwisInstaller
                 this.WaitForExit();
                 Console.WriteLine("Zainstalowano klienta Lotus Notes 8.5.3 Standard.");
             }
-            else if (opcja == 2)
+            else if (option == 2)
             {
                 this.StartInfo.FileName = "thunderbird.exe";
                 this.Start();
@@ -65,7 +65,7 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Nie wybrano żadnego lotusa.");
             }
         }
-        public void InstalacjaBazy()
+        public void BaseInstaller()
         {
             this.StartInfo.FileName = "Firefox.exe";
             this.Start();
@@ -89,22 +89,22 @@ namespace KWPSerwisInstaller
             this.WaitForExit();
             Console.WriteLine("Zainstalowano K-Lite Codec 15.04 Standard.");
         }
-        public void InstalacjaInternet()
+        public void InternetInstaller()
         {
-            this.InstalacjaBazy();
+            this.BaseInstaller();
             this.StartInfo.FileName = "EsetKWP64.exe";
             this.Start();
             Console.WriteLine("Trwa instalowanie Oprogramowania ESET AV version 8 64bit...");
             this.WaitForExit();
             Console.WriteLine("Zainstalowano Oprogramowanie antywirusowe ESET.");
         }
-        public void InstalacjaCWI()
+        public void CWIInstaller()
         {
-            this.InstalacjaInternet();
+            this.InternetInstaller();
         }
-        public void InstalacjaPSTD()
+        public void PSTDInstaller()
         {
-            this.InstalacjaBazy();
+            this.BaseInstaller();
             this.StartInfo.FileName = "java765.exe";
             this.Start();
             Console.WriteLine("Trwa instalacja Java Runtime Enviroment 7u65 dla UKSP...");
@@ -118,9 +118,9 @@ namespace KWPSerwisInstaller
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------");
         }
-        public void InstalacjaEKD(int opcja)
+        public void EKDAuthInstaller(int option)
         {
-            if (opcja == 0)
+            if (option == 0)
             {
                 this.StartInfo.FileName = "msiexec.exe";
                 this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}Encard\setup.msi");
@@ -128,7 +128,7 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Instaluję Encard 2.1.0...");
                 this.WaitForExit();
             }
-            else if (opcja == 1)
+            else if (option == 1)
             {
                 this.StartInfo.FileName = "msiexec.exe";
                 this.StartInfo.Arguments = string.Format("/i {0}", $@"{this.StartInfo.WorkingDirectory}encard64bit\encard.msi");
@@ -136,7 +136,7 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Instaluję Encard 4.1.5...");
                 this.WaitForExit();
             }
-            else if (opcja == 2)
+            else if (option == 2)
             {
                 this.StartInfo.FileName = "CCSuite.exe";
                 this.Start();
@@ -148,19 +148,19 @@ namespace KWPSerwisInstaller
                 Console.WriteLine("Nie wybrano żadnego klienta EKD..Aplikacja przejdzie dalej.");
             }
         }
-        public void InstalacjaOffice(int opcja)
+        public void OfficeInstaller(int option)
         {
             Console.WriteLine("--------------------------------------------------");
             try
             {
-                if (opcja == 0)
+                if (option == 0)
                 {
                     this.StartInfo.FileName = "OpenOffice.exe";
                     this.Start();
                     Console.WriteLine("Instaluję OpenOffice 4.1.6...");
                     this.WaitForExit();
                 }
-                else if (opcja == 1)
+                else if (option == 1)
                 {
                     this.StartInfo.FileName = @"office2007\setup.exe";
                     this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2007\config.msp");
@@ -168,7 +168,7 @@ namespace KWPSerwisInstaller
                     Console.WriteLine("Instaluję Office 2007 Enterprise...");
                     this.WaitForExit();
                 }
-                else if (opcja == 2)
+                else if (option == 2)
                 {
                     this.StartInfo.FileName = @"office2016\setup.exe";
                     this.StartInfo.Arguments = string.Format("/adminfile {0}", $@"{this.StartInfo.WorkingDirectory}office2016\config.msp");

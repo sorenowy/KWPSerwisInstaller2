@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace KWPSerwisInstaller
 {
-    interface IInstalacjaBazy
+    interface IBaseInstaller
     {
-        void InstalacjaBazy();
+        void BaseInstaller();
     }
-    interface IInstalacjaInternet
+    interface IInternetInstaller
     {
-        void InstalacjaInternet();
-        void InstalacjaCWI();
+        void InternetInstaller();
+        void CWIInstaller();
     }
-    interface IInstalacjaPSTD
+    interface IPSTDInstaller
     {
-        void InstalacjaPSTD();
+        void PSTDInstaller();
     }
-    interface IInstalacjaOffice
+    interface IOfficeInstaller
     {
-        void InstalacjaOffice(int opcja);
+        void OfficeInstaller(int opcja);
     }
     interface IIPConfigLog
     {
-        void GenerujIPConfigLog();
+        void GenerateIPConfigLog();
     }
     interface ICreateUser
     {
-        void WyswietlUser();
+        void ShowUser();
         void CreateUser(string a, string b);
     }
     interface IChangeNetBIOS
@@ -37,17 +37,17 @@ namespace KWPSerwisInstaller
         void ChangeNetBIOS();
         void JoinDomain();
     }
-    interface IDodajCertyfikat
+    interface IAddCertificate
     {
-        void InstalujCWI(string sciezkaCWI);
-        void InstalujInfrastruktura(string sciezkaPSTD);
+        void InstallCWICert(string sciezkaCWI);
+        void InstallInfrastrukturaCert(string sciezkaPSTD);
     }
     interface IDriverInstall
     {
-        void ZainstalujSterownik();
+        void InstallDriver();
     }
-    interface IPolitykaBezp
+    interface ISecurityPolicy
     {
-        void ZainstalujPolitykeBezpieczenstwa();
+        void ApplySecurityPolicy();
     }
 }
