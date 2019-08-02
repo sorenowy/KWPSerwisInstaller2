@@ -287,7 +287,7 @@ namespace KWPSerwisInstaller
                 lotusInstallerMenu.ShowDialog();
                 officeInstallerMenu.ShowDialog();
                 install.InternetInstaller();
-                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?","Kreator Konta Użytkownika", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dialogUser == DialogResult.Yes)
                 {
                     userCreationMenu.ShowDialog();
@@ -307,7 +307,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcję nie instalowania polityki KWP.", "Uwaga");
                 }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     ipConfigMenu.ShowDialog();
@@ -317,7 +317,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcje nie tworzenia loga.", "Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz dołączyć do domeny? Wybierz Tak, aby dołączyć. Nie aby zmienić tylko nazwę NetBIOS. Anuluj aby pominąć.", 
-                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel);
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dNetbios == DialogResult.Yes)
                 {
                     domainMenu.ShowDialog();
@@ -331,7 +331,7 @@ namespace KWPSerwisInstaller
                 {
                     MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.","Uwaga");
                 }
-                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
                 if(dRestart == DialogResult.Yes)
                 {
                     Program.Thanks();
@@ -354,7 +354,7 @@ namespace KWPSerwisInstaller
                 cert.InstallInfrastrukturaCert("infrastruktura2019.der");
                 driver.InstallDriver();
                 ekdInstallerMenu.ShowDialog();
-                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogUser == DialogResult.Yes)
                 {
                     userCreationMenu.ShowDialog();
@@ -364,7 +364,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcje nie tworzenia konta.", "Uwaga");
                 }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     ipConfigMenu.ShowDialog();
@@ -374,7 +374,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcje nie tworzenia loga.", "Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz zmienić nazwę komputera? Wybierz Tak, aby dokonać zmiany. Nie aby zakończyć.",
-                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dNetbios == DialogResult.Yes)
                 {
                     domainMenu.ShowDialog();
@@ -383,7 +383,7 @@ namespace KWPSerwisInstaller
                 {
                     MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.", "Uwaga");
                 }
-                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dRestart == DialogResult.Yes)
                 {
                     Program.Thanks();
@@ -403,7 +403,7 @@ namespace KWPSerwisInstaller
                 officeInstallerMenu.ShowDialog();
                 install.CWIInstaller();
                 cert.InstallCWICert("CWI_CERT.cer");
-                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo);
+                DialogResult dialogUser = MessageBox.Show("Czy chcesz utworzyć nowe konto lokalne na komputerze?", "Kreator Konta Użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogUser == DialogResult.Yes)
                 {
                     userCreationMenu.ShowDialog();
@@ -413,7 +413,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcje nie tworzenia konta.","Uwaga");
                 }
                 DialogResult dIpconfig = MessageBox.Show("Czy chcesz wygenerować loga funkcji ipconfig, Który zostanie zapisany w folderze /LOGI lokacji instalacyjnej programu?",
-                    "Ipconfig Log Generator", MessageBoxButtons.YesNo);
+                    "Ipconfig Log Generator", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dIpconfig == DialogResult.Yes)
                 {
                     ipConfigMenu.ShowDialog();
@@ -423,7 +423,7 @@ namespace KWPSerwisInstaller
                     MessageBox.Show("Wybrałeś opcje nie tworzenia konta.","Uwaga");
                 }
                 DialogResult dNetbios = MessageBox.Show("Czy chcesz zmienić nazwę komputera? Wybierz Tak, aby dokonać zmiany. Nie aby zakończyć.",
-                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo);
+                    "Domain&NetBIOS connector", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dNetbios == DialogResult.Yes)
                 {
                     domainMenu.ShowDialog();
@@ -432,7 +432,7 @@ namespace KWPSerwisInstaller
                 {
                     MessageBox.Show("Wybrałeś opcje nie zmieniania nazwy.","Uwaga");
                 }
-                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo);
+                DialogResult dRestart = MessageBox.Show("Czy chcesz uruchomić komputer ponownie, aby zapisać zmiany?", "Restart", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
                 if (dRestart == DialogResult.Yes)
                 {
                     Program.Thanks();

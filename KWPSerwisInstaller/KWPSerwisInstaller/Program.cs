@@ -52,9 +52,8 @@ namespace KWPSerwisInstaller
             catch (Exception e)
             {
                 Console.WriteLine("Oops, cos poszło nie tak :)");
-                MessageBox.Show(e.Message,"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DialogResult dError = MessageBox.Show("Uruchom program raz jeszcze!, lub jeżeli to nie pomogło, skontaktuj się z programistą - tel. 11659." +
-                "\nNaciśnij dowolny klawisz, by zamknąć okno.","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                DialogResult dError = MessageBox.Show(e.Message+"\n------------\nUruchom program raz jeszcze!, lub jeżeli to nie pomogło, skontaktuj się z programistą - tel. 11659." +
+                "\nNaciśnij dowolny klawisz, by zamknąć okno.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 if (dError == DialogResult.OK)
                 {
                     return;
