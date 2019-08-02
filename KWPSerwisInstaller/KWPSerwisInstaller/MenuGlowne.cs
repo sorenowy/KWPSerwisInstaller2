@@ -25,6 +25,7 @@ namespace KWPSerwisInstaller
         private Form lotusInstallerMenu = new Form();
         private Form ekdInstallerMenu = new Form();
         private Form officeInstallerMenu = new Form();
+        private Form faqMenu = new Form();
         private Label mainLabel = new Label();
         private Label lotusLabel = new Label();
         private Label ekdLabel = new Label();
@@ -33,6 +34,7 @@ namespace KWPSerwisInstaller
         private Label inputPasswordLabel = new Label();
         private Label inputInvNumLabel = new Label();
         private Label inputNetBiosName = new Label();
+        private Label faqLabel = new Label();
         private ListBox lotusList = new ListBox();
         private ListBox ekdList = new ListBox();
         private ListBox officeList = new ListBox();
@@ -54,6 +56,7 @@ namespace KWPSerwisInstaller
         private Button buttonUser = new Button();
         private Button buttonIpLog = new Button();
         private Button buttonChangeNetbios = new Button();
+        private Button buttonFaq = new Button();
         public MenuGlowne()
         {
             Installer install = new Installer();
@@ -65,12 +68,12 @@ namespace KWPSerwisInstaller
             DriverInstaller driver = new DriverInstaller();
             PolitykaBezpieczenstwa policy = new PolitykaBezpieczenstwa();
             Console.Title = "Log KWP Serwis Installer";
-            MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7\nUpewnij się że komputer " +
+            MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.8\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             MessageBox.Show(Program.Copyright(), "Copyright");
             // Nazwa tytułu aplikacji
-            this.Text = "KWP Serwis Installer v0.7";
+            this.Text = "KWP Serwis Installer v0.8";
             this.Size = new Size(760, 560);
             // Załadowanie i wyskalowanie obrazka na stronę tytułową
             Image titleImage = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
@@ -87,6 +90,11 @@ namespace KWPSerwisInstaller
             officeLabel.Text = lotusLabel.Text;
             officeLabel.Size = lotusLabel.Size;
             officeLabel.Font = lotusLabel.Font;
+            faqLabel.Text = "Witaj w programie Instalacyjnym KWP Serwis Installer v0.8 \nUpewnij się że komputer jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie.\n" +
+                "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP.\nLogi ipconfig -all programu zapisują się w folderze /Logi lokalizacji programu.\n" +
+                "Pamiętaj aby zawsze uruchamiać program z konta administratora."+"\n-------------------------------------\nW przypadku błędu czy problemu który nie da się rozwiązać, skontaktuj się z programistą i poinformuj go o problemie -\n@mail - hubert.kuszynski@go.policja.gov.pl \nlub \ntel. res. 11659";
+            faqLabel.Size = new Size(600, 400);
+            faqLabel.Font = lotusLabel.Font;
             // Ustawianie opisu etykiet menu tworzenia konta, nazwyPC, loga Ipconfig
             inputUsernameLabel.Text = "Nazwa użytkownika";
             inputUsernameLabel.Size = new Size(200, 50);
@@ -98,13 +106,18 @@ namespace KWPSerwisInstaller
             inputInvNumLabel.Text = "Nr inw. komputera";
             inputInvNumLabel.Size = inputUsernameLabel.Size;
             inputInvNumLabel.Font = inputUsernameLabel.Font;
-            inputNetBiosName.Text = "Nazwa NetBIOS kompuera";
+            inputInvNumLabel.Top = 20;
+            inputNetBiosName.Text = "Nazwa NetBIOS komputera";
             inputNetBiosName.Size = inputUsernameLabel.Size;
             inputNetBiosName.Font = inputUsernameLabel.Font;
             // Opis przycisku zakończ, ustawienie jego pozycji
             buttonClose.Text = "Zakończ";
             buttonClose.Top = 450;
             buttonClose.Left = 600;
+            buttonFaq.Text = "F.A.Q";
+            buttonFaq.Top = 450;
+            buttonFaq.Left = 200;
+            buttonFaq.BackColor = Color.Pink;
             // Opis pozostałych przycisków, ustawienie ich pozycji
             buttonInternet.Text = "Ins. Internet";
             buttonInternet.BackColor = Color.LightBlue;
@@ -125,9 +138,11 @@ namespace KWPSerwisInstaller
             buttonCancelOffice.Text = "Anuluj";
             buttonCancelOffice.Top = 600;
             buttonCancelOffice.Left = 300;
+            buttonCancelOffice.ForeColor = buttonCancel.ForeColor;
             buttonCancelEKD.Text = buttonCancel.Text;
             buttonCancelEKD.Top = buttonCancel.Top;
             buttonCancelEKD.Left = buttonCancel.Left;
+            buttonCancelEKD.ForeColor = buttonCancel.ForeColor;
             //Ustawienia przycisków zatwierdzeń Lotusa,Office i EKD.
             buttonOKLotus.Text = "OK";
             buttonOKLotus.Top = 600;
@@ -152,7 +167,7 @@ namespace KWPSerwisInstaller
             buttonChangeNetbios.Text = "Zmień Netbios";
             buttonChangeNetbios.Size = new Size(100, 50);
             buttonChangeNetbios.Top = 100;
-            buttonChangeNetbios.Left = 10;
+            buttonChangeNetbios.Left = 50;
             //Ustawienia okien wyboru z listy
             lotusInstallerMenu.Text = "Wybierz klienta poczty w celu instalacji.";
             lotusInstallerMenu.Size = new Size(580, 700);
@@ -160,6 +175,8 @@ namespace KWPSerwisInstaller
             ekdInstallerMenu.Size = lotusInstallerMenu.Size;
             officeInstallerMenu.Text = "Wybierz Oprogramowanie Biurowe w celu instalacji.";
             officeInstallerMenu.Size = lotusInstallerMenu.Size;
+            faqMenu.Text = "Menu pomocy";
+            faqMenu.Size = new Size(600, 500);
             //Ustawienia okien funkcji generujących
             userCreationMenu.Text = "Wprowadź dane użytkownika i hasło.";
             userCreationMenu.Size = new Size(500, 200);
@@ -215,9 +232,9 @@ namespace KWPSerwisInstaller
             netbiosNameTextbox.Left = usernameTextbox.Left;
             netbiosNameTextbox.Top = 20;
             inventoryTextbox.Size = usernameTextbox.Size;
-            inventoryTextbox.Font = inventoryTextbox.Font;
-            inventoryTextbox.Top = 50;
-            inventoryTextbox.Left = inventoryTextbox.Left;
+            inventoryTextbox.Font = usernameTextbox.Font;
+            inventoryTextbox.Top = 30;
+            inventoryTextbox.Left = 200;
             //Metody wywołujące..
             void ButtonLotusOKClick(object sender, EventArgs ea)
             {
@@ -320,13 +337,11 @@ namespace KWPSerwisInstaller
                     Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                     Close();
-                    return;
                 }
                 else if (dRestart == DialogResult.No)
                 {
                     Program.Thanks();
                     Close();
-                    return;
                 }
             }
             void ButtonPSTDClick(object sender,EventArgs ea)
@@ -374,13 +389,11 @@ namespace KWPSerwisInstaller
                     Program.Thanks();
                     Process.Start("shutdown", "/r /f /t 0");
                     Close();
-                    return;
                 }
                 else if (dRestart == DialogResult.No)
                 {
                     Program.Thanks();
                     Close();
-                    return;
                 }
             }
             void ButtonCWIClick(object sender,EventArgs ea)
@@ -436,6 +449,10 @@ namespace KWPSerwisInstaller
             {
                 Application.Exit();
             }
+            void ButtonFAQClick(object sender, EventArgs ea)
+            {
+                faqMenu.ShowDialog();
+            }
             void ButtonCancelClick(object sender, EventArgs ea)
             {
                 lotusInstallerMenu.Close();
@@ -450,6 +467,7 @@ namespace KWPSerwisInstaller
             }
             //Delegowanie metod do eventu przycisku myszy
             buttonClose.Click += new EventHandler(ButtonCloseClick);
+            buttonFaq.Click += new EventHandler(ButtonFAQClick);
             buttonInternet.Click += new EventHandler(ButtonInternetClick);
             buttonPSTD.Click += new EventHandler(ButtonPSTDClick);
             buttonCWI.Click += new EventHandler(ButtonCWIClick);
@@ -488,11 +506,13 @@ namespace KWPSerwisInstaller
             domainMenu.Controls.Add(inputNetBiosName);
             domainMenu.Controls.Add(netbiosNameTextbox);
             domainMenu.Controls.Add(buttonChangeNetbios);
+            faqMenu.Controls.Add(faqLabel);
             Controls.Add(mainLabel);
             Controls.Add(buttonInternet);
             Controls.Add(buttonPSTD);
             Controls.Add(buttonCWI);
             Controls.Add(buttonClose);
+            Controls.Add(buttonFaq);
         }
     }
 }

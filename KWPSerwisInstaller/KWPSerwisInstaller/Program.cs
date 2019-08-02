@@ -16,6 +16,7 @@ namespace KWPSerwisInstaller
         public delegate void DelegatInformacyjny();
         public static void Welcome()
         {
+            // Powitanie ukazujące się na tle konsoli po uruchomieniu".
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("#######  ######  ##       ##  ######  ######  #######");
             Console.WriteLine("##   ##  ##  ##  ##       ##  ##          ##  ##   ##");
@@ -30,17 +31,19 @@ namespace KWPSerwisInstaller
         }
         public static string Copyright()
         {
+            //Zwraca copyright :)
             return "Made by Hubert Kuszyński, Komenda Wojewódzka Policji w Gorzowie Wielkopolskim, tel. 11659.";
         }
         public static void Thanks()
         {
+            //Podziekowania pod koniec programu
             MessageBox.Show("Dziękuję za skorzystanie z KWP Serwis Installer v0.7. Do zobaczenia next time ;). Naciśnij OK, by zamknąć okno.","Thank You");
         }
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Clear();
+            Console.Clear(); // Ustawia kolory konsoli i przeładowywuje ją :)
             Welcome();
             try
             {

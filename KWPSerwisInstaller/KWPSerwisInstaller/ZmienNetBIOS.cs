@@ -22,7 +22,10 @@ namespace KWPSerwisInstaller
         public void ChangeNetBIOS()
         {
             try
-            {
+            { /* Ustawienia wlasciwosci są w tej metodzie z racji braku przekazywania jej w konstruktorze WPF, 
+                ktory automatycznie przyjmuje i nie wykonuje funkcji UseShellExecute, 
+                kluczowej do wykonania w przypadku wywołania powershella! 
+                Stąd przekazany został do metody ChangeNetBIOS zamiast do konstruktora klasy.*/
                 this.StartInfo.CreateNoWindow = true;
                 this.StartInfo.UseShellExecute = false;
                 this.StartInfo.RedirectStandardInput = true;

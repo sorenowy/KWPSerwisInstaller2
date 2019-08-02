@@ -12,14 +12,14 @@ namespace KWPSerwisInstaller
 {
     class IPConfigLog : Installer, IIPConfigLog
     {
-        public string logPath;
-        public int option;
-        public string inventoryNumber;
+        public string logPath; // Pobrane w metodzie zawartej w konstruktorze WPF
+        public int option; // Pobrane w metodzie zawartej w konstruktorze WPF
+        public string inventoryNumber; // Pobrane w metodzie zawartej w konstruktorze WPF
         public IPConfigLog()
         {
             this.StartInfo.Verb = "runas";
             this.StartInfo.CreateNoWindow = true;
-            this.StartInfo.UseShellExecute = false;
+            this.StartInfo.UseShellExecute = false; // Koniecznie musi byc false, zeby nie uruchamiało shella systemu! inaczej CMD nie przyjmie danych!
             this.StartInfo.RedirectStandardInput = true;
             this.StartInfo.RedirectStandardOutput = true;
             logPath = Environment.CurrentDirectory + @"\Logi\";

@@ -28,16 +28,16 @@ namespace KWPSerwisInstaller
         {
             try
             {
-                DirectoryInfo filePath = new DirectoryInfo(driverPath);
-                Directory.CreateDirectory(finalPath);
-                FileInfo[] files = filePath.GetFiles();
-                foreach (FileInfo file in files)
+                DirectoryInfo filePath = new DirectoryInfo(driverPath); // program tworzy zmienna i przypisuje obiekt DI, o sciezce sterownika z pendrive
+                Directory.CreateDirectory(finalPath); // tworzy sciezke docelowa na dysku C:
+                FileInfo[] files = filePath.GetFiles(); // Pobiera pliki z pendrive
+                foreach (FileInfo file in files) // Wykonuje utworzenie nowej sciezki dla kazdego pliku + kopiuje do sciezki z nadpisem :)
                 {
                     string temppath = Path.Combine(finalPath, file.Name);
                     file.CopyTo(temppath, true);
                 }
-                this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";
-                this.StartInfo.Arguments = @"/c C:\Windows\sysnative\pnputil.exe /i /a C:\Data\64\ezusb.inf";
+                this.StartInfo.FileName = @"C:\Windows\System32\cmd.exe"; 
+                this.StartInfo.Arguments = @"/c C:\Windows\sysnative\pnputil.exe /i /a C:\Data\64\ezusb.inf"; // wywołanie metody z argumentem w CMD
                 this.Start();
                 Console.WriteLine(this.StandardOutput.ReadToEnd());
                 this.StandardOutput.Close();

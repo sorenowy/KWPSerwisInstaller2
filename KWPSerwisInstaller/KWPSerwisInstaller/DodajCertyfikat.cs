@@ -26,11 +26,11 @@ namespace KWPSerwisInstaller
         {
             try
             {
-                X509Certificate2 certificateCWI = new X509Certificate2(certCWIPath + filename);
-                X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
+                X509Certificate2 certificateCWI = new X509Certificate2(certCWIPath + filename); // tworzy lokalną zmienną dopisaną do obiektu X509Cert2
+                X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine); // tworzy zmienną obiektu X509Store czyli wskazuje na konkretny magazyn w konkretnym miejscu (zaufane gl. urz. certyfikacji)
 
-                store.Open(OpenFlags.ReadWrite);
-                store.Add(certificateCWI);
+                store.Open(OpenFlags.ReadWrite); //Otwiera magazyn i zezwala na zapis/odczyt
+                store.Add(certificateCWI); // dodaje ceryfikat
                 store.Close();
                 Console.WriteLine("Certyfikat CWI_CERT dograny pomyślnie!");
             }
