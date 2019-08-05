@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    public class MenuGlowne : Form
+    public class MainMenu : Form
     {
         //Deklarowanie i inicjalizacja wszystkich elementów menu graficznego.
         private Form userCreationMenu = new Form();
@@ -57,16 +57,16 @@ namespace KWPSerwisInstaller
         private Button buttonIpLog = new Button();
         private Button buttonChangeNetbios = new Button();
         private Button buttonFaq = new Button();
-        public MenuGlowne()
+        public MainMenu()
         {
             Installer install = new Installer();
             IPConfigLog log = new IPConfigLog();
             ClassCreateUser user = new ClassCreateUser();
-            ZmienNetBIOS zmiana = new ZmienNetBIOS();
-            ZmienNetBIOS domena = new ZmienNetBIOS();
-            DodajCertyfikat cert = new DodajCertyfikat();
+            NetBIOSChange zmiana = new NetBIOSChange();
+            NetBIOSChange domena = new NetBIOSChange();
+            AddCert cert = new AddCert();
             DriverInstaller driver = new DriverInstaller();
-            PolitykaBezpieczenstwa policy = new PolitykaBezpieczenstwa();
+            SecurityPolicy policy = new SecurityPolicy();
             Console.Title = "Log KWP Serwis Installer";
             MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.8\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
@@ -213,7 +213,7 @@ namespace KWPSerwisInstaller
                     "1. OpenOffice 4.1.6",
                     "2. Microsoft Office 2007 Enterprise (cs)",
                     "3. Microsoft Office 2016 MOLP",
-                    "4. Microsoft Office 2019 MOLP (KGP)"
+                    "4. Microsoft Office 2019 MOLP (KGP)" // Brak dodania z racji tego że instalator nie jest lokalny, tylko odwołujący się do sciezki sieciowej :)
                 });
             officeList.Size = ekdList.Size;
             officeList.Top = ekdList.Top;

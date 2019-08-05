@@ -16,11 +16,11 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    class PolitykaBezpieczenstwa : DriverInstaller, ISecurityPolicy
+    internal class SecurityPolicy : DriverInstaller, ISecurityPolicy
     {
         private string finalPath; //Pobrane w metodzie zawartej w konstruktorze WPF
         private string policyPath; //Pobrane w metodzie zawartej w konstruktorze WPF
-        public PolitykaBezpieczenstwa()
+        public SecurityPolicy()
         {
             finalPath = @"C:\Data\polityka";
             this.StartInfo.Verb = "runas";

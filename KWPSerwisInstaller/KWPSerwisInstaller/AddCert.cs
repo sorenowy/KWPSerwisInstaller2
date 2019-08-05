@@ -13,11 +13,11 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace KWPSerwisInstaller
 {
-    class DodajCertyfikat : Installer, IAddCertificate
+    internal class AddCert : Installer, IAddCertificate
     {
         private string certCWIPath;
         private string certPSTDPath;
-        public DodajCertyfikat()
+        public AddCert()
         {
             this.certCWIPath = filePath;
             this.certPSTDPath = filePath;

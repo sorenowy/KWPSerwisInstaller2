@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    class ZmienNetBIOS : Installer, IChangeNetBIOS
+    internal class NetBIOSChange : Installer, IChangeNetBIOS
     {
         public string newNETBiosName;
-        public ZmienNetBIOS()
+        public NetBIOSChange()
         { 
             this.StartInfo.Verb = "runas";
         }

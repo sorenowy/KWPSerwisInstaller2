@@ -11,9 +11,8 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    class Program
+    internal class Program
     {
-        public delegate void DelegatInformacyjny();
         public static void Welcome()
         {
             // Powitanie ukazujące się na tle konsoli po uruchomieniu".
@@ -47,7 +46,7 @@ namespace KWPSerwisInstaller
             Welcome();
             try
             {
-                Application.Run(new MenuGlowne());
+                Application.Run(new MainMenu());
             }
             catch (Exception e)
             {
