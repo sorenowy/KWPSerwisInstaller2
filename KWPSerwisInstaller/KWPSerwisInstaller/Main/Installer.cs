@@ -13,12 +13,7 @@ namespace KWPSerwisInstaller.Main
         public Installer()
         {
             // Wymuszenie na obiekcie poleceń uzycia powłoki systemu wymuszaniu okien (sciezki plikow) + ustawienie sciezki docelowej.
-            this.StartInfo.UseShellExecute = true;
-            this.StartInfo.CreateNoWindow = false;
-            filePath = Environment.CurrentDirectory;
-            dataPath = @"\Data\";
-            filePath = string.Concat(filePath, dataPath);
-            this.StartInfo.WorkingDirectory = filePath;
+
         }
         public Installer(bool cnt)
         {

@@ -15,7 +15,6 @@ namespace KWPSerwisInstaller
         {
             MenuParameters.CreateForms();
             IPConfigLog log = new IPConfigLog();
-            Installer install = new Installer(LocalParameters.netconnection);
             ClassCreateUser user = new ClassCreateUser();
             NetBIOSChange zmiana = new NetBIOSChange();
             NetBIOSChange domena = new NetBIOSChange();
@@ -27,6 +26,16 @@ namespace KWPSerwisInstaller
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             MessageBox.Show(Program.Copyright(), "Copyright");
+            DialogResult connection = MessageBox.Show("Czy chcesz uruchomic program w trybie autonomicznym?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (connection == DialogResult.Yes)
+            {
+                LocalParameters.netconnection = false;
+            }
+            else
+            {
+                LocalParameters.netconnection = true;
+            }
+            Installer install = new Installer(LocalParameters.netconnection);
             // Nazwa tytułu aplikacji
             this.Text = "KWP Serwis Installer v0.8";
             this.Size = new Size(760, 560);
