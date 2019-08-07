@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.DirectoryServices;
 using System.Windows.Forms;
+using KWPSerwisInstaller.Configuration;
 
 namespace KWPSerwisInstaller
 {
@@ -46,6 +47,16 @@ namespace KWPSerwisInstaller
             Welcome();
             try
             {
+                DialogResult connection = MessageBox.Show("Czy chcesz uruchomic program w trybie autonomicznym?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (connection == DialogResult.Yes)
+                {
+                    LocalParameters.netconnection = false;
+                }
+                else
+                {
+                    LocalParameters.netconnection = true;
+                }
+                
                 Application.Run(new MainMenu());
             }
             catch (Exception e)

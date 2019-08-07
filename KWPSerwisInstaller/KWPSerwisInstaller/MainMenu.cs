@@ -14,8 +14,8 @@ namespace KWPSerwisInstaller
         public MainMenu()
         {
             MenuParameters.CreateForms();
-            Installer install = new Installer();
             IPConfigLog log = new IPConfigLog();
+            Installer install = new Installer(LocalParameters.netconnection);
             ClassCreateUser user = new ClassCreateUser();
             NetBIOSChange zmiana = new NetBIOSChange();
             NetBIOSChange domena = new NetBIOSChange();

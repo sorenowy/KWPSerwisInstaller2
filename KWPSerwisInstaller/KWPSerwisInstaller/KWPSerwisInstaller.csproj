@@ -56,6 +56,7 @@
     <Compile Include="ActiveDirectory\CreateUser.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Configuration\LocalParameters.cs" />
     <Compile Include="Configuration\MenuParameters.cs">
       <SubType>Form</SubType>
     </Compile>
