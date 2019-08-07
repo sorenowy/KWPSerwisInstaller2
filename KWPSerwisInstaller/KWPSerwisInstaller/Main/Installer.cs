@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Diagnostics;
-using System.Runtime;
-using System.Windows;
 using System.Windows.Forms;
 
-namespace KWPSerwisInstaller
+namespace KWPSerwisInstaller.Main
 {
 
-    internal class Installer : Process
+    public class Installer : Process
     {
         public string filePath;
         private string dataPath;

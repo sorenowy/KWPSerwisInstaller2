@@ -1,22 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Diagnostics;
-using System.Runtime;
-using System.DirectoryServices;
-using System.Security;
-using System.Windows;
-using System.Windows.Forms;
+using KWPSerwisInstaller.Main;
 
-namespace KWPSerwisInstaller
+namespace KWPSerwisInstaller.Policy
 {
-    internal class SecurityPolicy : DriverInstaller
+    public class SecurityPolicy : DriverInstaller
     {
         private string finalPath; //Pobrane w metodzie zawartej w konstruktorze WPF
         private string policyPath; //Pobrane w metodzie zawartej w konstruktorze WPF

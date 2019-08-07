@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E886570E-5DB5-4210-AC03-FB6CC7240481}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>KWPSerwisInstaller</RootNamespace>
     <AssemblyName>KWPSerwisInstaller</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -53,30 +53,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateUser.cs">
+    <Compile Include="ActiveDirectory\CreateUser.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AddCert.cs">
+    <Compile Include="Configuration\MenuParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\AddCert.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DriverInstaller.cs">
+    <Compile Include="Main\DriverInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Installer.cs">
+    <Compile Include="Main\Installer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IPConfigLog.cs">
+    <Compile Include="Logs\IPConfigLog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SecurityPolicy.cs">
+    <Compile Include="Policy\SecurityPolicy.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NetBIOSChange.cs">
+    <Compile Include="ActiveDirectory\NetBIOSChange.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -92,5 +95,6 @@
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

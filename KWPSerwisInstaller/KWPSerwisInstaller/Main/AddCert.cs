@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Diagnostics;
-using System.Windows;
-using System.Runtime;
-using System.Security;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
-namespace KWPSerwisInstaller
+namespace KWPSerwisInstaller.Main
 {
-    internal class AddCert : Installer
+    public class AddCert : Installer
     {
         private string certCWIPath;
         private string certPSTDPath;

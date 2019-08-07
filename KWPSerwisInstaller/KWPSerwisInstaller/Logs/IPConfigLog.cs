@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Diagnostics;
-using System.Windows;
-using System.Runtime;
+using KWPSerwisInstaller.Main;
 
-namespace KWPSerwisInstaller
+namespace KWPSerwisInstaller.Logs
 {
-    class IPConfigLog : Installer
+    public class IPConfigLog : Installer
     {
         public string logPath; // Pobrane w metodzie zawartej w konstruktorze WPF
         public int option; // Pobrane w metodzie zawartej w konstruktorze WPF

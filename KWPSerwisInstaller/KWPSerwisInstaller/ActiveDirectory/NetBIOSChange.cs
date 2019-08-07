@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Diagnostics;
-using System.Windows;
-using System.DirectoryServices;
-using System.Security;
-using System.Windows.Forms;
+using KWPSerwisInstaller.Main;
 
 namespace KWPSerwisInstaller
 {
-    internal class NetBIOSChange : Installer
+    public class NetBIOSChange : Installer
     {
         public string newNETBiosName;
         public NetBIOSChange()

@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Diagnostics;
-using System.Windows;
-using System.Runtime;
 
-namespace KWPSerwisInstaller
+namespace KWPSerwisInstaller.Main
 {
-    internal class DriverInstaller : Installer
+    public class DriverInstaller : Installer
     {
         public string driverPath;
         private string finalPath;
