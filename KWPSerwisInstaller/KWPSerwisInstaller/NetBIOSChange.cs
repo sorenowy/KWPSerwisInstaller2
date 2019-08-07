@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    internal class NetBIOSChange : Installer, IChangeNetBIOS
+    internal class NetBIOSChange : Installer
     {
         public string newNETBiosName;
         public NetBIOSChange()

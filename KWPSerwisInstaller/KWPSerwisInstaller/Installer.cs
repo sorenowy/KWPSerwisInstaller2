@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace KWPSerwisInstaller
 {
 
-    internal class Installer : Process, IBaseInstaller, IInternetInstaller, IPSTDInstaller, IOfficeInstaller
+    internal class Installer : Process
     {
         public string filePath;
         private string dataPath;

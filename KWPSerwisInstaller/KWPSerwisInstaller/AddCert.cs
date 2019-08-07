@@ -13,7 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace KWPSerwisInstaller
 {
-    internal class AddCert : Installer, IAddCertificate
+    internal class AddCert : Installer
     {
         private string certCWIPath;
         private string certPSTDPath;

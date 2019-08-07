@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    internal class SecurityPolicy : DriverInstaller, ISecurityPolicy
+    internal class SecurityPolicy : DriverInstaller
     {
         private string finalPath; //Pobrane w metodzie zawartej w konstruktorze WPF
         private string policyPath; //Pobrane w metodzie zawartej w konstruktorze WPF

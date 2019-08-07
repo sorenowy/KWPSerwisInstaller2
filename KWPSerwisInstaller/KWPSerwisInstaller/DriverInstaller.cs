@@ -10,7 +10,7 @@ using System.Runtime;
 
 namespace KWPSerwisInstaller
 {
-    internal class DriverInstaller : Installer, IDriverInstall
+    internal class DriverInstaller : Installer
     {
         public string driverPath;
         private string finalPath;

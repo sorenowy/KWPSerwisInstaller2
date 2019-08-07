@@ -10,7 +10,7 @@ using System.Runtime;
 
 namespace KWPSerwisInstaller
 {
-    class IPConfigLog : Installer, IIPConfigLog
+    class IPConfigLog : Installer
     {
         public string logPath; // Pobrane w metodzie zawartej w konstruktorze WPF
         public int option; // Pobrane w metodzie zawartej w konstruktorze WPF

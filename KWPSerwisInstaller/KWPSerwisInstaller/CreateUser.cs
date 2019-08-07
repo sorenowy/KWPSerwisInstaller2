@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace KWPSerwisInstaller
 {
-    internal class ClassCreateUser : Installer, ICreateUser
+    internal class ClassCreateUser : Installer
     {
         public string name; // Pobrane w metodzie zawartej w konstruktorze WPF
         public string password; // Pobrane w metodzie zawartej w konstruktorze WPF
