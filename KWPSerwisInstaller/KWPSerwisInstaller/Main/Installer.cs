@@ -8,30 +8,30 @@ namespace KWPSerwisInstaller.Main
 
     public class Installer : Process
     {
-        public string filePath;
-        private string dataPath;
+        private string _dataPath;
         public Installer()
         {
             // Wymuszenie na obiekcie poleceń uzycia powłoki systemu wymuszaniu okien (sciezki plikow) + ustawienie sciezki docelowej.
-
+            //Pusty konstruktor :)
         }
-        public Installer(bool cnt)
+        public Installer(bool option)
         {
-            if(cnt == false)
-            this.StartInfo.UseShellExecute = true;
-            this.StartInfo.CreateNoWindow = false;
-            filePath = Environment.CurrentDirectory;
-            dataPath = @"\Data\";
-            filePath = string.Concat(filePath, dataPath);
-            this.StartInfo.WorkingDirectory = filePath;
-            if (cnt == true)
+            //Bazowa opcja, tryb lokalny, poniżej tryb sieciowy.
+            if(option == false)
+            {
+                this.StartInfo.UseShellExecute = true;
+                this.StartInfo.CreateNoWindow = false;
+                _dataPath = LocalParameters.installationDataPath;
+                this.StartInfo.WorkingDirectory = _dataPath;
+            }
+            else if (option == true)
+            {
+                this.StartInfo.UseShellExecute = true;
+                this.StartInfo.CreateNoWindow = false;
+                _dataPath = @"\\192.168.0.54\Serwis\KWPInstaller\Data\";
+                this.StartInfo.WorkingDirectory = _dataPath;
+            }
             // Wymuszenie na obiekcie poleceń uzycia powłoki systemu wymuszaniu okien (sciezki plikow) + ustawienie sciezki docelowej.
-            this.StartInfo.UseShellExecute = true;
-            this.StartInfo.CreateNoWindow = false;
-            filePath = @"\\192.168.0.54\test";
-            dataPath = @"\Data\";
-            filePath = string.Concat(filePath, dataPath);
-            this.StartInfo.WorkingDirectory = filePath;
         }
         public void ShitRemover()
         {

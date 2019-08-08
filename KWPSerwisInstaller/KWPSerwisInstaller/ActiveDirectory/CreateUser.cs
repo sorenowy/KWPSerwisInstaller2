@@ -1,13 +1,12 @@
 ﻿using System;
 using System.DirectoryServices;
 using KWPSerwisInstaller.Main;
+using KWPSerwisInstaller.Configuration;
 
 namespace KWPSerwisInstaller
 {
     public class ClassCreateUser : Installer
     {
-        public string name; // Pobrane w metodzie zawartej w konstruktorze WPF
-        public string password; // Pobrane w metodzie zawartej w konstruktorze WPF
         public int option; // Pobrane w metodzie zawartej w konstruktorze WPF
         public ClassCreateUser()
         {
@@ -18,7 +17,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Windows Account creator");
             Console.WriteLine("---------------------------------");
-            CreateUser(name, password); // Przekazuje dane do metody
+            CreateUser(LocalParameters.username, LocalParameters.password); // Przekazuje dane do metody
         }
         public void CreateUser(string name, string pass)
         {

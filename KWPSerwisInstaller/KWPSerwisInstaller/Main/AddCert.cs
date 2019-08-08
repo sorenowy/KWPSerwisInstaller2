@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
+using KWPSerwisInstaller.Configuration;
 
 namespace KWPSerwisInstaller.Main
 {
     public class AddCert : Installer
     {
-        private string certCWIPath;
-        private string certPSTDPath;
+        private string _certCWIPath;
+        private string _certPSTDPath;
         public AddCert()
         {
-            this.certCWIPath = filePath;
-            this.certPSTDPath = filePath;
+            this._certCWIPath = LocalParameters.installationDataPath;
+            this._certPSTDPath = LocalParameters.installationDataPath;
         }
         public void InstallCWICert(string filename)
         {
             try
             {
-                X509Certificate2 certificateCWI = new X509Certificate2(certCWIPath + filename); // tworzy lokalną zmienną dopisaną do obiektu X509Cert2
+                X509Certificate2 certificateCWI = new X509Certificate2(_certCWIPath + filename); // tworzy lokalną zmienną dopisaną do obiektu X509Cert2
                 X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine); // tworzy zmienną obiektu X509Store czyli wskazuje na konkretny magazyn w konkretnym miejscu (zaufane gl. urz. certyfikacji)
 
                 store.Open(OpenFlags.ReadWrite); //Otwiera magazyn i zezwala na zapis/odczyt
                 store.Add(certificateCWI); // dodaje ceryfikat
                 store.Close();
                 Console.WriteLine("Certyfikat CWI_CERT dograny pomyślnie!");
+
             }
             catch (Exception)
             {
@@ -37,7 +40,7 @@ namespace KWPSerwisInstaller.Main
         {
             try
             {
-                X509Certificate2 certificatePSTD = new X509Certificate2(certPSTDPath + filename);
+                X509Certificate2 certificatePSTD = new X509Certificate2(_certPSTDPath + filename);
                 X509Store store = new X509Store(StoreName.TrustedPublisher, StoreLocation.LocalMachine);
 
                 store.Open(OpenFlags.ReadWrite);
@@ -47,7 +50,7 @@ namespace KWPSerwisInstaller.Main
             }
             catch (Exception)
             {
-                Console.WriteLine("Cos poszllo nie tak!");
+                Console.WriteLine("Bład dogrania cert. Infrastruktura2019!");
             }
             finally
             {

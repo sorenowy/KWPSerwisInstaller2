@@ -1,11 +1,11 @@
 ﻿using System;
 using KWPSerwisInstaller.Main;
+using KWPSerwisInstaller.Configuration;
 
 namespace KWPSerwisInstaller
 {
     public class NetBIOSChange : Installer
     {
-        public string newNETBiosName;
         public NetBIOSChange()
         { 
             this.StartInfo.Verb = "runas";
@@ -17,12 +17,13 @@ namespace KWPSerwisInstaller
                 ktory automatycznie przyjmuje i nie wykonuje funkcji UseShellExecute, 
                 kluczowej do wykonania w przypadku wywołania powershella! 
                 Stąd przekazany został do metody ChangeNetBIOS zamiast do konstruktora klasy.*/
+                
                 this.StartInfo.CreateNoWindow = true;
                 this.StartInfo.UseShellExecute = false;
                 this.StartInfo.RedirectStandardInput = true;
                 this.StartInfo.RedirectStandardOutput = true;
                 this.StartInfo.FileName = "cmd.exe";
-                this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + newNETBiosName;
+                this.StartInfo.Arguments = "/c wmic computersystem where caption='" + Environment.MachineName + "' rename " + LocalParameters.netBIOSname;
                 this.Start();
                 this.WaitForExit();
                 Console.WriteLine("Zmiana nazwy NetBIOS wykonana pomyślnie!");

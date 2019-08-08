@@ -31,7 +31,7 @@ namespace KWPSerwisInstaller
             {
                 LocalParameters.netconnection = false;
             }
-            else
+            else if (connection == DialogResult.No)
             {
                 LocalParameters.netconnection = true;
             }
@@ -63,29 +63,29 @@ namespace KWPSerwisInstaller
             void ButtonAdminClick(object sender,EventArgs ea)
             {
                 user.option = 1;
-                user.name = MenuParameters.usernameTextbox.Text;
-                user.password = MenuParameters.passwordTextbox.Text;
+                LocalParameters.username = MenuParameters.usernameTextbox.Text;
+                LocalParameters.password = MenuParameters.passwordTextbox.Text;
                 user.ShowUser();
                 MenuParameters.userCreationMenu.Close();
             }
             void ButtonUserClick(object sender,EventArgs ea)
             {
                 user.option = 2;
-                user.name = MenuParameters.usernameTextbox.Text;
-                user.password = MenuParameters.passwordTextbox.Text;
+                LocalParameters.username = MenuParameters.usernameTextbox.Text;
+                LocalParameters.password = MenuParameters.passwordTextbox.Text;
                 user.ShowUser();
                 MenuParameters.userCreationMenu.Close();
             }
             void ButtonIpLogClick(object sender,EventArgs ea)
             {
                 log.option = 1;
-                log.inventoryNumber = MenuParameters.inventoryTextbox.Text;
+                LocalParameters.inventoryNumber = MenuParameters.inventoryTextbox.Text;
                 log.GenerateIPConfigLog();
                 MenuParameters.ipConfigMenu.Close();
             }
             void ButtonChangeDomainClick(object sender,EventArgs ea)
             {
-                zmiana.newNETBiosName = MenuParameters.netbiosNameTextbox.Text;
+                LocalParameters.netBIOSname = MenuParameters.netbiosNameTextbox.Text;
                 zmiana.ChangeNetBIOS();
                 MenuParameters.domainMenu.Close();
             }

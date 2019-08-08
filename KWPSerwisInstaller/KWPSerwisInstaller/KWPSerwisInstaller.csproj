@@ -39,6 +39,9 @@
   <PropertyGroup>
     <StartupObject>KWPSerwisInstaller.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>policja_lubuska_4lg_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -96,6 +99,9 @@
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="policja_lubuska_4lg_icon.ico" />
+    <Content Include="policja_lubuska_mU8_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
