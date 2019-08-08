@@ -1,7 +1,7 @@
 
 Windows IP Configuration
 
-   Host Name . . . . . . . . . . . . : TEST06L
+   Host Name . . . . . . . . . . . . : PC06LTEST
    Primary Dns Suffix  . . . . . . . : 
    Node Type . . . . . . . . . . . . : Hybrid
    IP Routing Enabled. . . . . . . . : No
