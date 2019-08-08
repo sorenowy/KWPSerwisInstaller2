@@ -26,7 +26,7 @@ namespace KWPSerwisInstaller
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             MessageBox.Show(Program.Copyright(), "Copyright");
-            DialogResult connection = MessageBox.Show("Czy chcesz uruchomic program w trybie autonomicznym?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult connection = MessageBox.Show("Czy chcesz uruchomic program w trybie autonomicznym? (Offline Mode)", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (connection == DialogResult.Yes)
             {
                 LocalParameters.netconnection = false;
@@ -39,6 +39,7 @@ namespace KWPSerwisInstaller
             // Nazwa tytułu aplikacji
             this.Text = "KWP Serwis Installer v0.8";
             this.Size = new Size(760, 560);
+            this.Icon = new Icon(Environment.CurrentDirectory + @"\policja_lubuska_4lg_icon.ico");
             // Załadowanie i wyskalowanie obrazka na stronę tytułową
             Image titleImage = Image.FromFile(Environment.CurrentDirectory+@"\Logo\obrazek.jpg");
             MenuParameters.mainLabel.Left = 120;
