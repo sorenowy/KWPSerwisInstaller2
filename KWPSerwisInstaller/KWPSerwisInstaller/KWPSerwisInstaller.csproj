@@ -101,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="policja_lubuska_4lg_icon.ico" />
-    <Content Include="policja_lubuska_mU8_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
