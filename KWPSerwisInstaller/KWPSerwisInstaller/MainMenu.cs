@@ -22,7 +22,7 @@ namespace KWPSerwisInstaller
             DriverInstaller driver = new DriverInstaller();
             SecurityPolicy policy = new SecurityPolicy();
             Console.Title = "Log KWP Serwis Installer";
-            MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.8\nUpewnij się że komputer " +
+            MessageBox.Show("Witaj w programie Instalacyjnym KWP Serwis Installer v0.9\nUpewnij się że komputer " +
             "jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie. " +
             "W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP", "Powitanie");
             MessageBox.Show(Program.Copyright(), "Copyright");
@@ -37,7 +37,7 @@ namespace KWPSerwisInstaller
             }
             Installer install = new Installer(LocalParameters.netconnection);
             // Nazwa tytułu aplikacji
-            this.Text = "KWP Serwis Installer v0.8";
+            this.Text = "KWP Serwis Installer v0.9";
             this.Size = new Size(760, 560);
             this.Icon = new Icon(Environment.CurrentDirectory + @"\policja_lubuska_4lg_icon.ico");
             // Załadowanie i wyskalowanie obrazka na stronę tytułową

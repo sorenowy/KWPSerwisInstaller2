@@ -16,7 +16,7 @@ namespace KWPSerwisInstaller
             Console.WriteLine("##       ##  ##  ##       ##  ##          ##  ##   ##");
             Console.WriteLine("##       ######  ######   ##  ######  ######  ##   ##");
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("Witaj w programie Instalacyjnym KWP Serwis Installer v0.7");
+            Console.WriteLine("Witaj w programie Instalacyjnym KWP Serwis Installer v0.9");
             Console.WriteLine("Upewnij się że komputer jest podłączony do sieci oraz posiada skonfigurowany \nSerwisowy adres IP, by zainstalować wymaganie oprogramowanie.");
             Console.WriteLine("W przypadku podłączenia komputera do domeny, miej ustawiony dynamiczny adres IP.");
         }
@@ -28,7 +28,7 @@ namespace KWPSerwisInstaller
         public static void Thanks()
         {
             //Podziekowania pod koniec programu
-            MessageBox.Show("Dziękuję za skorzystanie z KWP Serwis Installer v0.7. Do zobaczenia next time ;). Naciśnij OK, by zamknąć okno.","Thank You");
+            MessageBox.Show("Dziękuję za skorzystanie z KWP Serwis Installer v0.9. Do zobaczenia next time ;). Naciśnij OK, by zamknąć okno.","Thank You");
         }
         static void Main(string[] args)
         {
