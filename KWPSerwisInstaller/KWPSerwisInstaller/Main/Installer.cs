@@ -28,7 +28,7 @@ namespace KWPSerwisInstaller.Main
             {
                 this.StartInfo.UseShellExecute = true;
                 this.StartInfo.CreateNoWindow = false;
-                _dataPath = @"\\192.168.0.54\Serwis\KWPInstaller\Data\";
+                _dataPath = @"\\192.168.2.197\hubert\Data\";
                 this.StartInfo.WorkingDirectory = _dataPath;
             }
             // Wymuszenie na obiekcie poleceń uzycia powłoki systemu wymuszaniu okien (sciezki plikow) + ustawienie sciezki docelowej.
